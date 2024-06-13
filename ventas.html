@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Limoneto al paso - Cargar venta: </title>
 </head>
 <body>
     
+    <div class="container">
+        <header class="header">
+            <h1></h1>
+            <button class="user-btn">Cambiar usuario</button>
+        </header>
+    </div>
+    <section class="sale-section">
+        <h2>Realizar venta</h2>
+        <form class="sale-form">
+            <div class="from-group">
+                <label for="codigo">Codigo de producto:</label>
+                <input type="text" id="codigo" name="codigo">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre de producto:</label>
+                <input type="text" id="nombre" name="nombre">
+                <div class="div-vacio">
+                    <!-- aca puede ir un data list para que aparezcan las coincidencias de los nombres/codigos ingresadps -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lista">Lista de productos</label>
+                <div class="div-vacio">
+                    <!-- aca puede ir un data list para que aparezcan las coincidencias de los nombres/codigos ingresadps -->
+                </div>
+            </div>
+            <button type="button" class="add-btn">Agregar producto</button>
+        </form>
+
+        <div class="sales-table">
+            <div class="sales-header">
+                <div class="sales-detail">Cod.</div>
+                <div class="sales-detail">Nombre</div>
+                <div class="sales-detail">Cantidad</div>
+                <div class="sales-detail">Precio unitario</div>
+                <div class="sales-detail">Importe</div>
+            </div>
+        </div>
+        <div class="total-section">
+            <span>Total de venta:</span>
+            <div class="total">
+                <span class="total-import"></span>
+                <button type="button" class="pay-btn">Cobrar</button>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
