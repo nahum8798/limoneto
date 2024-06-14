@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Limoneto al paso - Cargar venta: </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Ventas</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <div class="container">
-        <header class="header">
-            <h1></h1>
-            <button class="user-btn">Cambiar usuario</button>
-        </header>
-    </div>
-    <section class="sale-section">
-        <h2>Realizar venta</h2>
-        <form class="sale-form">
-            <div class="from-group">
-                <label for="codigo">Codigo de producto:</label>
-                <input type="text" id="codigo" name="codigo">
-            </div>
-            <div class="form-group">
-                <label for="nombre">Nombre de producto:</label>
-                <input type="text" id="nombre" name="nombre">
-                <div class="div-vacio">
-                    <!-- aca puede ir un data list para que aparezcan las coincidencias de los nombres/codigos ingresadps -->
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="lista">Lista de productos</label>
-                <div class="div-vacio">
-                    <!-- aca puede ir un data list para que aparezcan las coincidencias de los nombres/codigos ingresadps -->
-                </div>
-            </div>
-            <button type="button" class="add-btn">Agregar producto</button>
-        </form>
+  
+  <section class="side-bar">
+    <!-- Contenido de la barra lateral -->
+  </section>
 
-        <div class="sales-table">
-            <div class="sales-header">
-                <div class="sales-detail">Cod.</div>
-                <div class="sales-detail">Nombre</div>
-                <div class="sales-detail">Cantidad</div>
-                <div class="sales-detail">Precio unitario</div>
-                <div class="sales-detail">Importe</div>
-            </div>
+  <section class="main-content">
+    <div class="header">
+      <span>Hola, usuario </span>
+      <div class="btn-container">
+        <button type="button">Cambiar usuario</button>
+      </div>
+    </div>
+
+    <div class="sales-header">
+      <span>Realizar una venta</span>
+      <div class="btn-container">
+        <button type="button" class="sale-btn">Seleccionar cliente</button>
+      </div>
+    </div>
+
+    <div class="sales-container">
+      <div class="sales-form">
+        <form class="sale-form" autocomplete="off">
+
+          <div class="autocomplete">
+            <label for="name-product">Nombre de producto: </label>
+            <input type="text" id="name-product" name="name">
+          </div>
+
+          <div class="product-container">
+            <span>Lista de productos</span>
+          </div>
+          <button type="button" id="add-product-btn">Agregar producto</button>
+        </form>
+      </div>
+
+      <div class="sales-details">
+        <table class="sales-table">
+          <thead>
+              <tr>
+                  <th>Cód.</th>
+                  <th>Nombre</th>
+                  <th>Cantidad</th>
+                  <th>Precio unitario</th>
+                  <th>Importe</th>
+              </tr>
+          </thead>
+          <tbody class="sales-table tbody">
+              <!-- Aquí se llenarán las filas con productos -->
+          </tbody>
+        </table>
+        <div class="total-cobrar">
+          <div class="total-container">
+            Total: $<span id="total-amount">0</span>
+          </div>
+          <button type="button">Cobrar</button>
         </div>
-        <div class="total-section">
-            <span>Total de venta:</span>
-            <div class="total">
-                <span class="total-import"></span>
-                <button type="button" class="pay-btn">Cobrar</button>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>

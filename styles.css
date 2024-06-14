@@ -1,0 +1,95 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Barra del costado */
+.side-bar {
+  display: block;
+  border: 1px solid #333;
+  width: 10%;
+  height: 100vh;
+}
+
+/* Sección principal */
+.main-content {
+  display: block;
+  width: 90%;
+}
+
+/* Encabezado de ventas */
+.header,
+.sales-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0.5rem;
+}
+
+.sales-header {
+  border-top: 1px solid #333;
+}
+
+/* Contenedor de ventas */
+.sales-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sale-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Autocompletado */
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
