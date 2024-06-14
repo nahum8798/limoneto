@@ -1,123 +1,298 @@
+:root {
+  --main-color:#fef9f1;
+  --button-bg-color-1: #FFC300;
+  --button-bg-color-2: #333;
+  --button-text-color: #fff;
+  --text-color: #333;
+  --border-color: #333;
+  --padding: 1rem;
+}
+
+/* side menu */
+.container {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.change .bar2 {opacity: 0;}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+/* -------------------*/
+
+
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: row;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: var(--main-color);
 }
 
-/* Barra del costado */
+/* Barra lateral */
 .side-bar {
-  display: block;
-  border: 1px solid #333;
-  width: 10%;
+  background-color: var(--main-color);
+  width: 5%;
   height: 100vh;
+  color: var(--button-text-color);
+
 }
 
 /* Sección principal */
 .main-content {
-  display: block;
-  width: 90%;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  height: 100%;
+  background-color: var(--main-color);
+  padding-top: var(--padding);
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  margin: auto;
+  margin-left: 0;
 }
 
-/* Encabezado de ventas */
+/* Encabezado */
+
+.header {
+  border-bottom: 1px solid var(--border-color);
+}
 .header,
 .sales-header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem;
+  background-color: var(--main-color);
+  
+
 }
 
-.sales-header {
-  border-top: 1px solid #333;
+.btn-container button {
+  background-color: var( --button-bg-color-2);
+  color: var(--button-text-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-container button:hover {
+  background-color: darken(var(--button-bg-color), 10%);
 }
 
 /* Contenedor de ventas */
 .sales-container {
   display: flex;
-  flex-direction: row;
+  flex-grow: 1;
+  gap: var(--padding);
 }
+
+.sales-form {
+  flex: 1;
+  border: 1px solid var(--border-color);
+  background-color: var(--main-color);
+  padding: 2rem;
+  border-radius: 5px;
+
+  position: relative;
+}
+
+
+/*       boton agregar producto      */
+
+
+.sales-form #add-product-btn {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 4rem;
+
+  background-color: var(--button-bg-color-1);
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
 
 .sale-form {
   display: flex;
   flex-direction: column;
+  gap: var(--padding);
 }
 
-/* Autocompletado */
 .autocomplete {
   position: relative;
-  display: inline-block;
+  
+}
+
+.autocomplete input {
+  width: 95%;
+  margin-top: 1rem;
+}
+
+.product-container {
+  margin-top: var(--padding);
+  padding-top: var(--padding);
+  padding-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: #fff;
+  text-align:justify;
+
 }
 
 input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
   font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
+  background-color: var(--main-color);
+
 }
 
-input[type=text] {
-  background-color: #f1f1f1;
+/* Tabla de ventas */
+.sales-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding);
+
+  position: relative;
+  height: 100%;
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #F9D049;
+  border-radius: 5px;
+  overflow:hidden;
+}
+
+.sales-table th, .sales-table td {
+  border: 1px solid var(--border-color);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+}
+
+.sales-table th {
+  background-color: var(--header-bg-color);
+}
+
+.total-cobrar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: absolute;
+  bottom: 0;
+
   width: 100%;
 }
 
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: #fff;
+.total-container {
+  font-size: 1.2rem;
+  font-weight: bold;
+  
+  padding: 2rem;
+
+  border-top: 3px solid #333;
+  width: 100%;
 }
 
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  top: 100%;
-  left: 0;
-  right: 0;
+#total-amount {
+  border:3px solid #333;
+  
+  padding: 1rem;
+  border-radius: 20%;
 }
 
-.autocomplete-items div {
-  padding: 10px;
+#open-modal-btn {
+  background-color: var( --button-bg-color-1);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
   cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
 }
 
-.autocomplete-items div:hover {
-  background-color: #e9e9e9;
-}
 
-.autocomplete-active {
-  background-color: DodgerBlue !important;
-  color: #ffffff;
-}
 
-/* modal */
-
+/* Modal */
 .modal {
-  display: none; /* Por defecto, el modal estará oculto */
-  position: fixed; /* Permanece fijo en la pantalla */
-  z-index: 1; /* Por encima de todo el contenido */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; /* Permite hacer scroll si es necesario */
-  background-color: rgb(0,0,0); /* Fondo oscuro */
-  background-color: rgba(0,0,0,0.4); /* Fondo oscuro con transparencia */
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  border: 3px solid var( --button-bg-color-1);
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* Centra el modal verticalmente */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Ancho del modal */
-  max-width: 600px; /* Ancho máximo del modal */
-  border-radius: 8px;
+  background-color: #fff;
+  margin: 10% auto;
+  padding: var(--padding);
+  border: 3px solid var( --button-bg-color-1);
+  width: 80%;
+  max-width: 500px;
+  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.sale-confirm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 1rem;
+  width: 100%;
+
+  border-bottom: 1px solid var( --button-bg-color-1);
+}
+
+.articles {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.articles span{
+  padding: 3rem;
+  
+}
+
+.sale-confirm .number-date {
+  margin-left: 1rem;
 }
 
 .close {

@@ -10,6 +10,11 @@
   
   <section class="side-bar">
     <!-- Contenido de la barra lateral -->
+    <div class="container" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
   </section>
 
   <section class="main-content">
@@ -19,7 +24,7 @@
         <button type="button">Cambiar usuario</button>
       </div>
     </div>
-
+    
     <div class="sales-header">
       <span>Realizar una venta</span>
       <div class="btn-container">
@@ -30,12 +35,10 @@
     <div class="sales-container">
       <div class="sales-form">
         <form class="sale-form" autocomplete="off">
-
           <div class="autocomplete">
             <label for="name-product">Nombre de producto: </label>
             <input type="text" id="name-product" name="name">
           </div>
-
           <div class="product-container">
             <span>Lista de productos</span>
           </div>
@@ -60,7 +63,7 @@
         </table>
         <div class="total-cobrar">
           <div class="total-container">
-            Total: $<span id="total-amount">0</span>
+            Total de venta: $<span id="total-amount"></span>
           </div>
           <button type="button" id="open-modal-btn">Cobrar</button>
         </div>
@@ -68,15 +71,32 @@
     </div>
   </section>
 
-
   <!-- ventana emergente de cobrar venta -->
   <div id="sale-modal" class="modal">
     <div class="modal-content">
-      <p>aca va a estar el contenido del modal cobrar-venta</p>
+      <div class="sale-confirm">
+        <span>Confirmación de venta: </span>
+        <div class="number-date">
+          <span>Venta # <div class="sale-number"></div></span>
+          <span>aca va la fecha</span>
+        </div>
+      </div>
+      <div class="articles">
+        <div class="articles-header">
+          <span>Artículos vendidos</span>
+          <span>Resumen del pedido</span>
+        </div>
+        <div class="articles-detail">
+          
+        </div>
+      </div>
       <span class="close">&times;</span> <!-- Botón para cerrar el modal -->
     </div>
   </div>
 
+  <!-- script de interactividad de la pagna-->
   <script src="script.js"></script>
+  <!-- Script de simulacion de carga de productos -->
+  <script src="scriptProducts.js"></script>
 </body>
 </html>
