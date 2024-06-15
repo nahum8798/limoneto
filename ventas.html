@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +57,7 @@
                   <th>Importe</th>
               </tr>
           </thead>
-          <tbody class="sales-table tbody">
+          <tbody>
               <!-- Aquí se llenarán las filas con productos -->
           </tbody>
         </table>
@@ -72,13 +72,14 @@
   </section>
 
   <!-- ventana emergente de cobrar venta -->
-  <div id="sale-modal" class="modal">
+  
+  <div class="modal" id="sale-modal">
     <div class="modal-content">
       <div class="sale-confirm">
-        <span>Confirmación de venta: </span>
+        <span>Confirmación de venta:</span>
         <div class="number-date">
-          <span>Venta # <div class="sale-number"></div></span>
-          <span>aca va la fecha</span>
+          <span>Venta #<span class="sale-number"><!--  aca hay que generar el numero de venta dinaminacmente--></span></span>
+          <span id="sale-date"><!--aca hay que generar la fecha dinamicamente--></span>
         </div>
       </div>
       <div class="articles">
@@ -87,14 +88,38 @@
           <span>Resumen del pedido</span>
         </div>
         <div class="articles-detail">
-          
+          <div class="product-list">
+            <!-- Lista de productos se carga aca-->
+          </div>
+          <div class="order-summary">
+            <div><strong>Subtotal:</strong><span id="subtotal"></span></div>
+            <div><strong>Descuento:</strong><span id="descuento"></span></div>
+            <div><strong>Total:</strong><span id="total"></span></div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <span>Método de pago</span>
+          <div class="payment-buttons">
+            <button type="button" class="payment-btn" onclick="setPaymentMethod('Efectivo')">Efectivo</button>
+            <button type="button" class="payment-btn" onclick="setPaymentMethod('Tarjeta')">Tarjeta</button>
+            <button type="button" class="payment-btn" onclick="setPaymentMethod('Transferencia')">Transferencia</button>
+          </div>
+        </div>
+        <div class="payment-amount">
+          <label for="payment-amount">Abona con</label>
+          <input type="number" id="payment-amount" oninput="calculateChange()">
+          <label for="change-amount">Vuelto</label>
+          <input type="text" id="change-amount" disabled>
+        </div>
+        <div class="articles-footer">
+          <button type="button" id="confirm-btn">Confirmar</button>
         </div>
       </div>
-      <span class="close">&times;</span> <!-- Botón para cerrar el modal -->
+      <span class="close" onclick="closeModalSpan()">&times;</span>
     </div>
   </div>
 
-  <!-- script de interactividad de la pagna-->
+  <!-- script de interactividad de la pagina-->
   <script src="script.js"></script>
   <!-- Script de simulacion de carga de productos -->
   <script src="scriptProducts.js"></script>
