@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Estadisticas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <section class="side-bar">
+    <!-- Contenido de la barra lateral -->
+    <div class="container" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </section>
+
+  <section class="main-content">
+    <div class="header">
+      <span>Hola, usuario </span>
+      <div class="btn-container">
+        <button type="button">Cambiar usuario</button>
+      </div>
+    </div>
+
+    <div class="estadisticas-header">
+        <div>Estadisticas</div>
+    </div> 
+    <div class="selector-estadisticas">
+        <div class="btn-container">
+            <button type="button">Ver estadística por día</button>
+        </div>
+        <div class="btn-container">
+            <button type="button">Ver estadística por mes</button>
+        </div>
+    </div>
+    <div class="date">
+        <div class="date-container">
+            <span>Fecha: </span><span id="dateAct"></span>
+        </div>
+    </div> 
+    <div class="statistics-container">
+        <div class="sales-statistics">
+            <div class="sales-statistics-header">
+                <span>Estadisticas de ventas</span>
+            </div>
+            <div class="item-container">
+                <div class="statistics-item">Total de productos vendidos: <div id="total-productos"></div> </div>
+                <div class="statistics-item">Total de ventas: <div id="total-ventas"></div> </div>
+                <div class="statistics-item">Total de costos: <div id="total-costos"></div> </div>
+                <div class="statistics-item">Total de ganancias: <div id="total-ganancias"></div> </div>
+            </div>
+            
+        </div>
+        <div class="sales-details-stc">
+            <div class="sales-statistics-header">
+                Detalle de ventas
+            </div>
+            <div class="item-container" id="item-sales">
+               
+            </div>
+        </div>
+    </div>
+
+  </section>
+  <!-- script de estadisticas -->
+  <script src="statistics.js"></script>
+  <!-- script de interactividad de la pagina-->
+  <script src="script.js"></script>
+  <!-- Script de simulacion de carga de productos -->
+  <script src="scriptProducts.js"></script>
+</body>
+</html>

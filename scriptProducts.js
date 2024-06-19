@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     const productos = [
-        { codigo: '01', nombre: 'Café chico', precio: 1200 },
-        { codigo: '02', nombre: 'Café grande', precio: 1500 },
-        { codigo: '03', nombre: 'Café con leche chico', precio: 1300 },
-        { codigo: '04', nombre: 'Café con leche grande', precio: 1600 },
-        { codigo: '05', nombre: 'Cortado chico', precio: 1250 },
-        { codigo: '06', nombre: 'Cortado grande', precio: 1550 }
+        { codigo: '01', nombre: 'Café chico', precio: 1200, costo:900 },
+        { codigo: '02', nombre: 'Café grande', precio: 1500, costo:950 },
+        { codigo: '03', nombre: 'Café con leche chico', precio: 1300, costo:920 },
+        { codigo: '04', nombre: 'Café con leche grande', precio: 1600,costo:1000 },
+        { codigo: '05', nombre: 'Cortado chico', precio: 1250, costo: 920 },
+        { codigo: '06', nombre: 'Cortado grande', precio: 1550, costo:1000 }
     ];
 
     function autocomplete(input, array) {
