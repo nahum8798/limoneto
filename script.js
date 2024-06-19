@@ -37,7 +37,7 @@ confirmBtn.addEventListener('click', function() {                               
     //alert('Venta confirmada');                                                // se guarde en reporte diario
     saleModal.style.display = 'none';
 
-    // Obtiene el total de la venta desde el modal
+   /* // Obtiene el total de la venta desde el modal
     const totalVenta = totalElement.innerText;
 
     // Crea un nuevo elemento para mostrar la venta en el resumen
@@ -47,10 +47,10 @@ confirmBtn.addEventListener('click', function() {                               
     item.innerText = `Venta #${Math.random().toString(36).substr(2, 9)} - Total: ${totalVenta}`; // Genera un ID de venta aleatorio para demostración
 
     // Añade el nuevo elemento al contenedor de resumen
-    itemSale.appendChild(item);
-
+    itemSale.appendChild(item);*/
+    const totAmount = document.getElementById('total-amount');
     const tbody = document.querySelector(".sales-table tbody");
-    
+    totAmount.innerText = '';
     while (tbody.firstChild) {
         tbody.removeChild(tbody.firstChild)
     }

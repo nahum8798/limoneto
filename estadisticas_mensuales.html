@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Ventas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <section class="side-bar">
+    <!-- Contenido de la barra lateral -->
+    <div class="container" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </section>
+
+  <section class="main-content">
+    <div class="header">
+      <span>Hola, usuario </span>
+      <div class="btn-container">
+        <button type="button">Cambiar usuario</button>
+      </div>
+    </div>
+    <div class="estadisticas-header">
+        <div>Estadisticas</div>
+    </div> 
+    <div class="date">
+        <div class="date-container">
+            <span>Fecha: </span><span id="dateAct"></span>
+        </div>
+    </div> 
+    <div class="statistics-container">
+        <div class="sales-statistics">
+            <div class="sales-statistics-header">
+                <span>Ventas totales</span>
+            </div>
+            <div class="item-container">
+                
+            </div>
+            
+        </div>
+        <div class="sales-details-stc">
+            <div class="sales-statistics-header">
+                <span>Unidades vendidas</span>
+            </div>
+            <div class="item-container" id="item-sales">
+               
+            </div>
+        </div>
+        <div class="sales-details-stc">
+            <div class="sales-statistics-header">
+                <span>Costo total</span>
+            </div>
+            <div class="item-container" id="item-sales">
+               
+            </div>
+        </div>
+        <div class="sales-details-stc">
+            <div class="sales-statistics-header">
+                <span>Ganancia</span>
+            </div>
+            <div class="item-container" id="item-sales">
+               
+            </div>
+        </div>
+    </div>
+    <div class="table-products-details">
+        <div class="details-title">
+            <span>Detalles de productos</span>
+        </div>
+        <table class="sales-table">
+            <thead>
+                <tr>
+                    <th>SKU</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Ubicacion</th>
+                    <th>Cantidad</th>
+                    <th>Ingresos</th>
+                    <th>Costo</th>
+                    <th>Margen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán las filas con productos -->
+            </tbody>
+          </table>
+    </div>
+
+  </section>
+  <!-- script de estadisticas -->
+  <script src="statistics.js"></script>
+  <!-- script de interactividad de la pagina-->
+  <script src="script.js"></script>
+  <!-- Script de simulacion de carga de productos -->
+  <script src="scriptProducts.js"></script>
+</body>
+</html>
