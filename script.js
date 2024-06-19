@@ -5,6 +5,7 @@ const saleModal = document.getElementById('sale-modal');
 const closeModalSpan = document.querySelector('.close');
 const confirmBtn = document.getElementById('confirm-btn');
 
+
 /* side menu animation */
 function myFunction(x) {
     x.classList.toggle("change");
@@ -30,9 +31,15 @@ window.onclick = function(event) {
     }
 };
 
-confirmBtn.addEventListener('click', function() {
-    alert('Venta confirmada');
+
+// boton de confirmacio de venta, tambien borra el contenido de la tabla detalle de venta
+confirmBtn.addEventListener('click', function() {                                // aca debo encontra la manera de que el detalle de las ventas
+    //alert('Venta confirmada');                                                // se guarde en reporte diario
     saleModal.style.display = 'none';
+    const tbody = document.querySelector(".sales-table tbody");
+    while (tbody.firstChild) {
+        tbody.removeChild(tbody.firstChild)
+    }
 });
 
 function loadProducts() {
