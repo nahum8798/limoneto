@@ -33,7 +33,7 @@
             <button type="button">Ver estadística por día</button>
         </div>
         <div class="btn-container">
-            <button type="button">Ver estadística por mes</button>
+            <button type="button" onclick="window.location.href='estadisticas_mensuales.html'">Ver estadística por mes</button>
         </div>
     </div>
     <div class="date">
@@ -46,11 +46,11 @@
             <div class="sales-statistics-header">
                 <span>Estadisticas de ventas</span>
             </div>
-            <div class="item-container">
-                <div class="statistics-item">Total de productos vendidos: <div id="total-productos"></div> </div>
-                <div class="statistics-item">Total de ventas: <div id="total-ventas"></div> </div>
-                <div class="statistics-item">Total de costos: <div id="total-costos"></div> </div>
-                <div class="statistics-item">Total de ganancias: <div id="total-ganancias"></div> </div>
+            <div class="item-container-totales">
+                <div class="statistics-item">Total de productos vendidos: 105</div>
+                <div class="statistics-item">Total de ventas: $ 0000</div>
+                <div class="statistics-item">Total de costos: $ 0000</div>
+                <div class="statistics-item">Total de ganancias: $ 0000</div> <!-- aca van consultas a la bd. se implementa luego-->
             </div>
             
         </div>
@@ -58,8 +58,33 @@
             <div class="sales-statistics-header">
                 Detalle de ventas
             </div>
-            <div class="item-container" id="item-sales">
-               
+            <div class="item-container" id="item-sales">  <!-- aca tambien van consultas a la db-->
+              <div class="item-sale">
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 1 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 2 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 3 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 4 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 5 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 6 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 7 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+                <div class="flex-sales">
+                  <div class="nro-venta">#Venta 8 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                </div>
+              </div>
             </div>
         </div>
     </div>
@@ -70,6 +95,6 @@
   <!-- script de interactividad de la pagina-->
   <script src="script.js"></script>
   <!-- Script de simulacion de carga de productos -->
-  <script src="scriptProducts.js"></script>
+  <script src="scriptProducts.js"></script> 
 </body>
 </html>

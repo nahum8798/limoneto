@@ -1,46 +1,42 @@
 :root {
-  --main-color:#fef9f1;
+  --main-color: #fef9f1;
   --button-bg-color-1: #FFC300;
   --button-bg-color-2: #333;
   --button-text-color: #fff;
   --text-color: #333;
   --border-color: #333;
   --padding: 1rem;
-  --statistcs-color:#DDDBD6;
+  --statistics-color: #DDDBD6;
 }
 
-/* side menu */
+/* Side menu */
 .container {
   display: inline-block;
   cursor: pointer;
-  margin-top: 25px;
-  margin-left: 10px;
+  margin: 25px 0 0 10px;
 }
 
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #333;
+  background-color: var(--border-color);
   margin: 6px 0;
   transition: 0.4s;
 }
 
-/* Rotate first bar */
 .change .bar1 {
   transform: translate(0, 11px) rotate(-45deg);
 }
 
-/* Fade out the second bar */
-.change .bar2 {opacity: 0;}
+.change .bar2 {
+  opacity: 0;
+}
 
-/* Rotate last bar */
 .change .bar3 {
   transform: translate(0, -11px) rotate(45deg);
 }
 
-/* -------------------*/
-
-
+/* Body */
 body {
   box-sizing: border-box;
   margin: 0;
@@ -51,58 +47,51 @@ body {
   background-color: var(--main-color);
 }
 
-/* Barra lateral */
+/* Sidebar */
 .side-bar {
-  background-color: var(--main-color);
   width: 5%;
   height: 100vh;
   color: var(--button-text-color);
-
+  background-color: var(--main-color);
 }
 
-/* Sección principal */
+/* Main content */
 .main-content {
   display: flex;
   flex-direction: column;
   width: 85%;
   height: 100%;
   background-color: var(--main-color);
-  padding-top: var(--padding);
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-  margin: auto;
-  margin-left: 0;
+  padding: var(--padding) var(--padding) 0;
+  margin: auto 0;
 }
 
-/* Encabezado */
-
-.header {
-  border-bottom: 1px solid var(--border-color);
-}
-.header,
-.sales-header,
-.estadisticas-header {
+/* Header */
+.header, .sales-header, .estadisticas-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.2rem;
   background-color: var(--main-color);
-  
-
+  border-bottom: 1px solid var(--border-color);
 }
 
-.btn-container button {
-  background-color: var( --button-bg-color-2);
+.btn-container button,
+#open-modal-btn {
+  background-color: var(--button-bg-color-2);
   color: var(--button-text-color);
   padding: 0.5rem 1rem;
-  border: none;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   cursor: pointer;
 }
 
+#open-modal-btn {
+  background-color: var(--button-bg-color-1);
+  color: var(--text-color);
+}
 
-
-/* Contenedor de ventas */
+/* Sales Container */
 .sales-container {
   display: flex;
   flex-grow: 1;
@@ -115,27 +104,19 @@ body {
   background-color: var(--main-color);
   padding: 2rem;
   border-radius: 5px;
-
   position: relative;
 }
 
-
-/*       boton agregar producto      */
-
-
-.sales-form #add-product-btn {
+#add-product-btn {
   position: absolute;
   bottom: 0;
   width: 80%;
-  margin: auto;
-  margin-bottom: 4rem;
-
+  margin: auto 0 4rem;
   background-color: var(--button-bg-color-1);
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 5px;
 }
-
 
 .sale-form {
   display: flex;
@@ -145,7 +126,6 @@ body {
 
 .autocomplete {
   position: relative;
-  
 }
 
 .autocomplete input {
@@ -155,13 +135,11 @@ body {
 
 .product-container {
   margin-top: var(--padding);
-  padding-top: var(--padding);
-  padding-bottom: 1rem;
+  padding: var(--padding) 0 1rem;
   border: 1px solid var(--border-color);
   border-radius: 5px;
   background-color: #fff;
-  text-align:justify;
-
+  text-align: justify;
 }
 
 input {
@@ -171,16 +149,14 @@ input {
   border-radius: 5px;
   width: 100%;
   background-color: var(--main-color);
-
 }
 
-/* Tabla de ventas */
+/* Sales Table */
 .sales-details {
   flex: 2;
   display: flex;
   flex-direction: column;
   gap: var(--padding);
-
   position: relative;
   height: 100%;
 }
@@ -188,17 +164,14 @@ input {
 .sales-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #F9D049;
+  background-color: var(--statistics-color);
   border-radius: 5px;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .sales-table th, .sales-table td {
-  border: 1px solid var(--border-color);
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  border: 1px solid white;
+  padding: 1rem 2rem;
   text-align: left;
 }
 
@@ -210,43 +183,26 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   position: absolute;
   bottom: 0;
-
   width: 100%;
 }
 
 .total-container {
   font-size: 1.2rem;
   font-weight: bold;
-  
   padding: 2rem;
-
-  border-top: 3px solid #333;
+  border-top: 3px solid var(--border-color);
   width: 100%;
 }
 
 #total-amount {
-  border:3px solid #333;
-  
+  border: 3px solid var(--border-color);
   padding: 1rem;
   border-radius: 20%;
 }
 
-#open-modal-btn {
-  background-color: var( --button-bg-color-1);
-  color: var(--text-color);
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-
-
-/* modal */
-
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -256,10 +212,7 @@ input {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-
-  
 }
 
 .modal-content {
@@ -269,8 +222,7 @@ input {
   border: 1px solid #888;
   width: 80%;
   border-radius: 8px;
-
-  border:3px solid var( --button-bg-color-1);
+  border: 3px solid var(--button-bg-color-1);
 }
 
 .close {
@@ -278,58 +230,40 @@ input {
   float: right;
   font-size: 28px;
   font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Sale Confirm */
 .sale-confirm {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-
-  border-bottom: 3px solid var( --button-bg-color-1);
+  border-bottom: 3px solid var(--button-bg-color-1);
 }
 
-.number-date {
+.number-date, .articles-header, .articles-detail, .articles-footer {
   display: flex;
   flex-direction: column;
-}
-
-.articles-header {
-  display: flex;
   justify-content: space-between;
-  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.articles-detail {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  
-}
-
 .product-list {
-  
-  margin-right: 20px;
-
   width: 50%;
-
   display: flex;
   flex-direction: column;
-  align-items:normal;
-  justify-content: space-between;
+  align-items: normal;
+  margin-right: 20px;
 }
 
 .order-summary {
   flex: 1;
   width: 50%;
- 
 }
 
 .product-list div {
@@ -338,7 +272,6 @@ input {
 
 .payment-method {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
@@ -347,10 +280,7 @@ input {
 .payment-buttons {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
-
-  margin-left:4rem;
-  
+  margin: 10px 0 0 4rem;
 }
 
 .payment-btn {
@@ -359,8 +289,7 @@ input {
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
-
-  border: 3px solid var( --button-bg-color-1)
+  border: 3px solid var(--button-bg-color-1);
 }
 
 .payment-btn:hover {
@@ -379,12 +308,6 @@ input {
   width: 100px;
 }
 
-.articles-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 #confirm-btn, #print-btn {
   padding: 10px 20px;
   background-color: #28a745;
@@ -398,45 +321,35 @@ input {
   background-color: #218838;
 }
 
-
-/* --------- Modulo estadisticas -------------------*/
-
-.selector-estadisticas{
-  display:flex;
+/* Statistics */
+.selector-estadisticas, .statistics-container {
+  display: flex;
   justify-content: space-around;
   width: 100%;
+
+  padding:1rem;
+}
+
+.selector-estadisticas {
   margin-bottom: 10px;
 }
 
 .statistics-container {
-  display: flex;
   flex-direction: row;
-  gap:2rem;
-  width: 100%;
+  gap: 2rem;
   height: 100%;
   padding: 2rem;
-  justify-content: space-around;
-
-  
 }
 
-
-
-.statistics-container .sales-statistics, 
-.sales-details-stc {
-  
-  border-radius:20px;
+.statistics-container .sales-statistics, .sales-details-stc {
+  border-radius: 20px;
   width: 40%;
   height: 70%;
-
-  background-color: var(--statistcs-color);
-
+  background-color: var(--statistics-color);
   display: flex;
   flex-direction: column;
-
-  align-items:center;
+  align-items: center;
   justify-content: space-evenly;
-
   padding: 2rem;
 }
 
@@ -444,12 +357,31 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: start;
-
+  align-items: center;
   height: 70%;
+}
+
+.item-container-totales {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-container .statistics-container {
+  width: 100%;
 }
 
 .table-products-details {
   width: 100%;
   height: 50%;
+}
+
+.flex-sales{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+
+  width: 100%;
+  padding:0 1rem;
+  
 }
