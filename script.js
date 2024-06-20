@@ -6,6 +6,7 @@ const closeModalSpan = document.querySelector('.close');
 const confirmBtn = document.getElementById('confirm-btn');
 const totalElement = document.getElementById('total');  // elemento para el total de la venta
 
+
 /* side menu animation */
 function myFunction(x) {
     x.classList.toggle("change");
@@ -30,6 +31,9 @@ window.onclick = function(event) {
         saleModal.style.display = 'none';
     }
 };
+
+
+
 
 
 // boton de confirmacio de venta, tambien borra el contenido de la tabla detalle de venta
@@ -102,12 +106,7 @@ function formatDate(date) {
     return day + '/' + month +'/' + year;
 }
 
-const fechaActual = new Date();
-const dateAct = document.getElementById('dateAct');
 
-
-/* poner fecha en html */
-dateAct.innerText = formatDate(fechaActual);
 
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Limoneto al paso - Estadisticas</title>
+  <title>Limoneto al paso - Estadísticas</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="estadisticas-header">
-        <div>Estadisticas</div>
+        <div>Estadísticas</div>
     </div> 
     <div class="selector-estadisticas">
         <div class="btn-container">
@@ -44,57 +44,76 @@
     <div class="statistics-container">
         <div class="sales-statistics">
             <div class="sales-statistics-header">
-                <span>Estadisticas de ventas</span>
+                <span>Estadísticas de ventas</span>
             </div>
             <div class="item-container-totales">
                 <div class="statistics-item">Total de productos vendidos: 105</div>
                 <div class="statistics-item">Total de ventas: $ 0000</div>
                 <div class="statistics-item">Total de costos: $ 0000</div>
-                <div class="statistics-item">Total de ganancias: $ 0000</div> <!-- aca van consultas a la bd. se implementa luego-->
+                <div class="statistics-item">Total de ganancias: $ 0000</div>
             </div>
-            
         </div>
         <div class="sales-details-stc">
             <div class="sales-statistics-header">
                 Detalle de ventas
             </div>
-            <div class="item-container" id="item-sales">  <!-- aca tambien van consultas a la db-->
+            <div class="item-container" id="item-sales">
               <div class="item-sale">
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 1 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 1</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 2 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 2</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 3 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 3</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 4 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 4</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 5 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 5</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 6 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 6</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 7 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 7</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
                 <div class="flex-sales">
-                  <div class="nro-venta">#Venta 8 </div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
+                  <div class="nro-venta">#Venta 8</div><div class="hora-venta">08:30 am</div><div class="precio-venta">$2450</div>
                 </div>
               </div>
             </div>
         </div>
     </div>
-
   </section>
+
+  <!-- Ventana emergente (modal) -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-body">
+        <h2>Detalles de la Venta</h2>
+        <p id="venta-detalles"></p>
+      </div>
+      <table class="statistics-table">
+        <thead>
+          <tr>Producto</tr>
+          <tr>Cantidad</tr>
+          <tr>Precio unitario</tr>
+          <tr>Precio total</tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
   <!-- script de estadisticas -->
   <script src="statistics.js"></script>
+  <script src="modal.js"></script>
   <!-- script de interactividad de la pagina-->
-  <script src="script.js"></script>
-  <!-- Script de simulacion de carga de productos -->
-  <script src="scriptProducts.js"></script> 
+  <!--<script src="script.js"></script>-->
+  <!-- Script de simulación de carga de productos -->
+ <!--<script src="scriptProducts.js"></script>--> 
 </body>
 </html>

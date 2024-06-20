@@ -341,10 +341,10 @@ input {
   padding: 2rem;
 }
 
-.statistics-container .sales-statistics, .sales-details-stc {
+.statistics-container .sales-statistics-stc, .sales-details-stc {
   border-radius: 20px;
   width: 40%;
-  height: 70%;
+  height: 100%;
   background-color: var(--statistics-color);
   display: flex;
   flex-direction: column;
@@ -353,12 +353,31 @@ input {
   padding: 2rem;
 }
 
+
+.statistics-container .sales-statistics-stc {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
+  border: 1px solid black;
+  height: 50%;
+  width: 100%;
+}
+
 .item-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 70%;
+  height: 80%;
+  width: 100%;
+
+}
+
+
+.item-sale{
+  width: 90%;
+  
 }
 
 .item-container-totales {
@@ -382,6 +401,32 @@ input {
   align-items: center;
 
   width: 100%;
-  padding:0 1rem;
+  padding: 1rem 0;
   
+}
+
+.flex-sales:hover {
+  background-color: vat(--button-bg-color-1);
+  
+
+  cursor: pointer;
+}
+
+.modal .statistics-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--statistics-color);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1x solid black;
+}
+
+.modal .statistics-table th, .statistics-table td {
+  border: 1px solid white;
+  padding: 1rem 2rem;
+  text-align: left;
+}
+
+.modal .statistics-table th {
+  background-color: var(--header-bg-color);
 }

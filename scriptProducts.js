@@ -172,6 +172,61 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputProducto = document.getElementById("name-product");
     const btnAgregarProducto = document.getElementById("add-product-btn");
 
+
+    btnAgregarProducto.addEventListener("click", function() {
+        const container = document.querySelector(".product-container");
+        
+        // Verifica si el contenedor existe
+        if (!container) {
+            console.error("Contenedor no encontrado.");
+            return;
+        }
+        
+        const productItems = container.querySelectorAll(".product-item");
+        
+        // Verifica si hay elementos de producto
+        if (!productItems.length) {
+            console.warn("No se encontraron elementos de producto.");
+            return;
+        }
+    
+        // Array para almacenar los elementos a eliminar
+        const itemsToRemove = [];
+    
+        productItems.forEach(item => {
+            const spanElement = item.querySelector("span");
+            
+            // Verifica si spanElement existe
+            if (!spanElement) {
+                console.warn("Elemento span no encontrado en product-item.");
+                return;
+            }
+    
+            const nombre = spanElement.innerText.split(" - $")[0];
+            const codigo = spanElement.dataset.codigo;
+            const precio = spanElement.dataset.precio;
+    
+            // Verifica si dataset tiene los datos esperados
+            if (!codigo || !precio) {
+                console.warn("Datos no encontrados en dataset.");
+                return;
+            }
+    
+            addProductToTable(codigo, nombre, precio, 1);
+    
+            // Añade el elemento a la lista de elementos a remover
+            itemsToRemove.push(item);
+        });
+    
+        // Remueve los elementos después de la iteración
+        itemsToRemove.forEach(item => {
+            container.removeChild(item);
+        });
+    });
+    
+
+
+    /*
     btnAgregarProducto.addEventListener("click", function() {
         const container = document.querySelector(".product-container");
         const productItems = container.querySelectorAll(".product-item");
@@ -185,6 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
             container.removeChild(item);
         });
     });
-
+*/
     autocomplete(inputProducto, productos);
 });
