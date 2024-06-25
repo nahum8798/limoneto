@@ -63,18 +63,29 @@
             <div class="totales-item">Cantidad de productos totales en stock: <div class="total-stock"></div></div>
             <div class="totales-item">Cantidad de productos faltantes: <div class="total-faltantes"></div></div>
         </div>
-        <div class="btn-container">
+        <div class="btn-container-categorias">
             <button class="btn-categorias" id="btn-faltantes">Ver productos faltantes</button>
             <button class="btn-categorias" id="agregar-categoria">Agregar categoría</button>
             <button class="btn-categorias" id="elimiar-categoria">Eliminar categoría</button>
         </div>
     </div>
   </section>
+
+  <!-- modal para agregar categoria -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Agregar categoría</h2>
+      <label for="categoria">Nombre de la nueva categoria:</label>
+      <input type="text" id="categoria" name="categoria">
+      <button class="modal-btn">Confirmar</button>
+  </div>
+
   <!-- script de interactividad de la pagina-->
-  <script src="script.js"></script>
+  <!--<script src="script.js"></script>-->
   <!-- script especifico para productos -->
   <script src="productos.js"></script>
   <!-- Script de simulacion de carga de productos -->
-  <script src="scriptProducts.js"></script>
+  <!--<script src="scriptProducts.js"></script>-->
 </body>
 </html>

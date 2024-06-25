@@ -59,6 +59,29 @@
     color: var(--statistics-color);
 }
 
+.btn-container-categorias {
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+/* elimimnar producto */
+.elimnar-producto-icono:hover {
+    cursor: pointer;
+}
+
+.btn-container-categorias .btn-categorias{
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.btn-categorias:hover {
+    cursor: pointer;
+}
+
+
 .buttons-container {
     display: flex;
     flex-direction: row;
@@ -71,16 +94,14 @@
     flex-direction: column;
 }
 
-.btn-categorias {
-    margin: 0.5rem 0;
-}
 
 #btn-faltantes {
     background-color: var(--button-bg-color-1);
     color:var(--button-bg-color-2);
 }
 
-#agregar-categoria {
+#agregar-categoria,
+.modal-btn{
     background-color: var(--button-bg-color-3);
     color:var(--button-bg-color-2);
 }
@@ -88,4 +109,87 @@
 #elimiar-categoria {
     background-color: var(--button-bg-color-4);
     color:var(--button-bg-color-2);
+}
+
+/*  -------------- categoria de productos ---------------------  */
+.category-items-header,
+.category-items-columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.category-body,
+.sub-category-name,
+.btn-container {
+    padding: 1rem;
+}
+
+
+
+.category-items-rows {
+    border: 1px solid var(--button-bg-color-2);
+}
+
+.category-items-columns {
+    padding: 1rem;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.btn-container
+.category-btn-mod {
+    background-color: var(--button-bg-color-3);
+    color:var(--button-bg-color-2);
+    width: 15%;
+    
+}
+
+
+
+/* modal agregar categoria */
+/* El modal (escondido por defecto) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+
+    padding: 1rem;
+}
+
+/* Modal contenido */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+}
+
+/* Botón de cerrar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
