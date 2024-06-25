@@ -11,9 +11,7 @@
     --statistics-color: #DDDBD6;
   }
 
-* {
-    font-weight: bold;
-}
+
 
 .body-header {
     display: flex;
