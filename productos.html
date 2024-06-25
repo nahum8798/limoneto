@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Ventas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="productos.css">
+</head>
+<body>
+  
+  <section class="side-bar">
+    <!-- Contenido de la barra lateral -->
+    <div class="container" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </section>
+
+  <section class="main-content">
+    <div class="header">
+      <span>Hola, usuario </span>
+      <div class="btn-container">
+        <button type="button">Cambiar usuario</button>
+      </div>
+    </div>
+    <div class="body-header">
+        <div>
+            <div>Inventario</div>
+            <div>Limoneto al paso</div>
+        </div>
+        <div class="date-container">
+            <span>Fecha: </span><span id="dateAct"></span>
+        </div>
+    </div>
+    <div class="categories-container">
+        <div class="category" id="alfajores">Alfajores</div>
+        <div class="category" id="bebidas">Bebidas</div>
+        <div class="category" id="brownies">Brownies</div>
+        <div class="category" id="budines">Budines</div>
+        <div class="category" id="boxs">Boxs</div>
+        <div class="category" id="caf-clasica">Cafetería clásica</div>
+        <div class="category" id="caf-especial">Cafetería especial</div>
+        <div class="category" id="cookies">Cookies</div>
+        <div class="category" id="donas">Donas</div>
+        <div class="category" id="desayunos">Desayunos</div>
+        <div class="category" id="ensalada-frutas">Ensalada de frutas</div>
+        <div class="category" id="infu-blends">Infusiones - Blends</div>
+        <div class="category" id="muffins">Muffins - Cupcakes</div>
+        <div class="category" id="panificados">Panificado</div>
+        <div class="category" id="rolls">Rolls</div>
+        <div class="category" id="sandwich">Sandwich</div>
+        <div class="category" id="yogures">Yogures</div>
+        <div class="category" id="promos-dias">Promociones del día</div>
+        <div class="category" id="promos-amigos">Promociones amigos</div>
+        <div class="category" id="minitortas-ind">Minitortas - cheescake individuales</div>
+        <div class="category" id="minitortas-fami">Minitortas - cheescake familiares</div>
+        <div class="category" id="minitortas-event">Minitortas - cheescake eventos</div>
+    </div>
+    <div class="buttons-container">
+        <div class="totales-container">
+            <div class="totales-item">Cantidad de productos totales en stock: <div class="total-stock"></div></div>
+            <div class="totales-item">Cantidad de productos faltantes: <div class="total-faltantes"></div></div>
+        </div>
+        <div class="btn-container">
+            <button class="btn-categorias" id="btn-faltantes">Ver productos faltantes</button>
+            <button class="btn-categorias" id="agregar-categoria">Agregar categoría</button>
+            <button class="btn-categorias" id="elimiar-categoria">Eliminar categoría</button>
+        </div>
+    </div>
+  </section>
+  <!-- script de interactividad de la pagina-->
+  <script src="script.js"></script>
+  <!-- script especifico para productos -->
+  <script src="productos.js"></script>
+  <!-- Script de simulacion de carga de productos -->
+  <script src="scriptProducts.js"></script>
+</body>
+</html>

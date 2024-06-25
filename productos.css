@@ -1,0 +1,91 @@
+:root {
+    --main-color: #fef9f1;
+    --button-bg-color-1: #FFC300;
+    --button-bg-color-2: #333;
+    --button-bg-color-3: #51F514;
+    --button-bg-color-4: #F51414;
+    --button-text-color: #fff;
+    --text-color: #333;
+    --border-color: #333;
+    --padding: 1rem;
+    --statistics-color: #DDDBD6;
+  }
+
+* {
+    font-weight: bold;
+}
+
+.body-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    padding: 1rem;
+}
+
+.body-header div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+.body-header div div {
+    margin: 0 1rem;
+}
+
+.categories-container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    gap: 10px 50px;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+}
+
+.category {
+    border: 1px solid var(--statistics-color);
+    border-radius: 5px;
+    padding: 1rem;
+
+    text-align: center;
+    background-color: var(--button-text-color);
+}
+
+.category:hover {
+    cursor: pointer;
+    background-color: var(--text-color);
+    color: var(--statistics-color);
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-categorias {
+    margin: 0.5rem 0;
+}
+
+#btn-faltantes {
+    background-color: var(--button-bg-color-1);
+    color:var(--button-bg-color-2);
+}
+
+#agregar-categoria {
+    background-color: var(--button-bg-color-3);
+    color:var(--button-bg-color-2);
+}
+
+#elimiar-categoria {
+    background-color: var(--button-bg-color-4);
+    color:var(--button-bg-color-2);
+}
