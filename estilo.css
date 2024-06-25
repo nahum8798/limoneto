@@ -1,0 +1,150 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #6c6969;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    padding: 50px;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.logo {
+    flex: 1;
+    text-align: center;
+}
+
+.logo img {
+    height: 280px;
+}
+
+.form-container {
+    flex: 1;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.form-container h1 {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.button {
+    width: 50%;
+    background-color: #ffcc00;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #292829;
+}
+
+.create-account, .back-to-login {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.create-account a, .back-to-login a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.create-account a:hover, .back-to-login a:hover {
+    text-decoration: underline;
+}
+
+#dashboard-screen .sidebar {
+    flex: 0 0 20%;
+    background-color: #eee;
+    padding: 20px;
+}
+
+#dashboard-screen .sidebar a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+#dashboard-screen .main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+#dashboard-screen .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#dashboard-screen .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: flex-start; 
+}
+
+.dashboard-item {
+    text-align: center;
+    width: 45%;
+    margin-bottom: 20px;
+}
+
+.dashboard-item img {
+    width: 100px;
+    height: 100px;
+}
+
+.dashboard-item a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #333;
+}
