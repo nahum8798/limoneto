@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limoneto al paso - Menu principal</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+
+    <section class="side-bar">
+        <!-- Contenido de la barra lateral -->
+        <div class="container-bar" onclick="myFunction(this)">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="sidebar">
+          <!-- Mantenemos el orden de los enlaces como estaba -->
+          <a href="ventas.html">Realizar una venta</a>
+          <a href="#">Caja</a>
+          <a href="productos.html">Ver inventario</a>
+          <a href="#">Clientes</a>
+          <a href="#">Reporte diario</a>
+          <a href="estadisticas.html">Estadísticas</a>
+          <a href="#">Gestión de usuarios</a>
+          <a href="#" onclick="showLogoutConfirmation()">Cerrar cuenta</a>
+        </div>
+    </section>
+    
+    <section class="main-content">
+        <div class="header">
+            <span>Hola, usuario </span>
+            <div class="btn-container">
+                <button type="button">Cambiar usuario</button>
+            </div>
+        </div>
+    
+        <div id="dashboard-screen">
+            <div class="main-content">
+                <div class="content">
+                    <h1>Gestión de ventas y stock "Limoneto al paso"</h1>
+                    <div class="dashboard-links">
+                        <div class="dashboard-item">
+                            <img src="imagenes/carro.png" alt="Realizar una venta">
+                            <a href="#">Realizar una venta</a>
+                        </div>
+                        <div class="dashboard-item">
+                            <img src="imagenes/caja.png" alt="Caja">
+                            <a href="#">Caja</a>
+                        </div>
+                        <div class="dashboard-item">
+                            <img src="imagenes/reporte.png" alt="Reporte diario">
+                            <a href="#">Reporte diario</a>
+                        </div>
+                        <div class="dashboard-item">
+                            <img src="imagenes/inventario.png" alt="Ver inventario">
+                            <a href="#">Ver inventario</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
