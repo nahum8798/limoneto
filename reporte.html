@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Ventas</title>
+  <link rel="stylesheet" href="estilorep.css">
+</head>
+<body>
+  
+  <section class="side-bar" id="mySidebar">
+    <!-- Contenido de la barra lateral -->
+    <div class="container" onclick="toggleSidebar()">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <div class="sidebar-links">
+      <a href="#">
+        <span class="sidebar-text">Realizar una venta</span>
+      </a>
+      <a href="#">
+        <span class="sidebar-text">Caja</span>
+      </a>
+      <a href="#">
+        <span class="sidebar-text">Ver inventario</span>
+      </a>
+      <a href="#">
+        <span class="sidebar-text">Clientes</span>
+      </a>
+      <a href="#">
+        <span class="sidebar-text">Reportes diarios</span>
+      </a>
+      <a href="#">
+        <span class="sidebar-text">Estadísticas</span>
+      </a>
+      <a href="#">
+        <span class="sidebar-text">Gestión de usuarios</span>
+      </a>
+      <a href="javascript:void(0)" onclick="showLogoutConfirmation()">
+        <span class="sidebar-text">Cerrar cuenta</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="main-content" id="mainContent">
+    <div class="header">
+      <span>Hola, usuario </span>
+      <div class="btn-container">
+        <button type="button">Cambiar usuario</button>
+      </div>
+    </div>
+    
+    <!-- Reporte Diario -->
+    <section class="reporte-diario">
+      <h2>Reporte diario</h2>
+      <div class="ventas">
+        <div class="ventas-caja-m">
+          <h3>Ventas caja mañana</h3>
+          <div class="venta">
+            <span>#Venta 1</span>
+            <span>08:30 am</span>
+            <span>$2450</span>
+            <button onclick="verDetalleVenta()">👁️</button>
+          </div>
+          <div class="total-ventas">Total de ventas caja mañana: $0</div>
+        </div>
+        <div class="ventas-caja-t">
+          <h3>Ventas caja tarde</h3>
+          <div class="total-ventas">Total de ventas caja tarde: $0</div>
+        </div>
+      </div>
+      <div class="total-descuentos">
+        <span>Descuentos aplicados: $0</span>
+        <button onclick="verDescuentosAplicados()">👁️</button>
+      </div>
+      <div class="totales">
+        <span>Total de ventas del día: $0</span>
+      </div>
+    </section>
+
+    <!-- Ventana emergente detalle de venta -->
+    <div id="detalle-venta-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="cerrarDetalleVenta()">&times;</span>
+        <h2>Detalle de venta</h2>
+        <p>Cliente: Juan Pérez</p>
+        <p>Número de Venta: 1</p>
+        <p>Método de Pago: Efectivo</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Precio Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Producto 1</td>
+              <td>1</td>
+              <td>$100</td>
+              <td>$100</td>
+            </tr>
+            <!-- Añade más filas aquí si es necesario -->
+          </tbody>
+        </table>
+        <p>Total: $100</p>
+      </div>
+    </div>
+
+    <!-- Ventana emergente descuentos aplicados -->
+    <div id="descuentos-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="cerrarDescuentos()">&times;</span>
+        <h2>Descuentos aplicados</h2>
+        <ul>
+          <li>Venta 1: $50</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- script de interactividad de la pagina-->
+    <script src="script.js"></script>
+    
+  </section>
+  
+</body>
+</html>
