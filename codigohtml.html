@@ -12,7 +12,7 @@
         <div class="container">
             <div class="content">
                 <div class="logo">
-                    <img src="logo.png" alt="Limoneto al paso">
+                    <img src="imagenes/logo.png" alt="Limoneto al paso">
                 </div>
                 <div class="form-container">
                     <h1>Bienvenido a Limoneto al paso</h1>
@@ -42,7 +42,7 @@
         <div class="container">
             <div class="content">
                 <div class="logo">
-                    <img src="logo.png" alt="Limoneto al paso">
+                    <img src="imagenes/logo.png" alt="Limoneto al paso">
                 </div>
                 <div class="form-container">
                     <h1>Registrar Usuario</h1>
@@ -107,7 +107,6 @@
     <!-- Tercera Pantalla: Gestión de Ventas y Stock -->
     <div id="dashboard-screen" style="display: none;">
         <div class="sidebar">
-            <!-- Mantenemos el orden de los enlaces como estaba -->
             <a href="#">Realizar una venta</a>
             <a href="#">Caja</a>
             <a href="#">Ver inventario</a>
@@ -125,35 +124,31 @@
             <div class="content">
                 <h1>Gestión de ventas y stock "Limoneto al paso"</h1>
                 <div class="dashboard-links">
-                    <!-- Nuevo orden de los elementos -->
                     <div class="dashboard-item">
-                        <img src="carro.png" alt="Realizar una venta">
+                        <img src="imagenes/carro.png" alt="Realizar una venta">
                         <a href="#">Realizar una venta</a>
                     </div>
                     <div class="dashboard-item">
-                        <img src="caja.png" alt="Caja">
+                        <img src="imagenes/caja.png" alt="Caja">
                         <a href="#">Caja</a>
-                        <!-- Añadido estilo para que quede al lado de 'Realizar una venta' -->
                     </div>
                     <div class="dashboard-item">
-                        <img src="reporte.png" alt="Reporte diario">
+                        <img src="imagenes/reporte.png" alt="Reporte diario">
                         <a href="#">Reporte diario</a>
-                        <!-- Añadido estilo para que quede al lado de 'Realizar una venta' -->
                     </div>
                     <div class="dashboard-item">
-                        <img src="inventario.png" alt="Ver inventario">
+                        <img src="imagenes/inventario.png" alt="Ver inventario">
                         <a href="#">Ver inventario</a>
-                        <!-- Añadido estilo para que quede al lado de 'Reporte diario' y abajo de 'Caja' -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-
     <!-- Modal de Cambiar Usuario -->
-    <div id="change-user-modal" style="display: none;">
-        <div class="container">
+    <div id="change-user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('change-user-modal')">&times;</span>
             <h2>Cambiar de usuario</h2>
             <p>Estas activo como Florencia, si deseas cambiar de usuario, coloca los datos correspondientes:</p>
             <form onsubmit="changeUser(event)">
@@ -173,11 +168,12 @@
     </div>
 
     <!-- Modal de Confirmación de Cierre de Sesión -->
-    <div id="logout-confirmation-modal" style="display: none;">
-        <div class="container">
+    <div id="logout-confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('logout-confirmation-modal')">&times;</span>
             <p>¿Está seguro que desea cerrar sesión? Los movimientos se guardarán automáticamente.</p>
             <button class="button" onclick="confirmLogout()">Confirmar</button>
-            <button class="button" onclick="cancelLogout()">Cancelar</button>
+            <button class="button" onclick="closeModal('logout-confirmation-modal')">Cancelar</button>
         </div>
     </div>
 
