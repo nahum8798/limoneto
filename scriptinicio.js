@@ -27,7 +27,7 @@ function logout() {
 }
 
 function showChangeUser() {
-    document.getElementById('change-user-modal').style.display = 'block';
+    document.getElementById('change-user-modal').style.display = 'flex';
 }
 
 function changeUser(event) {
@@ -38,7 +38,7 @@ function changeUser(event) {
 }
 
 function showLogoutConfirmation() {
-    document.getElementById('logout-confirmation-modal').style.display = 'block';
+    document.getElementById('logout-confirmation-modal').style.display = 'flex';
 }
 
 function confirmLogout() {
@@ -49,3 +49,8 @@ function confirmLogout() {
 function cancelLogout() {
     document.getElementById('logout-confirmation-modal').style.display = 'none';
 }
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
