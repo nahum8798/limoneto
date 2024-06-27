@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja - Limoneto al paso</title>
+    <link rel="stylesheet" href="caja.css">
+</head>
+<body>
+    <div class="contenedor">
+        <header class="barra-superior">
+            <div class="contenido-barra-superior">
+                <span class="info-usuario">Hola, Usuario</span>
+                <div class="info-derecha">
+                    <button id="btn-cambiar-usuario" class="btn-cambiar-usuario">Cambiar Usuario</button>
+                </div>
+            </div>
+        </header>
+        <div class="barra-lateral">
+            <a href="#" class="enlace-barra-lateral">Realizar una venta</a>
+            <a href="#" class="enlace-barra-lateral">Caja</a>
+            <a href="#" class="enlace-barra-lateral">Ver inventario</a>
+            <a href="#" class="enlace-barra-lateral">Clientes</a>
+            <a href="#" class="enlace-barra-lateral">Reporte diario</a>
+            <a href="#" class="enlace-barra-lateral">Estadísticas</a>
+            <div class="barra-lateral-inferior">
+                <a href="#" class="enlace-barra-lateral">Gestión de usuario</a>
+                <a href="#" class="enlace-barra-lateral">Cerrar sesión</a>
+            </div>
+        </div>
+        <div class="contenido">
+            <h1>Caja - Limoneto al paso</h1>
+            <div class="cabecera">
+                <div class="cabecera-izquierda">
+                    <i>&#128712;</i>
+                    <p>Caja</p>
+                </div>
+                <div class="cabecera-derecha">
+                    <button class="boton" id="btn-abrir-caja">Apertura de caja</button>
+                    <i>&#128193;</i>
+                    <p class="fecha">Fecha: 2024-06-02</p>
+                    <p class="estado">Estado: Cerrada</p>
+                </div>
+            </div>
+            <div class="estado">
+                <p>Estado de caja</p>
+            </div>
+            <div class="resumen">
+                <div class="item-resumen">
+                    <p>Apertura de caja: + $</p>
+                    <p>Salidas: - $</p>
+                </div>
+                <div class="item-resumen">
+                    <p>Ventas en efectivo: + $</p>
+                    <p>Ventas con tarjeta: - $</p>
+                    <p>Ventas con transferencia: - $</p>
+                </div>
+                <div class="item-resumen">
+                    <p>Apertura de caja: + $</p>
+                    <p>Salidas: - $</p>
+                    <p>Ventas en efectivo: + $</p>
+                </div>
+            </div>
+            <div class="pie">
+                <button class="boton boton-fijo" id="btn-cerrar-caja">Cierre de caja</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana Modal de Apertura de Caja -->
+    <div id="ventana-apertura" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar">&times;</span>
+            <h2>APERTURA DE CAJA</h2>
+            <label for="cajero">Cajero:</label>
+            <input type="text" id="cajero">
+            <label for="fecha">Fecha:</label>
+            <input type="text" id="fecha" readonly value="2024-06-02">
+            <label for="hora">Hora:</label>
+            <input type="text" id="hora" readonly value="10:00 AM">
+            <label for="dinero-inicial">Dinero Inicial:</label>
+            <input type="number" id="dinero-inicial">
+            <button id="confirmar">CONFIRMAR</button>
+        </div>
+    </div>
+
+    <!-- Ventana Modal de Cierre de Caja -->
+    <div id="ventana-cierre" class="modal modal-lateral">
+        <div class="contenido-modal">
+            <span class="cerrar">&times;</span>
+            <h2>CIERRE DE CAJA</h2>
+            <div class="datos-cajero">
+                <label for="cajero-cierre">Cajero:</label>
+                <input type="text" id="cajero-cierre" readonly>
+                <label for="fecha-cierre">Fecha:</label>
+                <input type="text" id="fecha-cierre" readonly>
+                <label for="hora-cierre">Hora:</label>
+                <input type="text" id="hora-cierre" readonly>
+            </div>
+            <div class="resumen-cierre">
+                <label for="total-cierre">Total en Caja:</label>
+                <input type="text" id="total-cierre" value="$ 00000" readonly>
+            </div>
+            <button id="confirmar-cierre">CONFIRMAR</button>
+        </div>
+    </div>
+
+    <!-- Ventana Modal de Cambio de Usuario -->
+    <div id="ventana-cambio-usuario" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar">&times;</span>
+            <h2>CAMBIO DE USUARIO</h2>
+            <form id="formulario-cambio-usuario">
+                <label for="nuevo-usuario">Nuevo Usuario:</label>
+                <input type="text" id="nuevo-usuario" name="nuevo-usuario" required>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+                <button type="submit" class="btn-cambio-usuario-submit">Cambiar Usuario</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ventana Modal de Retirar Dinero -->
+    <div id="ventana-retirar-dinero" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar">&times;</span>
+            <h2>RETIRAR DINERO</h2>
+            <label for="cajero-retirar">Cajero:</label>
+            <input type="text" id="cajero-retirar" readonly>
+            <label for="fecha-retirar">Fecha:</label>
+            <input type="text" id="fecha-retirar" readonly>
+            <label for="hora-retirar">Hora:</label>
+            <input type="text" id="hora-retirar" readonly>
+            <label for="monto-retirar">Monto a extraer:</label>
+            <input type="number" id="monto-retirar">
+            <label for="motivo-retirar">Motivo:</label>
+            <input type="text" id="motivo-retirar">
+            <button id="confirmar-retiro">CONFIRMAR</button>
+        </div>
+    </div>
+
+    <script src="scriptCaja.js"></script>
+</body>
+</html>
