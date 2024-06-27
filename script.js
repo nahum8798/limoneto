@@ -1,32 +1,22 @@
-function toggleSidebar() {
-    var sidebar = document.getElementById("mySidebar");
-    var mainContent = document.getElementById("mainContent");
-
-    sidebar.classList.toggle("open");
-    if (sidebar.classList.contains("open")) {
-        mainContent.style.marginLeft = "250px";
-    } else {
-        mainContent.style.marginLeft = "0";
+// Abre el modal
+function openModal() {
+    document.getElementById('sale-modal').style.display = 'block';
+  }
+  
+  // Cierra el modal
+  function closeModal() {
+    document.getElementById('sale-modal').style.display = 'none';
+  }
+  
+  // Cierra el modal cuando se hace clic fuera del contenido del modal
+  window.onclick = function(event) {
+    var modal = document.getElementById('sale-modal');
+    if (event.target == modal) {
+      modal.style.display = 'none';
     }
-}
-
-function showLogoutConfirmation() {
-    // Lógica para mostrar una confirmación de cierre de sesión
-    alert("¿Estás seguro de que deseas cerrar tu cuenta?");
-}
-
-function verDetalleVenta() {
-    document.getElementById("detalle-venta-modal").style.display = "block";
-}
-
-function cerrarDetalleVenta() {
-    document.getElementById("detalle-venta-modal").style.display = "none";
-}
-
-function verDescuentosAplicados() {
-    document.getElementById("descuentos-modal").style.display = "block";
-}
-
-function cerrarDescuentos() {
-    document.getElementById("descuentos-modal").style.display = "none";
-}
+  }
+  
+  // Asocia los botones a las funciones
+  document.getElementById('open-modal-btn').addEventListener('click', openModal);
+  document.querySelector('.close').addEventListener('click', closeModal);
+  

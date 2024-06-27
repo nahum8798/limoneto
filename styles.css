@@ -392,6 +392,17 @@ input {
   padding: 2rem;
 }
 
+.sales-statistics {
+  border-radius: 20px;
+  width: 30%;
+  height: 100%;
+  background-color: var(--statistics-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
 
 .statistics-container .sales-statistics-stc {
   display: flex;
@@ -451,7 +462,10 @@ input {
   cursor: pointer;
 }
 
-.modal .statistics-table {
+
+
+
+.statistics-table {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--statistics-color);
@@ -460,12 +474,12 @@ input {
   border: 1x solid black;
 }
 
-.modal .statistics-table th, .statistics-table td {
+ .statistics-table th, .statistics-table td {
   border: 1px solid white;
   padding: 1rem 2rem;
   text-align: left;
 }
 
-.modal .statistics-table th {
+.statistics-table th {
   background-color: var(--header-bg-color);
 }
