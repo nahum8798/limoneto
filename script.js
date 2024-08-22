@@ -1,22 +1,16 @@
-// Abre el modal
-function openModal() {
-    document.getElementById('sale-modal').style.display = 'block';
-  }
-  
-  // Cierra el modal
-  function closeModal() {
-    document.getElementById('sale-modal').style.display = 'none';
-  }
-  
-  // Cierra el modal cuando se hace clic fuera del contenido del modal
-  window.onclick = function(event) {
-    var modal = document.getElementById('sale-modal');
-    if (event.target == modal) {
-      modal.style.display = 'none';
-    }
-  }
-  
-  // Asocia los botones a las funciones
-  document.getElementById('open-modal-btn').addEventListener('click', openModal);
-  document.querySelector('.close').addEventListener('click', closeModal);
-  
+document.getElementById('btn-cobrar').addEventListener('click', function() {
+    document.getElementById('modal-cobro').style.display = 'block';
+});
+
+function closeModal() {
+    document.getElementById('modal-cobro').style.display = 'none';
+}
+
+// Cálculo del vuelto (si es necesario)
+document.getElementById('abono-con').addEventListener('input', function() {
+    const total = 13950; // Este valor debería ser dinámico
+    const pago = parseFloat(this.value);
+    const vuelto = pago - total;
+
+    document.getElementById('vuelto').value = vuelto >= 0 ? vuelto : 0;
+});

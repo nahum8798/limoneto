@@ -1,485 +1,60 @@
-:root {
-  --main-color: #fef9f1;
-  --button-bg-color-1: #FFC300;
-  --button-bg-color-2: #333;
-  --button-text-color: #fff;
-  --text-color: #333;
-  --border-color: #333;
-  --padding: 1rem;
-  --statistics-color: #DDDBD6;
-}
-
-/* Side menu */
-.container {
-  display: inline-block;
-  cursor: pointer;
-  margin: 25px 0 0 10px;
-}
-
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: var(--border-color);
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-.change .bar1 {
-  transform: translate(0, 11px) rotate(-45deg);
-}
-
-.change .bar2 {
-  opacity: 0;
-}
-
-.change .bar3 {
-  transform: translate(0, -11px) rotate(45deg);
-}
-
-/* Body */
 body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-  background-color: var(--main-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* ---------------- Sidebar -------------------------------*/
-.side-bar {
-  width: 60px;
-  height: 100vh;
-  color: var(--button-text-color);
-  background-color: var(--main-color);
+thead.thead-warning {
+    background-color: #f4d03f;
 }
 
-.side-bar:hover {
-  width: 220px;
-  transition: 0.6s;
-  border-right: 1px solid black;
+footer {
+    background-color: #f4f4f4;
 }
 
-.sidebar a{
-  
-  opacity: 0;
-  width: 100%;
-  padding: 15px 20px;
-  text-decoration: none;
-
-  color: black;
-  
+footer span {
+    font-weight: bold;
 }
 
-
-
-.sidebar:hover a {
-  opacity: 1;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items:first baseline;
-  justify-content:space-between;
-}
-
-
-
-.side-bar a:hover{
-  cursor: pointer;
-  background-color: #8cb300;
-  
-}
-
-
-/* Main content */
-.main-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background-color: var(--main-color);
-  padding: var(--padding) var(--padding) 0;
-  margin: auto 0;
-}
-
-/* Header */
-.header, .sales-header, .estadisticas-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem;
-  background-color: var(--main-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.btn-container button,
-#open-modal-btn {
-  background-color: var(--button-bg-color-2);
-  color: var(--button-text-color);
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#open-modal-btn {
-  background-color: var(--button-bg-color-1);
-  color: var(--text-color);
-}
-
-/* Sales Container */
-.sales-container {
-  display: flex;
-  flex-grow: 1;
-  gap: var(--padding);
-}
-
-.sales-form {
-  flex: 1;
-  border: 1px solid var(--border-color);
-  background-color: var(--main-color);
-  padding: 2rem;
-  border-radius: 5px;
-  position: relative;
-}
-
-#add-product-btn {
-  position: absolute;
-  bottom: 0;
-  width: 80%;
-  margin: auto 0 4rem;
-  background-color: var(--button-bg-color-1);
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-}
-
-.sale-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--padding);
-}
-
-.autocomplete {
-  position: relative;
-}
-
-.autocomplete input {
-  width: 95%;
-  margin-top: 1rem;
-}
-
-.product-container {
-  margin-top: var(--padding);
-  padding: var(--padding) 0 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  background-color: #fff;
-  text-align: justify;
-}
-
-input {
-  border: 1px solid var(--border-color);
-  padding: 0.5rem;
-  font-size: 16px;
-  border-radius: 5px;
-  width: 100%;
-  background-color: var(--main-color);
-}
-
-/* Sales Table */
-.sales-details {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: var(--padding);
-  position: relative;
-  height: 100%;
-}
-
-.sales-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--statistics-color);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.sales-table th, .sales-table td {
-  border: 1px solid white;
-  padding: 1rem 2rem;
-  text-align: left;
-}
-
-.sales-table th {
-  background-color: var(--header-bg-color);
-}
-
-.total-cobrar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.total-container {
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 2rem;
-  border-top: 3px solid var(--border-color);
-  width: 100%;
-}
-
-#total-amount {
-  border: 3px solid var(--border-color);
-  padding: 1rem;
-  border-radius: 20%;
-}
-
-/* Modal */
+/* Estilos para la ventana emergente */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-dialog {
+    max-width: 600px;
+    margin: auto;
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  border-radius: 8px;
-  border: 3px solid var(--button-bg-color-1);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover, .close:focus {
-  color: black;
-  text-decoration: none;
-}
-
-/* Sale Confirm */
-.sale-confirm {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  border-bottom: 3px solid var(--button-bg-color-1);
-}
-
-.number-date, .articles-header, .articles-detail, .articles-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.product-list {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: normal;
-  margin-right: 20px;
-}
-
-.order-summary {
-  flex: 1;
-  width: 50%;
-}
-
-.product-list div {
-  padding: 1rem;
-}
-
-.payment-method {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.payment-buttons {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0 0 4rem;
-}
-
-.payment-btn {
-  padding: 10px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  border: 3px solid var(--button-bg-color-1);
-}
-
-.payment-btn:hover {
-  background-color: #ddd;
-}
-
-.payment-amount {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  align-items: center;
-  justify-content: center;
-}
-
-.payment-amount input {
-  width: 100px;
-}
-
-#confirm-btn, #print-btn {
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#confirm-btn:hover, #print-btn:hover {
-  background-color: #218838;
-}
-
-/* Statistics */
-.selector-estadisticas, .statistics-container {
-  display: flex;
-  justify-content: space-around;
-  width: 90%;
-
-  padding:1rem;
-}
-
-.selector-estadisticas {
-  margin-bottom: 10px;
-}
-
-.statistics-container {
-  flex-direction: row;
-  gap: 2rem;
-  height: 100%;
-  padding: 0.5rem;
-}
-
-.statistics-container .sales-statistics-stc, .sales-details-stc {
-  border-radius: 20px;
-  width: 30%;
-  height: 100%;
-  background-color: var(--statistics-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 2rem;
-}
-
-.sales-statistics {
-  border-radius: 20px;
-  width: 30%;
-  height: 100%;
-  background-color: var(--statistics-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 2rem;
-}
-
-.statistics-container .sales-statistics-stc {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-
-  border: 1px solid black;
-  height: 50%;
-  width: 100%;
-}
-
-.item-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 80%;
-  width: 100%;
-
-}
-
-
-.item-sale{
-  width: 90%;
-  
-}
-
-.item-container-totales {
-  display: flex;
-  flex-direction: column;
-}
-
-.item-container .statistics-container {
-  width: 100%;
-}
-
-.table-products-details {
-  width: 100%;
-  height: 50%;
-}
-
-.flex-sales{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  align-items: center;
-
-  width: 100%;
-  padding: 1rem 0;
-  
-}
-
-.flex-sales:hover {
-  background-color: vat(--button-bg-color-1);
-  
-
-  cursor: pointer;
-}
-
-
-
-
-.statistics-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--statistics-color);
-  border-radius: 5px;
-  overflow: hidden;
-  border: 1x solid black;
-}
-
- .statistics-table th, .statistics-table td {
-  border: 1px solid white;
-  padding: 1rem 2rem;
-  text-align: left;
-}
-
-.statistics-table th {
-  background-color: var(--header-bg-color);
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
 }

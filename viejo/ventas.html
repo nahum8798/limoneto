@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Ventas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  
+  <section class="side-bar">
+    <!-- Contenido de la barra lateral -->
+    <div class="container" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <div class="sidebar">
+      <!-- Mantenemos el orden de los enlaces como estaba -->
+      <a href="ventas.html">Realizar una venta</a>
+      <a href="caja.html">Caja</a>
+      <a href="productos.html">Ver inventario</a>
+      <a href="registroDeUsuario.html">Clientes</a>
+      <a href="reporte.html">Reporte diario</a>
+      <a href="estadisticas.html">Estadísticas</a>
+      <a href="#">Gestión de usuarios</a>
+      <a href="menu.html">
+        Menú principal
+      </a>
+      <a href="index.html" onclick="showLogoutConfirmation()">Cerrar cuenta</a>
+    </div>
+  </section>
+
+  <section class="main-content">
+    <div class="header">
+      <span>Hola, usuario </span>
+      <div class="btn-container">
+        <button type="button">Cambiar usuario</button>
+      </div>
+    </div>
+    
+    <div class="sales-header">
+      <span>Realizar una venta</span>
+      <div class="btn-container">
+        <button type="button" class="sale-btn">Seleccionar cliente</button>
+      </div>
+    </div>
+
+    <div class="sales-container">
+      <div class="sales-form">
+        <form class="sale-form" autocomplete="off">
+          <div class="autocomplete">
+            <label for="name-product">Nombre de producto: </label>
+            <input type="text" id="name-product" name="name">
+          </div>
+          <div class="product-container">
+            <span>Lista de productos</span>
+          </div>
+          <button type="button" id="add-product-btn">Agregar producto</button>
+        </form>
+      </div>
+
+      <div class="sales-details">
+        <table class="sales-table">
+          <thead>
+              <tr>
+                  <th>Cód.</th>
+                  <th>Nombre</th>
+                  <th>Cantidad</th>
+                  <th>Precio unitario</th>
+                  <th>Importe</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- Aquí se llenarán las filas con productos -->
+          </tbody>
+        </table>
+        <div class="total-cobrar">
+          <div class="total-container">
+            Total de venta: $<span id="total-amount"></span>
+          </div>
+          <button type="button" id="open-modal-btn">Cobrar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- ventana emergente de cobrar venta -->
+  
+   <div class="modal" id="sale-modal">
+    <div class="modal-content">
+      <div class="sale-confirm">
+        <span class="close" onclick="closeModalSpan()">&times;</span>
+        <span>Confirmación de venta:</span>
+        <div class="number-date">
+          <span>Venta #<span class="sale-number"><!--  aca hay que generar el numero de venta dinaminacmente--></span></span>
+          <span id="sale-date"><!--aca hay que generar la fecha dinamicamente--></span>
+        </div>
+      </div>
+      <div class="articles">
+        <div class="articles-header">
+          <span>Artículos vendidos</span>
+          <span>Resumen del pedido</span>
+        </div>
+        <div class="articles-detail">
+          <div class="product-list">
+            <!-- Lista de productos se carga aca-->
+          </div>
+          <div class="order-summary">
+            <div><strong>Subtotal:</strong><span id="subtotal"></span></div>
+            <div><strong>Descuento:</strong><span id="descuento"></span></div>
+            <div><strong>Total:</strong><span id="total"></span></div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <span>Método de pago</span>
+          <div class="payment-buttons">
+            <button type="button" class="payment-btn" onclick="setPaymentMethod('Efectivo')">Efectivo</button>
+            <button type="button" class="payment-btn" onclick="setPaymentMethod('Tarjeta')">Tarjeta</button>
+            <button type="button" class="payment-btn" onclick="setPaymentMethod('Transferencia')">Transferencia</button>
+          </div>
+        </div>
+        <div class="payment-amount">
+          <label for="payment-amount">Abona con</label>
+          <input type="number" id="payment-amount" oninput="calculateChange()">
+          <label for="change-amount">Vuelto</label>
+          <input type="text" id="change-amount" disabled>
+        </div>
+        <div class="articles-footer">
+          <button type="button" id="confirm-btn">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- script de interactividad de la pagina-->
+  <script src="script.js"></script>
+  <!-- Script de simulacion de carga de productos -->
+  <script src="scriptProducts.js"></script>
+</body>
+</html>
