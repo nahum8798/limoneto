@@ -47,20 +47,22 @@
             </div>
 
             <div class="col-md-8">
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-warning">
-                        <tr>
-                            <th>Cód.</th>
-                            <th>Nombre</th>
-                            <th>Cantidad</th>
-                            <th>Precio unitario</th>
-                            <th>Importe</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productos-agregados">
-                        <!-- Filas de productos añadidos -->
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-warning">
+                            <tr>
+                                <th>Cód.</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>Precio unitario</th>
+                                <th>Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productos-agregados">
+                            <!-- Filas de productos añadidos -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
 
@@ -101,20 +103,23 @@
                         <button class="btn btn-outline-secondary mr-2">Tarjeta</button>
                         <button class="btn btn-outline-secondary">Transferencia</button>
                     </div>
-                    <div class="form-group">
-                        <label for="abono-con">Abona con</label>
-                        <input type="text" class="form-control" id="abono-con" value="14000">
+                    <div class="flex-modal">
+                        <div class="form-group col-3 block">
+                            <label for="abono-con">Abona con</label>
+                            <input type="text" class="form-control" id="abono-con" value="14000">
+                        </div>
+                        <div class="form-group col-3 block">
+                            <label for="vuelto">Vuelto</label>
+                            <input type="text" class="form-control" id="vuelto" value="50" readonly>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="vuelto">Vuelto</label>
-                        <input type="text" class="form-control" id="vuelto" value="50" readonly>
-                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" onclick="closeModal()">Confirmar</button>
                 </div>
             </div>
-        </div>
+        </div>    
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

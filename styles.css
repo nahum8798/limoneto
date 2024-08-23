@@ -1,14 +1,30 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* Encabezado y navegación */
+header {
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+nav {
+    background-color: #f4d03f;
+}
+
+/* Tabla en móviles */
+.table-responsive {
+    overflow-x: auto;
+}
+
 thead.thead-warning {
     background-color: #f4d03f;
 }
 
-footer {
+tfoot {
     background-color: #f4f4f4;
 }
 
@@ -16,30 +32,31 @@ footer span {
     font-weight: bold;
 }
 
-/* Estilos para la ventana emergente */
+/* Ventana emergente */
 .modal {
     display: none; /* Oculto por defecto */
-    position: fixed;
+    position:fixed;
     z-index: 1;
     left: 0;
-    top: 0;
+    top: 1;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow:visible;
     background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
 }
 
 .modal-dialog {
-    max-width: 600px;
+    max-width: 90%; /* Ajusta el ancho máximo para móviles */
     margin: auto;
 }
 
 .modal-content {
     background-color: #fff;
-    padding: 20px;
+    padding: 1rem;
     border: 1px solid #888;
     border-radius: 5px;
+    height: 25%;
 }
 
 .modal-header {
@@ -57,4 +74,47 @@ footer span {
     background-color: transparent;
     border: none;
     font-size: 24px;
+}
+
+.flex-modal {
+    display:flex;
+    flex-direction: row;
+}
+
+
+/* Ajustes específicos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 0 15px;
+    }
+
+    nav h5 {
+        font-size: 1.2rem;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    footer input, footer button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .table-responsive {
+        margin-bottom: 20px;
+    }
+
+    .modal-dialog {
+        max-width: 95%; /* Aumenta el ancho en móviles para mejor uso del espacio */
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal-footer {
+        justify-content: center;
+    }
 }
