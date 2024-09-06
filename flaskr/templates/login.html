@@ -5,31 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión - Limoneto al paso</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
     <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
-        <div class="login-card p-5 rounded shadow-sm">
-            <div class="text-center mb-4">
-                <img src="limoneto-logo.png" alt="Limoneto al paso" class="img-fluid mb-2" style="width: 200px;">
-                <h3>Bienvenido a Limoneto al paso</h3>
+        <div class="login-card p-5 rounded shadow-sm d-flex flex-row main-container">
+            
+            <div class="logo-container">
+                <div class="logo-inside-container">
+                    <img src="../static/images/logo.png" alt="">
+                </div>
             </div>
 
-            <form>
-                <div class="form-group">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" class="form-control" id="usuario" placeholder="Ingrese su usuario">
+            <div class="login-form-container">
+                <div class="text-center mb-4">
+                    <img src="limoneto-logo.png" alt="Limoneto al paso" class="img-fluid mb-2" style="width: 200px;">
+                    <h3>Bienvenido a Limoneto al paso</h3>
                 </div>
-                <div class="form-group">
-                    <label for="contrasena">Contrase�a</label>
-                    <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contrase�a">
+    
+                <form>
+                    <div class="form-group">
+                        <label for="usuario">Usuario</label>
+                        <input type="text" class="form-control" id="usuario" placeholder="Ingrese su usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contraseña">
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-block">Iniciar sesión</button>
+                </form>
+    
+                <div class="text-center mt-3">
+                    <a href="#" class="text-muted">Crear un nuevo usuario</a>
                 </div>
-                <button type="submit" class="btn btn-warning btn-block">Iniciar sesi�n</button>
-            </form>
-
-            <div class="text-center mt-3">
-                <a href="#" class="text-muted">Crear un nuevo usuario</a>
-            </div>
+            </div>  
         </div>
     </div>
 

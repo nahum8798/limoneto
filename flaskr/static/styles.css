@@ -122,6 +122,32 @@ footer input, footer button {
     color: #6c757d !important;
 }
 
+/* Ajuste de logo de inicio de sesión */
+.main-container {
+    width: 80%;
+}
+
+.login-form-container {
+    width: 50%;
+    padding: 2rem;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-inside-container {
+    width: 100%;
+}
+
 /* Ajustes específicos para pantallas pequeñas */
 @media (max-width: 768px) {
     .container-fluid {
