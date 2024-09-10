@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Inicio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="pantallaprincipal.css">
+</head>
+<body>
+    <div class="container-fluid p-3">
+        <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
+            <span>Hola, Florencia</span>
+            <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
+        </header>
+    
+        <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
+            <!-- Ícono hamburguesa a la izquierda -->
+            <button class="btn btn-link text-dark">&#9776;</button>
+    
+            <!-- Texto centrado -->
+            <h3 class="text-center mb-0 flex-grow-1">Gestión de ventas y stock</h3>
+            
+            <!-- Botón invisible para mantener el espacio a la derecha -->
+            <div style="width: 40px;"></div> <!-- Este div es para ocupar el espacio simétricamente -->
+        </nav>
+    
+        <!-- Nueva sección con las imágenes y textos -->
+        <div class="opciones-inicio text-center">
+            <p>"Limoneto al paso"</p>
+    
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-3 opcion">
+                    <img src="imagenes/carro.png" alt="Realizar una venta" class="icono">
+                    <p>Realizar una venta</p>
+                </div>
+                <div class="col-6 col-md-3 opcion">
+                    <img src="imagenes/caja.png" alt="Caja" class="icono">
+                    <p>Caja</p>
+                </div>
+            </div>
+    
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-3 opcion">
+                    <img src="imagenes/estadistica.png" alt="Reporte diario" class="icono">
+                    <p>Reporte diario</p>
+                </div>
+                <div class="col-6 col-md-3 opcion">
+                    <img src="imagenes/inventario.png" alt="Ver inventario" class="icono">
+                    <p>Ver inventario</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
