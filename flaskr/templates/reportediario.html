@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Ventas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="reportediario.css">
+</head>
+<body>
+    <div class="container-fluid p-3">
+        <!-- Tu código existente de header y nav -->
+        <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
+            <span>Hola, Florencia</span>
+            <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
+        </header>
+    
+        <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
+            <button class="btn btn-link text-dark">&#9776;</button>
+            <h5 class="mb-0 text-center w-100">Reporte Diario</h5>
+        </nav>
+    
+        <!-- Contenedor de las ventas con desplazamiento -->
+        <div class="reporte-diario">
+            <div class="row">
+                <!-- Ventas de mañana -->
+                <div class="col-md-6">
+                    <div class="ventas-contenedor">
+                        <h5>Ventas caja mañana</h5>
+                        <div class="ventas-lista">
+                            <ul>
+                                <li>#Venta 1 - 08:30 am - $2450
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalVenta1">&#128065;</span>
+                                </li>
+                                <li>#Venta 2 - 08:57 am - $2500
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 3 - 09:12 am - $3100
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 4 - 09:35 am - $2600 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 5 - 10:03 am - $10500 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 3 - 10:12 am - $5470 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 4 - 10:30 am - $4300 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 5 - 11:15 am - $1200 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <h6>Total de ventas caja mañana: <strong>$35690</strong></h6>
+                    </div>
+                </div>
+    
+                <!-- Ventas de tarde -->
+                <div class="col-md-6">
+                    <div class="ventas-contenedor">
+                        <h5>Ventas caja tarde</h5>
+                        <div class="ventas-lista">
+                            <ul>
+                                <li>#Venta 1 - 16:30 pm - $5500
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 2 - 17:05 pm - $2500
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 3 - 17:43 pm - $3100
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 4 - 18:06 pm - $8950
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 5 - 18:15 pm - $4200
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 3 - 18:43 pm - $7500
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 4 - 19:30 pm - $2550
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                                <li>#Venta 5 - 20:15 pm - $7980
+                                    <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <h6>Total de ventas caja tarde: <strong>$45260</strong></h6>
+                    </div>
+                </div>
+            </div>
+    
+           <!-- Totales generales -->
+<div class="totales mt-4 d-flex justify-content-between align-items-center">
+    <div class="totales-izquierda">
+        <p>Descuentos aplicados: <strong>$5400</strong> <span class="icono-ojo" data-toggle="modal" data-target="#modalDescuentos">&#128065;</span></p>
+        <p>Total de ventas efectivo: <strong>$34500</strong></p>
+        <p>Total de ventas transferencia: <strong>$32700</strong></p>
+        <p>Total de ventas tarjeta: <strong>$13750</strong></p>
+    </div>
+
+    <div class="totales-derecha text-right">
+        <h4>Total de ventas del día: <strong>$80950</strong></h4>
+        <button class="btn btn-outline-success mt-2">
+            <span class="icono-impresora">&#128424;</span> Imprimir reporte diario
+        </button>
+    </div>
+</div>
+<div class="modal fade" id="modalVenta1" tabindex="-1" role="dialog" aria-labelledby="modalVenta1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalVenta1Label">Detalle de venta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Cliente: Juan Pérez</p>
+                <p>Número de Venta: 6</p>
+                <p>Método de Pago: Efectivo</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Precio Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tortita</td>
+                            <td>5</td>
+                            <td>$150</td>
+                            <td>$750</td>
+                        </tr>
+                        <tr>
+                            <td>Medialuna</td>
+                            <td>6</td>
+                            <td>$300</td>
+                            <td>$1800</td>
+                        </tr>
+                        <tr>
+                            <td>Café chico</td>
+                            <td>2</td>
+                            <td>$1500</td>
+                            <td>$3000</td>
+                        </tr>
+                        <tr>
+                            <td>Cookie grande</td>
+                            <td>1</td>
+                            <td>$500</td>
+                            <td>$500</td>
+                        </tr>
+                        <!-- Añadir más filas según sea necesario -->
+                    </tbody>
+                </table>
+                <p><strong>Total Final: $6050</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success">Reimprimir ticket</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para descripción general (sin productos) -->
+<div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog" aria-labelledby="modalDescripcionLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDescripcionLabel">Detalle de venta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Cliente: Información no disponible</p>
+                <p>Número de Venta: Información no disponible</p>
+                <p>Método de Pago: Información no disponible</p>
+                <p>Detalles de venta no disponibles.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal para descuentos aplicados -->
+<div class="modal fade" id="modalDescuentos" tabindex="-1" role="dialog" aria-labelledby="modalDescuentosLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDescuentosLabel">Detalles de Descuentos Aplicados</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Detalles de los descuentos aplicados durante el día:</p>
+                <ul>
+                    <li>Descuento 1: $1500 - Descripción breve</li>
+                    <li>Descuento 2: $1200 - Descripción breve</li>
+                    <li>Descuento 3: $1500 - Descripción breve</li>
+                    <li>Descuento 4: $1200 - Descripción breve</li>
+                    <!-- Añadir más descuentos si es necesario -->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
