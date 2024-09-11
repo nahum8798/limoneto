@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Estadísticas</title>
+  <!-- Mantén los estilos de Bootstrap y el archivo CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container-fluid p-3">
+  <!-- Encabezado -->
+  <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
+    <span>Hola, usuario</span>
+    <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
+  </header>
+
+  <!-- Barra de navegación -->
+  <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
+    <button class="btn btn-link text-dark">&#9776;</button>
+    <h5 class="mb-0">Estadísticas de Ventas</h5>
+    <button id="btn-seleccionar-cliente" class="btn btn-dark">Seleccionar cliente</button>
+  </nav>
+
+  <!-- Selector de estadísticas -->
+  <div class="d-flex justify-content-between my-3">
+    <button class="btn btn-warning" onclick="window.location.href='estadisticas_dia.html'">Ver estadísticas por día</button>
+    <button class="btn btn-warning" onclick="window.location.href='estadisticas_mensuales.html'">Ver estadísticas por mes</button>
+  </div>
+
+  <!-- Fecha actual -->
+  <div class="d-flex justify-content-start mb-3">
+    <span class="mr-2">Fecha: </span><span id="dateAct"></span>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="row">
+    <div class="col-md-6">
+      <!-- Resumen de estadísticas de ventas -->
+      <div class="border p-3">
+        <h5>Estadísticas de ventas</h5>
+        <p>Total de productos vendidos: 105</p>
+        <p>Total de ventas: $0000</p>
+        <p>Total de costos: $0000</p>
+        <p>Total de ganancias: $0000</p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <!-- Detalle de ventas -->
+      <div class="border p-3">
+        <h5>Detalle de ventas</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-warning">
+              <tr>
+                <th>#Venta</th>
+                <th>Hora</th>
+                <th>Precio</th>
+                <th>Acciones</th> <!-- Nueva columna para el botón de detalles -->
+              </tr>
+            </thead>
+            <tbody id="item-sales">
+              <tr>
+                <td>#Venta 1</td>
+                <td>08:30 am</td>
+                <td>$2450</td>
+                <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(1)">Ver detalles</button></td> <!-- Estilo ajustado -->
+              </tr>
+              <tr>
+                <td>#Venta 2</td>
+                <td>09:15 am</td>
+                <td>$3000</td>
+                <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(2)">Ver detalles</button></td>
+              </tr>
+              <tr>
+                <td>#Venta 3</td>
+                <td>10:00 am</td>
+                <td>$1500</td>
+                <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(3)">Ver detalles</button></td>
+              </tr>
+              <!-- Más ventas... -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="d-flex justify-content-end align-items-center mt-3 border-top pt-2">
+    <span class="mr-2">Total de ventas del día:</span>
+    <input type="text" class="form-control w-25 mr-3" id="total-ventas-dia" value="0000" readonly>
+  </footer>
+</div>
+
+<!-- Modal para detalles de ventas -->
+<div id="detalleVentaModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning"> <!-- Estilo de encabezado ajustado -->
+        <h5 class="modal-title">Detalles de la Venta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-light"> <!-- Fondo claro para el cuerpo del modal -->
+        <p><strong>Cliente:</strong> <span id="cliente-nombre"></span></p>
+        <p><strong>Número de Venta:</strong> <span id="numero-venta"></span></p>
+        <p><strong>Método de Pago:</strong> <span id="metodo-pago"></span></p>
+        <p><strong>Cajero:</strong> <span id="cajero-nombre"></span></p>
+        <p><strong>Fecha y Hora:</strong> <span id="fecha-hora"></span></p>
+
+        <table class="table table-bordered">
+          <thead class="thead-warning">
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio unitario</th>
+              <th>Precio total</th>
+            </tr>
+          </thead>
+          <tbody id="venta-detalles">
+            <!-- Detalles de productos vendidos -->
+          </tbody>
+        </table>
+
+        <p><strong>Subtotal:</strong> <span id="subtotal"></span></p>
+        <p><strong>Descuentos:</strong> <span id="descuentos"></span></p>
+        <p><strong>Total Final:</strong> <span id="total-final"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark">Reimprimir ticket</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Simulación de datos de ventas
+  const ventas = {
+    1: {
+      cliente: 'Juan Pérez',
+      numeroVenta: 1,
+      metodoPago: 'Efectivo',
+      cajero: 'Florencia',
+      fechaHora: '2024/06/02, 10:15 AM',
+      productos: [
+        { producto: 'Tortita', cantidad: 5, precioUnitario: 150, precioTotal: 750 },
+        { producto: 'Café chico', cantidad: 2, precioUnitario: 1500, precioTotal: 3000 },
+        { producto: 'Medialunas', cantidad: 6, precioUnitario: 300, precioTotal: 1800 },
+        { producto: 'Cookie grande', cantidad: 1, precioUnitario: 500, precioTotal: 500 }
+      ],
+      subtotal: 6050,
+      descuentos: 0,
+      totalFinal: 6050
+    },
+    // Más datos de ventas...
+  };
+
+  // Función para abrir el modal y mostrar detalles de la venta
+  function verDetallesVenta(idVenta) {
+    const venta = ventas[idVenta];
+
+    document.getElementById('cliente-nombre').textContent = venta.cliente;
+    document.getElementById('numero-venta').textContent = venta.numeroVenta;
+    document.getElementById('metodo-pago').textContent = venta.metodoPago;
+    document.getElementById('cajero-nombre').textContent = venta.cajero;
+    document.getElementById('fecha-hora').textContent = venta.fechaHora;
+
+    const detallesTableBody = document.getElementById('venta-detalles');
+    detallesTableBody.innerHTML = ''; // Limpiar la tabla
+
+    venta.productos.forEach(producto => {
+      const row = `
+        <tr>
+          <td>${producto.producto}</td>
+          <td>${producto.cantidad}</td>
+          <td>$${producto.precioUnitario}</td>
+          <td>$${producto.precioTotal}</td>
+        </tr>
+      `;
+      detallesTableBody.innerHTML += row;
+    });
+
+    document.getElementById('subtotal').textContent = `$${venta.subtotal}`;
+    document.getElementById('descuentos').textContent = `$${venta.descuentos}`;
+    document.getElementById('total-final').textContent = `$${venta.totalFinal}`;
+
+    // Mostrar el modal
+    $('#detalleVentaModal').modal('show');
+  }
+</script>
+
+</body>
+</html>
