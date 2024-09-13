@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limoneto al paso - Ventas</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- FontAwesome para los íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+
+  <!-- Contenido principal -->
+  <section class="main-content container mt-4">
+    <div class="header d-flex justify-content-between align-items-center border-bottom pb-2">
+      <span>Hola, usuario</span>
+      <button type="button" class="btn btn-outline-secondary">Cambiar usuario</button>
+    </div>
+
+    <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
+      <button class="btn btn-link text-dark">&#9776;</button>
+      <h5 class="mb-0 text-center w-100">Categoria</h5>
+  </nav>
+
+    <!-- Sección de productos por categorías -->
+    <div class="category-heading mb-3">
+      <h5>Cookies</h5>
+    </div>
+
+    <!-- Sección Tamaño Chico -->
+    <div class="category-body">
+      <h6>Tamaño Chico</h6>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>Código</th>
+              <th>Producto</th>
+              <th>Disponible</th>
+              <th>Min</th>
+              <th>Max</th>
+              <th>Precio</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>Cookie avena C</td>
+              <td>5</td>
+              <td>2</td>
+              <td>7</td>
+              <td>$1600</td>
+              <td>Suficiente</td>
+              <td>
+                <button class="btn btn-warning btn-sm" onclick="openEditModal('001')">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>002</td>
+              <td>Cookie chocolate C</td>
+              <td>3</td>
+              <td>2</td>
+              <td>6</td>
+              <td>$1500</td>
+              <td>Por agotarse</td>
+              <td>
+                <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>003</td>
+              <td>Cookie de vainilla C</td>
+              <td>10</td>
+              <td>3</td>
+              <td>10</td>
+              <td>$1400</td>
+              <td>Suficiente</td>
+              <td>
+                <button class="btn btn-warning btn-sm" onclick="openEditModal('003')">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('003')">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+    </div>
+
+    <!-- Sección Tamaño Grande -->
+    <div class="category-body mt-5">
+      <h6>Tamaño Grande</h6>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>Código</th>
+              <th>Producto</th>
+              <th>Disponible</th>
+              <th>Min</th>
+              <th>Max</th>
+              <th>Precio</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>004</td>
+              <td>Cookie avena G</td>
+              <td>8</td>
+              <td>3</td>
+              <td>10</td>
+              <td>$2500</td>
+              <td>Suficiente</td>
+              <td>
+                <button class="btn btn-warning btn-sm" onclick="openEditModal('004')">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('004')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>005</td>
+              <td>Cookie chocolate G</td>
+              <td>2</td>
+              <td>2</td>
+              <td>5</td>
+              <td>$2400</td>
+              <td>Por agotarse</td>
+              <td>
+                <button class="btn btn-warning btn-sm" onclick="openEditModal('005')">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('005')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>006</td>
+              <td>Cookie de vainilla G</td>
+              <td>12</td>
+              <td>3</td>
+              <td>12</td>
+              <td>$2300</td>
+              <td>Suficiente</td>
+              <td>
+                <button class="btn btn-warning btn-sm" onclick="openEditModal('006')">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('006')">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+    </div>
+  </section>
+
+  <!-- Modal para modificar conjunto -->
+  <div id="modificar-conjunto-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content border-warning">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar conjunto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="precio">Precio</label>
+          <input type="number" id="precio" class="form-control">
+          <label for="cant-max">Cantidad máxima permitida</label>
+          <input type="number" id="cant-max" class="form-control">
+          <label for="cant-min">Cantidad mínima permitida</label>
+          <input type="number" id="cant-min" class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" onclick="confirmModify()">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para editar producto -->
+  <div id="editar-producto-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content border-warning">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar producto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="editar-nombre">Nombre del producto</label>
+          <input type="text" id="editar-nombre" class="form-control">
+          <label for="editar-precio">Precio</label>
+          <input type="number" id="editar-precio" class="form-control">
+          <label for="editar-cant">Cantidad disponible</label>
+          <input type="number" id="editar-cant" class="form-control">
+          <label for="editar-cant-min">Stock mínimo</label>
+          <input type="number" id="editar-cant-min" class="form-control">
+          <label for="editar-cant-max">Stock máximo</label>
+          <input type="number" id="editar-cant-max" class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" onclick="confirmModify()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para eliminar producto -->
+  <div id="eliminar-producto-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content border-danger">
+        <div class="modal-header">
+          <h5 class="modal-title">Eliminar producto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro que deseas eliminar este producto?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS y dependencias -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Scripts personalizados -->
+  <script>
+    function openModifyModal() {
+      $('#modificar-conjunto-modal').modal('show');
+    }
+
+    function openEditModal(codigo) {
+      $('#editar-producto-modal').modal('show');
+      // Se podría rellenar el modal con información del producto usando el código
+    }
+
+    function openDeleteModal(codigo) {
+      $('#eliminar-producto-modal').modal('show');
+    }
+
+    function confirmModify() {
+      // Lógica para confirmar la modificación
+      $('#modificar-conjunto-modal').modal('hide');
+    }
+
+    function showLogoutConfirmation() {
+      // Lógica para mostrar confirmación de cierre de sesión
+    }
+  </script>
+
+</body>
+</html>
