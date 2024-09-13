@@ -1,0 +1,71 @@
+/* Estilos generales para hacer que la pantalla sea responsive */
+@media (max-width: 768px) {
+    .main-container {
+        display: flex;               /* Flexbox para alinear y centrar */
+        /* flex-wrap: wrap; */
+        flex-direction: column;      /* Apila los elementos verticalmente */
+        justify-content: flex-start; /* El contenido empieza en la parte superior */
+        align-items:flex-start;         /* Centra los elementos horizontalmente */
+        padding: 20px;
+        margin: 2rem;
+        width: 100%;
+        height: 100%;               /* Ocupa toda la altura de la pantalla */
+        
+    }
+
+    .login-card {
+        width: 100%;                 /* La tarjeta de login ocupa todo el ancho disponible en móviles */
+        padding: 20px;
+    }
+
+    .logo-container {
+        width: 100%;                 /* El logo ocupa el 100% del contenedor */
+        display: flex;
+        justify-content: center;      /* Centra horizontalmente el logo */
+        padding-bottom: 20px;         /* Espacio entre el logo y el formulario */
+    }
+
+    .logo-inside-container img {
+        width: 50%;                  /* Ajusta el tamaño del logo al 50% del contenedor en pantallas pequeñas */
+    }
+
+    .login-form-container {
+        width: 100%;                 /* El formulario ocupa el 100% del ancho del contenedor */
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;      /* Asegura que los campos se apilen verticalmente */
+        align-items: center;         /* Centra horizontalmente los elementos dentro del formulario */
+        /* border: 1px solid black; */
+        padding: 0;
+    }
+
+    .login-form-container .text-center h3 {
+        font-size: 1rem;
+    }
+
+    .login-form-container form {
+        width: 100%;                 /* Asegura que el formulario ocupe el 100% del contenedor padre */
+        /* border: 1px solid black; */
+        /* border: 1px solid black; */
+    }
+
+    .login-form-container form .form-group {
+        /* border: 1px solid black; */
+        width: 100%;
+    }
+
+    .login-card .btn {
+        font-size: 1rem;             /* Ajusta el tamaño del texto en el botón */
+        padding: 0.75rem;            /* Aumenta el padding del botón para mejor interacción en móviles */
+    }
+
+    .btn-block {
+        display: block;
+        width: 100%;                 /* El botón de iniciar sesión ocupa todo el ancho en móviles */
+    }
+}
+
+/* Ajustes para el logo */
+.logo-inside-container img {
+    width: 200px; /* Tamaño del logo en pantallas grandes */
+}

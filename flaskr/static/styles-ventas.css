@@ -52,19 +52,19 @@ footer input, footer button {
 /* Ajustes de la ventana emergente */
 .modal {
     display: none; /* Oculto por defecto */
-    position:fixed;
+    position: fixed;
     z-index: 1;
     left: 0;
-    top: 1;
+    top: 0;
     width: 100%;
     height: 100%;
     overflow: visible;
     background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
+    padding-top: 30px;
 }
 
 .modal-dialog {
-    max-width: 90%; /* Ajuste para pantallas pequeñas */
+    max-width: 80%; /* Ajuste para pantallas pequeñas */
     margin: auto;
 }
 
@@ -122,47 +122,27 @@ footer input, footer button {
     color: #6c757d !important;
 }
 
-/* Ajuste de logo de inicio de sesión */
-.container-fluid {
-    display: flex;
-}
-
-.main-container {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-}
-
-.login-form-container {
-    width: 50%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-}
-   
-
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-}
-
-.logo-container img {
-    width: 100%;
-    height: 100%;
-}
-
-.logo-inside-container {
-    width: 100%;
-}
-
 /* Ajustes específicos para pantallas pequeñas */
 @media (max-width: 768px) {
     .container-fluid {
         padding: 0 15px;
     }
+
+    /*
+    header .btn {
+        height: 2rem;
+        width: 6rem;
+    }*/
+    /*
+    header {
+        width: 20%;
+        background-color: red;
+    }*/
+    /*
+    header:hover {
+        width: 100%;
+        transition-duration: 1000ms;
+    }*/
 
     nav h5 {
         font-size: 1.2rem;
@@ -183,23 +163,44 @@ footer input, footer button {
     }
 
     .modal {
-        height: 80px;
+        font-size: 1rem;
+        overflow:scroll;
     }
 
-    .modal-dialog {
-        max-width: 80%; /* Aumenta el ancho en móviles para mejor uso del espacio */
-        max-height: 80%;
+    .modal-header h5{
+        font-size: 1rem;
+    }
+
+    .modal-header {
+        height: 10%;
     }
 
     .modal-content {
-        padding: 15px;
+        padding: 0;
+        margin: 0;
     }
+
+    .modal-content .form-group button {
+        width: 8rem;
+    }
+
+    .modal-content .flex-modal{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content .flex-modal .form-group input{
+        width: 8rem;
+    }
+
+    .modal-dialog {
+        max-width: 95%; /* Aumenta el ancho en móviles para mejor uso del espacio */
+        max-height: 2rem;
+    }
+
+  
 
     .modal-footer {
         justify-content: center;
     }
-
-    /* login */
-
-
 }
