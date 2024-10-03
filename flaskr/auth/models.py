@@ -22,6 +22,9 @@ class Users(UserMixin, db.Model):
  password = db.Column(db.String(255), nullable=False)
  first_name = db.Column(db.String(25), nullable=False)
  last_name = db.Column(db.String(25), nullable=False)
+ is_superuser = db.Column(db.Boolean, default=False)
+ is_admin = db.Column(db.Boolean, default=False)
+ is_user = db.Column(db.Boolean, default=False)
 
  def get_id(self):
   return str(self.id_user)

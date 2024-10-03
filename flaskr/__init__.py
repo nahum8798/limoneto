@@ -2,8 +2,13 @@
 En __init__ definimos el app factory:
 """
 from flask import Flask
+
+from .auth import auth_bp
+from .auth.models import Users
 from .config import Config
 from .extensions import db, migrate, login_manager
+from .main import main_blueprint
+
 """
 Importación de modelos
 """
@@ -30,5 +35,7 @@ def create_app():
     """
     Registro de blueprints
     """
+    app.register_blueprint(main_blueprint)
+    app.register_blueprint(auth_bp, url_prefix='/auth')
 
     return app
