@@ -1,3 +1,38 @@
+/* Sidebar */
+body {
+    padding-top: 56px; /* Altura del navbar */
+}
+
+.sidebar {
+    height: 100vh; /* Altura completa de la ventana */
+    position: fixed;
+    top: 56px; /* Debajo del navbar */
+    left: 0;
+    width: 250px;
+    overflow-y: auto;
+}
+
+/* Estilo para los enlaces del sidebar */
+.sidebar .nav-link {
+    color: #ffffff;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #495057;
+    color: #ffffff;
+}
+
+/* Contenido principal que se desplaza con el sidebar */
+.content {
+    margin-left: 250px; /* Deja espacio para el sidebar */
+    padding: 20px;
+    z-index: 10;
+    position: relative;
+}
+
+
 /* Reset de estilos básicos y configuración del box model */
 * {
     box-sizing: border-box;
@@ -26,6 +61,10 @@ body {
     border-bottom: 1px solid;
 }
 
+.contenido {
+    margin-left: 250px; /* Ancho del sidebar */
+    padding: 20px;
+}
 .contenido-barra-superior {
     display: flex;
     justify-content: space-between;
