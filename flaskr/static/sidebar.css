@@ -1,0 +1,53 @@
+body {
+    transition: margin-left 0.3s;
+    margin-left: 0; /* Inicialmente sin desplazamiento */
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler .bar1,
+.navbar-toggler .bar2,
+.navbar-toggler .bar3 {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 4px auto;
+    background-color: white; /* Color de las barras */
+    transition: all 0.3s;
+}
+
+
+.sidebar {
+    height: 100%;
+    width: 250px; /* Ancho del sidebar */
+    position: fixed;
+    top: 0;
+    left: -250px; /* Comienza fuera de la pantalla */
+    background-color: #f8f9fa;
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+.sidebar.active {
+    left: 0; /* Muestra el sidebar */
+}
+
+#main-content {
+    margin-left: 0; /* Sin desplazamiento inicial */
+    transition: margin-left 0.3s;
+}
+
+body.sidebar-active #main-content {
+    margin-left: 250px; /* Desplazamiento del contenido principal cuando el sidebar está activo */
+}

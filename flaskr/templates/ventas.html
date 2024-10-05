@@ -6,20 +6,41 @@
     <title>Módulo de Ventas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/styles-ventas.css">
+    <link rel="stylesheet" href="../static/sidebar.css">
 </head>
 <body>
+    <section class="side-bar">
+        <!-- Contenido de la barra lateral -->
+        <div class="container" onclick="myFunction(this)">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="sidebar">
+          <!-- Mantenemos el orden de los enlaces como estaba -->
+          <a href="ventas.html">Realizar una venta</a>
+          <a href="caja.html">Caja</a>
+          <a href="productos.html">Ver inventario</a>
+          <a href="registroDeUsuario.html">Clientes</a>
+          <a href="reporte.html">Reporte diario</a>
+          <a href="estadisticas.html">Estadísticas</a>
+          <a href="#">Gestión de usuarios</a>
+          <a href="menu.html">
+            Menú principal
+          </a>
+          <a href="index.html" onclick="showLogoutConfirmation()">Cerrar cuenta</a>
+        </div>
+      </section>
     <div class="container-fluid p-3">
-        <!-- Cabecera con botón de menú desplegable para móviles -->
+        <!-- Cabecera -->
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
-            <span >Hola, Florencia</span>
+            <span>Hola, Florencia</span>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
         </header>
 
-        <!-- Menú desplegable para móviles -->
+        <!-- Menú desplegable -->
+        <!-- Menú desplegable -->
         <nav class="navbar navbar-expand-md bg-warning p-2">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">&#9776;</span>
-            </button>
             <h5 class="mb-0">Realizar una venta</h5>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ml-auto">
@@ -30,108 +51,111 @@
             </div>
         </nav>
 
-        <main class="row">
-            <!-- Columna izquierda: Formulario de productos -->
-            <div class="col-md-4 border-right">
-                <div class="form-group">
-                    <label for="codigo-producto">Código de producto:</label>
-                    <input type="text" class="form-control" id="codigo-producto" name="codigo-producto">
-                </div>
-
-                <div class="form-group">
-                    <label for="nombre-producto">Nombre de producto:</label>
-                    <select class="form-control" id="nombre-producto" name="nombre-producto">
-                        <option value="" selected disabled>Seleccione un producto</option>
-                        <!-- Opciones de productos -->
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="lista-productos">Lista de productos:</label>
-                    <select class="form-control" id="lista-productos" name="lista-productos">
-                        <option value="" selected disabled>Seleccione una lista</option>
-                        <!-- Opciones de listas de productos -->
-                    </select>
-                </div>
-
-                <button id="btn-agregar-producto" class="btn btn-warning btn-block">Agregar producto</button>
-            </div>
-
-            <!-- Columna derecha: Tabla de productos -->
-            <div class="col-md-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead class="thead-warning">
-                            <tr>
-                                <th>Cód.</th>
-                                <th>Nombre</th>
-                                <th>Cantidad</th>
-                                <th>Precio unitario</th>
-                                <th>Importe</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productos-agregados">
-                            <!-- Filas de productos añadidos -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-
-        <!-- Pie de página con botón de cobro -->
-        <footer class="d-flex justify-content-end align-items-center mt-3 border-top pt-2">
-            <span class="mr-2">Total de venta:</span>
-            <input type="text" class="form-control w-25 mr-3" id="total-venta" value="4900" readonly>
-            <button id="btn-cobrar" class="btn btn-warning">Cobrar</button>
-        </footer>
-    </div>
-
-    <!-- Ventana emergente (Modal) -->
-    <div id="modal-cobro" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content border-warning">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirmación de venta</h5>
-                    <button type="button" class="close" onclick="closeModal()">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Artículos vendidos</strong></p>
-                            <p>Producto A &nbsp;&nbsp;1 &nbsp;&nbsp;$1600</p>
-                            <p>Producto B &nbsp;&nbsp;2 &nbsp;&nbsp;$2500</p>
-                            <p>Producto C &nbsp;&nbsp;5 &nbsp;&nbsp;$9800</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Resumen del pedido</strong></p>
-                            <p>Subtotal: $13950</p>
-                            <p>Descuento: -</p>
-                            <p>Total: $13950</p>
-                        </div>
-                    </div>
-                    <hr>
+        <div class="content">
+            <main id="main-content" class="row">
+                <!-- Columna izquierda: Formulario de productos -->
+                <div class="col-md-4 border-right">
                     <div class="form-group">
-                        <label><strong>Método de pago</strong></label><br>
-                        <button class="btn btn-warning mr-2">Efectivo</button>
-                        <button class="btn btn-outline-secondary mr-2">Tarjeta</button>
-                        <button class="btn btn-outline-secondary">Transferencia</button>
+                        <label for="codigo-producto">Código de producto:</label>
+                        <input type="text" class="form-control" id="codigo-producto" name="codigo-producto">
                     </div>
-                    <div class="flex-modal">
-                        <div class="form-group col-3 block">
-                            <label for="abono-con">Abona con</label>
-                            <input type="text" class="form-control" id="abono-con" value="14000">
-                        </div>
-                        <div class="form-group col-3 block">
-                            <label for="vuelto">Vuelto</label>
-                            <input type="text" class="form-control" id="vuelto" value="50" readonly>
-                        </div>
+
+                    <div class="form-group">
+                        <label for="nombre-producto">Nombre de producto:</label>
+                        <select class="form-control" id="nombre-producto" name="nombre-producto">
+                            <option value="" selected disabled>Seleccione un producto</option>
+                            <!-- Opciones de productos -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lista-productos">Lista de productos:</label>
+                        <select class="form-control" id="lista-productos" name="lista-productos">
+                            <option value="" selected disabled>Seleccione una lista</option>
+                            <!-- Opciones de listas de productos -->
+                        </select>
+                    </div>
+
+                    <button id="btn-agregar-producto" class="btn btn-warning btn-block">Agregar producto</button>
+                </div>
+
+                <!-- Columna derecha: Tabla de productos -->
+                <div class="col-md-8">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-warning">
+                                <tr>
+                                    <th id="th-cod">Cód.</th>
+                                    <th id="th-name">Nombre</th>
+                                    <th id="th-cant">Cantidad</th>
+                                    <th id="th-unitprice">Precio unitario</th>
+                                    <th id="th-imp">Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productos-agregados">
+                                <!-- Filas de productos añadidos -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success" onclick="closeModal()">Confirmar</button>
+            </main>
+
+            <!-- Pie de página con botón de cobro -->
+            <footer class="d-flex justify-content-end align-items-center mt-3 border-top pt-2">
+                <span class="mr-2">Total de venta:</span>
+                <input type="text" class="form-control w-25 mr-3" id="total-venta" value="4900" readonly>
+                <button id="btn-cobrar" class="btn btn-warning">Cobrar</button>
+            </footer>
+        </div>
+
+        <!-- Ventana emergente (Modal) -->
+        <div id="modal-cobro" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content border-warning">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmación de venta</h5>
+                        <button type="button" class="close" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Artículos vendidos</strong></p>
+                                <p>Producto A &nbsp;&nbsp;1 &nbsp;&nbsp;$1600</p>
+                                <p>Producto B &nbsp;&nbsp;2 &nbsp;&nbsp;$2500</p>
+                                <p>Producto C &nbsp;&nbsp;5 &nbsp;&nbsp;$9800</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Resumen del pedido</strong></p>
+                                <p>Subtotal: $13950</p>
+                                <p>Descuento: -</p>
+                                <p>Total: $13950</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label><strong>Método de pago</strong></label><br>
+                            <button class="btn btn-warning mr-2">Efectivo</button>
+                            <button class="btn btn-outline-secondary mr-2">Tarjeta</button>
+                            <button class="btn btn-outline-secondary">Transferencia</button>
+                        </div>
+                        <div class="flex-modal">
+                            <div class="form-group col-3 block">
+                                <label for="abono-con">Abona con</label>
+                                <input type="text" class="form-control" id="abono-con" value="14000">
+                            </div>
+                            <div class="form-group col-3 block">
+                                <label for="vuelto">Vuelto</label>
+                                <input type="text" class="form-control" id="vuelto" value="50" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" onclick="closeModal()">Confirmar</button>
+                    </div>
                 </div>
-            </div>
-        </div>    
+            </div>    
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -139,5 +163,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../static/script.js"></script>
+    <script src="../static/sidebar.js"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            sidebar.classList.toggle('active');
+            document.body.classList.toggle('sidebar-active'); // Agregar clase al body para manejar el desplazamiento
+        }
+
+        function closeModal() {
+            document.getElementById('modal-cobro').style.display = 'none';
+        }
+
+        function showLogoutConfirmation() {
+            console.log("Cerrar sesión");
+        }
+    </script>
 </body>
 </html>

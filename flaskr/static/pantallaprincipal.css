@@ -16,199 +16,35 @@ nav {
     background-color: #f4d03f;
 }
 
-nav h5 {
-    font-size: 1.2rem;
-}
-
-/* Tabla en móviles */
-.table-responsive {
-    overflow-x: auto;
-    margin-bottom: 20px; /* Ajuste para móviles */
-}
-
-thead.thead-warning {
-    background-color: #f4d03f;
-}
-
-tfoot {
-    background-color: #f4f4f4;
-}
-
-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-footer span {
-    font-weight: bold;
-}
-
-footer input, footer button {
-    width: auto;
-    margin-top: 0;
-}
-
-/* Ajustes de la ventana emergente */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 1;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-}
-
-.modal-dialog {
-    max-width: 90%; /* Ajuste para pantallas pequeñas */
-    margin: auto;
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 1rem;
-    border: 1px solid #888;
-    border-radius: 5px;
-    height: 25%;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.close {
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-}
-
-.flex-modal {
-    display: flex;
-    flex-direction: row;
-}
-
-/* Tarjetas de login y registro */
-.login-card, .register-card {
-    background-color: #f4f4f4;
-    border-radius: 20px;
-}
-
-.login-card {
-    width: 400px;
-}
-
-.register-card {
-    width: 600px;
-}
-
-/* Estilos de los botones */
-.btn-warning {
-    background-color: #f4d03f;
-    border-color: #f4d03f;
-}
-
-.text-muted {
-    color: #6c757d !important;
-}
-
-/* Ajuste de logo de inicio de sesión */
-.main-container {
-    width: 80%;
-}
-
-.login-form-container {
-    width: 50%;
-    padding: 2rem;
-}
-
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-}
-
-.logo-container img {
-    width: 100%;
-    height: 100%;
-}
-
-.logo-inside-container {
-    width: 100%;
-}
-
-/* Ajustes específicos para pantallas pequeñas */
-@media (max-width: 768px) {
-    .container-fluid {
-        padding: 0 15px;
-    }
-
-    nav h5 {
-        font-size: 1.2rem;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    footer input, footer button {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .table-responsive {
-        margin-bottom: 20px;
-    }
-
-    .modal-dialog {
-        max-width: 95%; /* Aumenta el ancho en móviles para mejor uso del espacio */
-    }
-
-    .modal-content {
-        padding: 15px;
-    }
-
-    .modal-footer {
-        justify-content: center;
-    }
-}
-
 /* Estilos para la sección de imágenes y opciones */
 .opciones-inicio {
-    margin-top: 40px;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr)); /* Grilla de 4 columnas */
+    grid-template-rows: repeat(auto, auto);
+    row-gap: 1rem;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: center;
 }
 
-.opciones-inicio h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+.opciones-inicio a {
+    text-decoration: none;
 }
 
-.opciones-inicio p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+.opciones-inicio a:hover {
+    transform: scale(0.99);
 }
 
 .opcion {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    
 }
 
 .opcion img.icono {
-    width: 100px; /* Ajusta el tamaño de los iconos según sea necesario */
+    width: 25%; /* Ajuste de tamaño de imagen */
     height: auto;
     margin-bottom: 10px;
 }
@@ -218,9 +54,14 @@ footer input, footer button {
     color: #000;
 }
 
+
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
+    .opciones-inicio {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas pequeñas */
+    }
+
     .opcion img.icono {
-        width: 60px; /* Ajuste para pantallas más pequeñas */
+        width: 60px; /* Ajuste de tamaño de imagen para pantallas pequeñas */
     }
 }
-

@@ -30,6 +30,15 @@ thead.thead-warning {
     background-color: #f4d03f;
 }
 
+
+#th-cod, #th-cant, #th-imp {
+    width: 5%;
+}
+
+#th-unitprice {
+    width: 20%;
+}
+
 tfoot {
     background-color: #f4f4f4;
 }
@@ -120,6 +129,59 @@ footer input, footer button {
 
 .text-muted {
     color: #6c757d !important;
+}
+
+/* sidebar */
+.side-bar {
+    position: relative;
+}
+
+.container {
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Fuera de la vista por defecto */
+    width: 250px;
+    height: 100%;
+    background-color: #343a40; /* Color de fondo del sidebar */
+    color: white; /* Color del texto */
+    transition: left 0.3s; /* Transición suave al abrir/cerrar */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.sidebar.active {
+    left: 0; /* Desplazar el sidebar hacia la vista */
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar a:hover {
+    background-color: #495057; /* Color al pasar el mouse */
+}
+
+.bar1, .bar2, .bar3 {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 6px 0;
+    background-color: #333; /* Color de las barras del menú hamburguesa */
+    transition: 0.4s;
+}
+
+.container:hover .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px); /* Animación al pasar el mouse */
+}
+
+.container:hover .bar3 {
+    transform: rotate(45deg) translate(-5px, -6px); /* Animación al pasar el mouse */
 }
 
 /* Ajustes específicos para pantallas pequeñas */

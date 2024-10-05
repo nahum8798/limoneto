@@ -8,68 +8,97 @@
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
+
     <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
         <div class="register-card p-5 rounded shadow-sm">
             <div class="text-right">
-                <a href="index.html" class="btn btn-light mb-3">&#8962;</a>
+                <a href="pantallaprincipal.html" class="btn btn-light mb-3">&#8962;</a>
             </div>
             <h3 class="text-center mb-4">Registro de cuenta</h3>
             
-            <form>
-                <div class="form-group">
-                    <label for="nombre">Nombre y apellido</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre completo">
-                </div>
-                <div class="form-group">
-                    <label for="dni">DNI</label>
-                    <input type="text" class="form-control" id="dni" placeholder="Ingrese su DNI">
-                </div>
-                <div class="form-group">
-                    <label for="usuario">Usuario</label>
-                    <input type="text" class="form-control" id="usuario" placeholder="Ingrese un nombre de usuario">
-                </div>
-                <div class="form-group">
-                    <label for="correo">Correo electrónico</label>
-                    <input type="email" class="form-control" id="correo" placeholder="Ingrese su correo">
-                </div>
-                <div class="form-group">
-                    <label for="direccion">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección">
-                </div>
-                <div class="form-group">
-                    <label for="fecha-nacimiento">Fecha de nacimiento (AAAA/MM/DD)</label>
-                    <input type="date" class="form-control" id="fecha-nacimiento">
-                </div>
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" placeholder="+54 9">
-                </div>
-                <div class="form-group">
-                    <label for="contrasena">Crear contraseña</label>
-                    <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contraseña">
-                </div>
-                <div class="form-group">
-                    <label for="confirmar-contrasena">Confirmar contraseña</label>
-                    <input type="password" class="form-control" id="confirmar-contrasena" placeholder="Confirme su contraseña">
-                </div>
-                <div class="form-group">
-                    <label>Tipo de usuario</label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoUsuario" id="admin" value="admin">
-                        <label class="form-check-label" for="admin">Administrador</label>
+            <!-- Pestañas de Navegación -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="personal-info-tab" data-toggle="tab" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">Información Personal</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="account-info-tab" data-toggle="tab" href="#account-info" role="tab" aria-controls="account-info" aria-selected="false">Datos de la Cuenta</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="role-info-tab" data-toggle="tab" href="#role-info" role="tab" aria-controls="role-info" aria-selected="false">Rol de Usuario</a>
+                </li>
+            </ul>
+
+    
+            <!-- Contenido de las Pestañas -->
+            <form id="registerForm">
+                <div class="tab-content mt-3" id="myTabContent">
+                    <!-- Información Personal -->
+                    <div class="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+                        </div>
+                        <div class="form-group">
+                            <label for="dni">Email</label>
+                            <input type="text" class="form-control" id="dni" placeholder="Ingrese su correo">
+                        </div>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipoUsuario" id="empleado" value="empleado">
-                        <label class="form-check-label" for="empleado">Empleado</label>
+    
+                    <!-- Datos de la Cuenta -->
+                    <div class="tab-pane fade" id="account-info" role="tabpanel" aria-labelledby="account-info-tab">
+                        <div class="form-group">
+                            <label for="usuario">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="usuario" placeholder="Ingrese un nombre de usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="contrasena">Crear Contraseña</label>
+                            <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmar-contrasena">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="confirmar-contrasena" placeholder="Confirme su contraseña">
+                        </div>
+                    </div>
+    
+                    <!-- Rol de Usuario -->
+                    <div class="tab-pane fade" id="role-info" role="tabpanel" aria-labelledby="role-info-tab">
+                        <div class="form-group">
+                            <label>Rol de Usuario</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoUsuario" id="superuser" value="superuser">
+                                <label class="form-check-label" for="superuser">Super usuario</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoUsuario" id="admin" value="admin">
+                                <label class="form-check-label" for="admin">Administrador</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoUsuario" id="empleado" value="empleado">
+                                <label class="form-check-label" for="empleado">Usuario</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-warning btn-block">Crear cuenta</button>
+    
+                <!-- Botones de Navegación -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="prevTab()">Anterior</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextTab()">Siguiente</button>
+                </div>
             </form>
         </div>
     </div>
 
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/tabs.js"></script> 
+
 </body>
 </html>

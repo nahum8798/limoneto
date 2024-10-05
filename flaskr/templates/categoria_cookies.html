@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
 
   <!-- Contenido principal -->
   <section class="main-content container mt-4">
@@ -23,140 +22,127 @@
     <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
       <button class="btn btn-link text-dark">&#9776;</button>
       <h5 class="mb-0 text-center w-100">Categoria</h5>
-  </nav>
+    </nav>
 
     <!-- Sección de productos por categorías -->
     <div class="category-heading mb-3">
       <h5>Cookies</h5>
     </div>
 
-    <!-- Sección Tamaño Chico -->
-    <div class="category-body">
-      <h6>Tamaño Chico</h6>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead class="thead-dark">
-            <tr>
-              <th>Código</th>
-              <th>Producto</th>
-              <th>Disponible</th>
-              <th>Min</th>
-              <th>Max</th>
-              <th>Precio</th>
-              <th>Estado</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>001</td>
-              <td>Cookie avena C</td>
-              <td>5</td>
-              <td>2</td>
-              <td>7</td>
-              <td>$1600</td>
-              <td>Suficiente</td>
-              <td>
-                <button class="btn btn-warning btn-sm" onclick="openEditModal('001')">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>002</td>
-              <td>Cookie chocolate C</td>
-              <td>3</td>
-              <td>2</td>
-              <td>6</td>
-              <td>$1500</td>
-              <td>Por agotarse</td>
-              <td>
-                <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>003</td>
-              <td>Cookie de vainilla C</td>
-              <td>10</td>
-              <td>3</td>
-              <td>10</td>
-              <td>$1400</td>
-              <td>Suficiente</td>
-              <td>
-                <button class="btn btn-warning btn-sm" onclick="openEditModal('003')">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('003')">Eliminar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
-    </div>
+    <!-- Tabs para Tamaño Chico y Tamaño Grande -->
+    <ul class="nav nav-tabs" id="cookieTabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="tab-chico" data-toggle="tab" href="#tamano-chico" role="tab" aria-controls="tamano-chico" aria-selected="true">Tamaño Chico</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab-grande" data-toggle="tab" href="#tamano-grande" role="tab" aria-controls="tamano-grande" aria-selected="false">Tamaño Grande</a>
+      </li>
+    </ul>
 
-    <!-- Sección Tamaño Grande -->
-    <div class="category-body mt-5">
-      <h6>Tamaño Grande</h6>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead class="thead-dark">
-            <tr>
-              <th>Código</th>
-              <th>Producto</th>
-              <th>Disponible</th>
-              <th>Min</th>
-              <th>Max</th>
-              <th>Precio</th>
-              <th>Estado</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>004</td>
-              <td>Cookie avena G</td>
-              <td>8</td>
-              <td>3</td>
-              <td>10</td>
-              <td>$2500</td>
-              <td>Suficiente</td>
-              <td>
-                <button class="btn btn-warning btn-sm" onclick="openEditModal('004')">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('004')">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>005</td>
-              <td>Cookie chocolate G</td>
-              <td>2</td>
-              <td>2</td>
-              <td>5</td>
-              <td>$2400</td>
-              <td>Por agotarse</td>
-              <td>
-                <button class="btn btn-warning btn-sm" onclick="openEditModal('005')">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('005')">Eliminar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>006</td>
-              <td>Cookie de vainilla G</td>
-              <td>12</td>
-              <td>3</td>
-              <td>12</td>
-              <td>$2300</td>
-              <td>Suficiente</td>
-              <td>
-                <button class="btn btn-warning btn-sm" onclick="openEditModal('006')">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="openDeleteModal('006')">Eliminar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="tab-content mt-4" id="cookieTabsContent">
+      <!-- Sección Tamaño Chico -->
+      <div class="tab-pane fade show active" id="tamano-chico" role="tabpanel" aria-labelledby="tab-chico">
+        <h6>Tamaño Chico</h6>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Disponible</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>001</td>
+                <td>Cookie avena C</td>
+                <td>5</td>
+                <td>2</td>
+                <td>7</td>
+                <td>$1600</td>
+                <td>Suficiente</td>
+                <td>
+                  <button class="btn btn-warning btn-sm" onclick="openEditModal('001')">Editar</button>
+                  <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
+                </td>
+              </tr>
+              <tr>
+                <td>002</td>
+                <td>Cookie chocolate C</td>
+                <td>3</td>
+                <td>2</td>
+                <td>6</td>
+                <td>$1500</td>
+                <td>Por agotarse</td>
+                <td>
+                  <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
+                  <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
       </div>
-      <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+
+      <!-- Sección Tamaño Grande -->
+      <div class="tab-pane fade" id="tamano-grande" role="tabpanel" aria-labelledby="tab-grande">
+        <h6>Tamaño Grande</h6>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Disponible</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>004</td>
+                <td>Cookie avena G</td>
+                <td>8</td>
+                <td>3</td>
+                <td>10</td>
+                <td>$2500</td>
+                <td>Suficiente</td>
+                <td>
+                  <button class="btn btn-warning btn-sm" onclick="openEditModal('004')">Editar</button>
+                  <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('004')">Eliminar</button>
+                </td>
+              </tr>
+              <tr>
+                <td>005</td>
+                <td>Cookie chocolate G</td>
+                <td>2</td>
+                <td>2</td>
+                <td>5</td>
+                <td>$2400</td>
+                <td>Por agotarse</td>
+                <td>
+                  <button class="btn btn-warning btn-sm"  onclick="openEditModal('005')">Editar</button>
+                  <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('005')">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+      </div>
     </div>
   </section>
 
+  <!-- Modal para modificar conjunto, editar y eliminar producto -->
   <!-- Modal para modificar conjunto -->
   <div id="modificar-conjunto-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -232,8 +218,8 @@
   </div>
 
   <!-- Bootstrap JS y dependencias -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Scripts personalizados -->
@@ -256,9 +242,9 @@
       $('#modificar-conjunto-modal').modal('hide');
     }
 
-    function showLogoutConfirmation() {
-      // Lógica para mostrar confirmación de cierre de sesión
-    }
+    
+
+
   </script>
 
 </body>

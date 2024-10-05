@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo de Inicio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="pantallaprincipal.css">
+    <link rel="stylesheet" href="../static/pantallaprincipal.css">
 </head>
 <body>
     <div class="container-fluid p-3">
@@ -14,42 +14,58 @@
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
         </header>
     
-        <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
-            <!-- Ícono hamburguesa a la izquierda -->
-            <button class="btn btn-link text-dark">&#9776;</button>
-    
+        <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">    
             <!-- Texto centrado -->
-            <h3 class="text-center mb-0 flex-grow-1">Gestión de ventas y stock</h3>
+            <h3 class="text-center mb-0 flex-grow-1">Gestión de ventas y stock - Limoneto al paso</h3>
             
             <!-- Botón invisible para mantener el espacio a la derecha -->
-            <div style="width: 40px;"></div> <!-- Este div es para ocupar el espacio simétricamente -->
+            <div style="width: 40px;"></div>
         </nav>
-    
-        <!-- Nueva sección con las imágenes y textos -->
-        <div class="opciones-inicio text-center">
-            <p>"Limoneto al paso"</p>
-    
-            <div class="row justify-content-center">
-                <div class="col-6 col-md-3 opcion">
-                    <img src="imagenes/carro.png" alt="Realizar una venta" class="icono">
+
+        <!-- Sección con las imágenes y textos -->
+        <div class="opciones-inicio">
+            <a href="ventas.html">
+                <div class="opcion">
+                    <img src="../static/images/carro.png" alt="Realizar una venta" class="icono">
                     <p>Realizar una venta</p>
                 </div>
-                <div class="col-6 col-md-3 opcion">
-                    <img src="imagenes/caja.png" alt="Caja" class="icono">
+            </a>
+            <a href="">
+                <div class="opcion">
+                    <img src="../static/images/caja.png" alt="Caja" class="icono">
                     <p>Caja</p>
                 </div>
-            </div>
-    
-            <div class="row justify-content-center">
-                <div class="col-6 col-md-3 opcion">
-                    <img src="imagenes/estadistica.png" alt="Reporte diario" class="icono">
+            </a>
+            <a href="reportediario.html">
+                <div class="opcion">
+                    <img src="../static/images/estadistica.png" alt="Reporte diario" class="icono">
                     <p>Reporte diario</p>
                 </div>
-                <div class="col-6 col-md-3 opcion">
-                    <img src="imagenes/inventario.png" alt="Ver inventario" class="icono">
+            </a>
+            <a href="estadisticas.html">
+                <div class="opcion">
+                    <img src="../static/images/statistics.png" alt="Ver inventario" class="icono">
+                    <p>Estadísticas</p>
+                </div>
+            </a>
+            <a href="categoria_cookies.html">
+                <div class="opcion">
+                    <img src="../static/images/inventario.png" alt="Ver inventario" class="icono">
                     <p>Ver inventario</p>
                 </div>
-            </div>
+            </a>
+            <a href="register.html">
+                <div class="opcion">
+                    <img src="../static/images/user.png" alt="Ver inventario" class="icono">
+                    <p>Registrar usuario</p>
+                </div>
+            </a>
+            <a href="gestion_de_usuarios.html">
+                <div class="opcion">
+                    <img src="../static/images/gest_user.png" alt="Ver inventario" class="icono">
+                    <p>Gestión de usuarios</p>
+                </div>
+            </a>
         </div>
     </div>
 </body>
