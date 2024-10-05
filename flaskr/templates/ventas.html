@@ -3,87 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo de Ventas</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Sidebar con Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personalizado -->
     <link rel="stylesheet" href="../static/styles-ventas.css">
 </head>
 <body>
-    <div class="container-fluid p-3">
-        <!-- Cabecera con botón de menú desplegable para móviles -->
-        <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
-            <span >Hola, Florencia</span>
-            <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
-        </header>
+    <!-- Header -->
+    <header class="navbar navbar-dark bg-warning fixed-top">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-4 text-dark h1">Registro de Clientes</span>
+            <div>
+                <span class="text-dark me-4">Hola, Usuario</span>
+                <button id="change-user-btn" class="btn btn-light btn-sm">Cambiar Usuario</button>
+            </div>
+        </div>
+    </header>
 
-        <!-- Menú desplegable para móviles -->
-        <nav class="navbar navbar-expand-md bg-warning p-2">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">&#9776;</span>
-            </button>
-            <h5 class="mb-0">Realizar una venta</h5>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <button id="btn-seleccionar-cliente" class="btn btn-dark">Seleccionar cliente</button>
-                    </li>
+    <!-- Layout principal -->
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 70px;"> <!-- Ajuste del padding-top -->
+            <!-- Sidebar de navegación principal -->
+            <nav class="col-md-2 bg-dark text-white vh-100 position-fixed" style="top: 56px;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="#" class="nav-link text-white"></a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="ventas.html" class="nav-link text-white">Realizar una venta</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="caja.html" class="nav-link text-white">Caja</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="productos.html" class="nav-link text-white">Ver inventario</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="registroDeUsuario.html" class="nav-link text-white">Clientes</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="reporte.html" class="nav-link text-white">Reporte diario</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="estadisticas.html" class="nav-link text-white">Estadísticas</a></li>
                 </ul>
+                <hr class="bg-light">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-3"><a href="#" class="nav-link text-white">Gestión de usuario</a></li>
+                    <li class="nav-item mb-3"><a href="menu.html" class="nav-link text-white">Menú principal</a></li>
+                    <li class="nav-item mb-3"><a href="index.html" class="nav-link text-white">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+
+            <!-- Contenido Principal con col-md-10 desplazado -->
+            <div class="col-md-10 offset-md-2">
+                <nav class="navbar navbar-expand-md bg-warning p-2">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">&#9776;</span>
+                    </button>
+                    <h5 class="mb-0">Realizar una venta</h5>
+                    <div class="collapse navbar-collapse" id="navbarContent">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <button id="btn-seleccionar-cliente" class="btn btn-dark">Seleccionar cliente</button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <main class="row mt-3">
+                    <!-- Columna izquierda: Formulario de productos -->
+                    <div class="col-md-4 border-right">
+                        <div class="form-group">
+                            <label for="codigo-producto">Código de producto:</label>
+                            <input type="text" class="form-control" id="codigo-producto" name="codigo-producto">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombre-producto">Nombre de producto:</label>
+                            <select class="form-control" id="nombre-producto" name="nombre-producto">
+                                <option value="" selected disabled>Seleccione un producto</option>
+                                <!-- Opciones de productos -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lista-productos">Lista de productos:</label>
+                            <select class="form-control" id="lista-productos" name="lista-productos">
+                                <option value="" selected disabled>Seleccione una lista</option>
+                                <!-- Opciones de listas de productos -->
+                            </select>
+                        </div>
+
+                        <button id="btn-agregar-producto" class="btn btn-warning btn-block">Agregar producto</button>
+                    </div>
+
+                    <!-- Columna derecha: Tabla de productos -->
+                    <div class="col-md-8">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="thead-warning">
+                                    <tr>
+                                        <th>Cód.</th>
+                                        <th>Nombre</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio unitario</th>
+                                        <th>Importe</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productos-agregados">
+                                    <!-- Filas de productos añadidos -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Pie de página con botón de cobro -->
+                <footer class="d-flex justify-content-end align-items-center mt-3 border-top pt-2">
+                    <span class="mr-2">Total de venta:</span>
+                    <input type="text" class="form-control w-25 mr-3" id="total-venta" value="4900" readonly>
+                    <button id="btn-cobrar" class="btn btn-warning">Cobrar</button>
+                </footer>
             </div>
-        </nav>
-
-        <main class="row">
-            <!-- Columna izquierda: Formulario de productos -->
-            <div class="col-md-4 border-right">
-                <div class="form-group">
-                    <label for="codigo-producto">Código de producto:</label>
-                    <input type="text" class="form-control" id="codigo-producto" name="codigo-producto">
-                </div>
-
-                <div class="form-group">
-                    <label for="nombre-producto">Nombre de producto:</label>
-                    <select class="form-control" id="nombre-producto" name="nombre-producto">
-                        <option value="" selected disabled>Seleccione un producto</option>
-                        <!-- Opciones de productos -->
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="lista-productos">Lista de productos:</label>
-                    <select class="form-control" id="lista-productos" name="lista-productos">
-                        <option value="" selected disabled>Seleccione una lista</option>
-                        <!-- Opciones de listas de productos -->
-                    </select>
-                </div>
-
-                <button id="btn-agregar-producto" class="btn btn-warning btn-block">Agregar producto</button>
-            </div>
-
-            <!-- Columna derecha: Tabla de productos -->
-            <div class="col-md-8">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead class="thead-warning">
-                            <tr>
-                                <th>Cód.</th>
-                                <th>Nombre</th>
-                                <th>Cantidad</th>
-                                <th>Precio unitario</th>
-                                <th>Importe</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productos-agregados">
-                            <!-- Filas de productos añadidos -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-
-        <!-- Pie de página con botón de cobro -->
-        <footer class="d-flex justify-content-end align-items-center mt-3 border-top pt-2">
-            <span class="mr-2">Total de venta:</span>
-            <input type="text" class="form-control w-25 mr-3" id="total-venta" value="4900" readonly>
-            <button id="btn-cobrar" class="btn btn-warning">Cobrar</button>
-        </footer>
+        </div>
     </div>
 
     <!-- Ventana emergente (Modal) -->
@@ -137,7 +170,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="../static/script.js"></script>
 </body>
 </html>
