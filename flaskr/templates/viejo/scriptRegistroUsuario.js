@@ -39,14 +39,51 @@ formularioRegistro.addEventListener('submit', (evento) => {
     formularioRegistro.reset();
 });
 
-function cerrarFormularioRegistro(){
-    document.getElementById('register-form').style.display='none';
-}
+            
 
-function eliminarCliente(idCliente) {
-    document.getElementById('confirm-delete-client').style.display ='flex';
-    ventaParaEliminar= idCliente;
-}
+    // Cerrar el formulario de Registro de Cliente
+    document.querySelector('#register-form .close-button').addEventListener('click', function() {
+        document.getElementById('register-form').style.display = 'none';
+    });
+
+    
+
+    // Cerrar el modal de Cambio de Usuario
+    document.querySelector('#user-modal .close-button').addEventListener('click', function() {
+        document.getElementById('user-modal').classList.remove('show');
+    });
+
+    // Cerrar el modal de Cambio de Usuario al hacer clic fuera del contenido
+    window.addEventListener('click', function(event) {
+        const userModal = document.getElementById('user-modal');
+        if (event.target === userModal) {
+            userModal.classList.remove('show');
+        }
+    });
+
+    // Cerrar el detalle de cliente
+    document.querySelector('#client-details .close-button').addEventListener('click', function() {
+        document.getElementById('client-details').style.display = 'none';
+    });
+
+    // Cerrar el detalle de venta
+    document.querySelector('#detalle-Venta .close-button').addEventListener('click', function() {
+        document.getElementById('detalle-Venta').style.display = 'none';
+    });
+
+    // Cerrar el confirm-delete-client
+    document.querySelector('#confirm-delete-client .btn-secondary').addEventListener('click', function() {
+        document.getElementById('confirm-delete-client').classList.remove('show');
+    });
+
+    // Cerrar el confirm-delete
+    document.querySelector('#confirm-delete .btn-secondary').addEventListener('click', function() {
+        document.getElementById('confirm-delete').classList.remove('show');
+    });
+    
+
+
+
 
 function confirmarEliminacionCliente(confirmacion){
     if(confirmacion){
@@ -116,9 +153,7 @@ function mostrarMensajeError(mensaje) {
     }, 3000);
 }
 
-function cerrarFormularioDetalle(){
-    document.getElementById("client-details").style.display='none';
-}
+
 let ventaParaEliminar;
 
 function confirmarEliminacionVenta(button) {
@@ -156,9 +191,7 @@ function mostrarDetalleVenta(idCliente, idVenta) {
     detalleVenta.style.display = 'block';
 }
 
-function cerrarVenta() {
-    detalleVenta.style.display = 'none';
-}
+
 
 
 
