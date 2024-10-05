@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+    <!-- Integrar Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Integrar Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tu hoja de estilos personalizada -->
+    <link rel="stylesheet" href="stylesRegistroUsuario.css">
+   
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-dark bg-warning fixed-top">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Registro de Clientes</span>
+            <div>
+                <span class="text-white me-3">Hola, Usuario</span>
+                <button id="change-user-btn" class="btn btn-light btn-sm">Cambiar Usuario</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar bg-dark">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="ventas.html" class="nav-link">Realizar una venta</a></li>
+            <li class="nav-item"><a href="caja.html" class="nav-link">Caja</a></li>
+            <li class="nav-item"><a href="productos.html" class="nav-link">Ver inventario</a></li>
+            <li class="nav-item"><a href="registroDeUsuario.html" class="nav-link">Clientes</a></li>
+            <li class="nav-item"><a href="reporte.html" class="nav-link">Reporte diario</a></li>
+            <li class="nav-item"><a href="estadisticas.html" class="nav-link">Estadísticas</a></li>
+        </ul>
+        <hr class="bg-light">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link">Gestión de usuario</a></li>
+            <li class="nav-item"><a href="menu.html" class="nav-link">Menú principal</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="content">
+        <div class="container-fluid mt-4">
+            <!-- Lista de Clientes -->
+            <div class="client-list mb-4">
+                <h2>Lista de clientes</h2>
+                <ul id="client-list" class="list-group">
+                    <!--clientes existentes-->
+                </ul>
+            </div>
+
+            <!-- Formulario de Registro de Clientes -->
+            <div class="register-form card p-4 mb-4" id="register-form">
+                <span class="close-button">&times;</span>
+                <h2>Registro de Clientes</h2>
+                <form id="formulario-registro">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre/Empresa:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cuit" class="form-label">CUIL/CUIT:</label>
+                        <input type="number" id="cuit" name="cuit" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="razonSocial" class="form-label">Razón Social:</label> 
+                        <input type="text" id="razonSocial" name="razonSocial" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono:</label>
+                        <input type="number" id="telefono" name="telefono" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo Electrónico:</label>
+                        <input type="email" id="correo" name="correo" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar Cliente</button>
+                </form>
+                <!-- Confirmación de Eliminación de Cliente -->
+                <div id="confirm-delete-client" class="confirm-delete-client">
+                    <p>¿Está seguro que desea eliminar el cliente? Se perderán todos los datos del cliente</p>
+                    <button class="btn btn-danger" onclick="confirmarEliminacionCliente(true)">Confirmar</button>
+                    <button class="btn btn-secondary" onclick="confirmarEliminacionCliente(false)">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Detalles del Cliente -->
+            <div class="client-details card p-4 mb-4" id="client-details">
+                <span class="date badge bg-secondary">Fecha: 2024-MM-AA</span>
+                <span class="status badge bg-success">Estado: Activo</span>
+                <span class="close-button">&times;</span>
+                <h2>Detalles del Cliente</h2>
+                <div id="cliente-info" class="mb-3"></div>
+                <div id="ventas-info">
+                    <h3>Historial de ventas</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historial-ventas">
+                            <tr>
+                                <td>1</td>
+                                <td>AAAA/MM/DD</td>
+                                <td>00:00pm</td>
+                                <td>$8950</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1" onclick="imprimirTicket(1)">
+                                        <i class="fas fa-print"></i> Imprimir
+                                    </button>
+                                    <button class="btn btn-sm btn-danger me-1" onclick="confirmarEliminacionVenta(1)">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                    <button class="btn btn-sm btn-info" onclick="mostrarDetalleVenta(1)">
+                                        <i class="fas fa-eye"></i> Ver Detalles
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>AAAA/MM/DD</td>
+                                <td>00:00pm</td>
+                                <td>$18000</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1" onclick="imprimirTicket(2)">
+                                        <i class="fas fa-print"></i> Imprimir
+                                    </button>
+                                    <button class="btn btn-sm btn-danger me-1" onclick="confirmarEliminacionVenta(2)">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                    <button class="btn btn-sm btn-info" onclick="mostrarDetalleVenta(2)">
+                                        <i class="fas fa-eye"></i> Ver Detalles
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>AAAA/MM/DD</td>
+                                <td>00:00pm</td>
+                                <td>$10600</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1" onclick="imprimirTicket(3)">
+                                        <i class="fas fa-print"></i> Imprimir
+                                    </button>
+                                    <button class="btn btn-sm btn-danger me-1" onclick="confirmarEliminacionVenta(3)">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                    <button class="btn btn-sm btn-info" onclick="mostrarDetalleVenta(3)">
+                                        <i class="fas fa-eye"></i> Ver Detalles
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-danger" onclick="eliminarCliente(4)">Eliminar cliente</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Botón de Registrar Cliente Flotante -->
+    <button type="button" class="btn btn-success btn-lg rounded-circle register-client-button" id="registerClientBtn" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar Cliente">
+        <i class="fas fa-user-plus"></i>
+    </button>
+
+    <!-- Modal de Cambio de Usuario -->
+    <div id="user-modal" class="modal-custom">
+        <div class="modal-content-custom">
+            <span class="close-button">&times;</span>
+            <h2>Cambio de Usuario</h2>
+            <form id="change-user-form">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nuevo Usuario:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cambiar Usuario</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mensajes de Error -->
+    <div id="error-message" class="alert alert-danger position-fixed top-50 start-50 translate-middle" style="display: none; z-index: 1000;"></div>
+
+    <!-- Confirmación de Eliminación de Venta -->
+    <div id="confirm-delete" class="confirm-delete">
+        <p>¿Está seguro que desea eliminar esta venta?</p>
+        <button class="btn btn-danger me-2" onclick="confirmarEliminacion(true)">Confirmar</button>
+        <button class="btn btn-secondary" onclick="confirmarEliminacion(false)">Cancelar</button>
+    </div>
+
+    <!-- Modal para Detalles de Venta/Compra -->
+    <div id="detalle-Venta" class="modal-custom">
+        <div class="modal-content-custom">
+            <span class="close-button">&times;</span>
+            <h2>Detalle de Compra/Venta</h2>
+            <div id="detalle-contenido"></div>
+            <button class="btn btn-primary me-2" onclick="imprimirTicket()">Imprimir ticket</button>
+            <button class="btn btn-danger" onclick="eliminarVenta(5)">Eliminar</button>
+        </div>
+    </div>
+
+    <!-- Integrar Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tu script personalizado -->
+    <script src="scriptRegistroUsuario.js"></script>
+   
+</body>
+</html>
