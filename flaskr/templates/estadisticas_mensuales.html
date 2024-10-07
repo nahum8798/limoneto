@@ -1,109 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Limoneto al paso - Ventas</title>
-  <!-- Mantén los estilos de Bootstrap y el archivo CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar con Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="sider-botstrap.css">
+    <style>
+        /* Remueve márgenes innecesarios y ajusta el espaciado */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        /* Mejora la visibilidad con bordes */
+        header, nav, main, footer {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Bordes suaves entre secciones */
+        }
+
+        /* Define divisiones más claras entre el sidebar y el contenido */
+        nav.col-md-2 {
+            border-right: 1px solid rgba(255, 255, 255, 0.2); /* Agrega un borde claro en el sidebar */
+        }
+
+        .col-md-10 {
+            min-height: 100vh;
+            background-color: #f8f9fa; /* Fondo más claro para distinguir el contenido principal del resto */
+            border-left: 1px solid rgba(0, 0, 0, 0.2); /* Borde para el contenido principal */
+        }
+
+        /* Sombra para el header */
+        header {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra sutil para el encabezado */
+        }
+
+        /* Ajuste de colores para mejorar contraste */
+        .bg-warning {
+            background-color: #ffc107 !important; /* Color amarillo */
+            color: #333333; /* Color de texto más oscuro para mejor legibilidad */
+        }
+
+        .navbar {
+            background-color: #ffc107; /* El mismo color del header para mantener consistencia */
+        }
+        .container-fluid > .row {
+            --bs-gutter-x: 0; /* Elimina el espacio entre columnas */
+            --bs-gutter-y: 0;
+        }
+      </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="navbar navbar-dark bg-warning fixed-top">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-3 text-dark h1">Registro de Clientes</span>
+            <div>
+                <span class="text-dark me-4">Hola, Usuario</span>
+                <button id="change-user-btn" class="btn btn-light btn-sm">Cambiar Usuario</button>
+            </div>
+        </div>
+    </header>
 
-<div class="container-fluid p-3">
-  <!-- Encabezado -->
-  <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
-    <span>Hola, usuario</span>
-    <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
-  </header>
+    <!-- Sidebar de navegación principal -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar con col-md-2 -->
+            <nav class="col-md-2 bg-dark text-white vh-100 p-3 pt-5 sticky.top">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href=" "class="nav-link text-white"></a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="ventas.html" class="nav-link text-white">Realizar una venta</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="caja.html" class="nav-link text-white">Caja</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="productos.html" class="nav-link text-white">Ver inventario</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="registroDeUsuario.html" class="nav-link text-white">Clientes</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="reporte.html" class="nav-link text-white">Reporte diario</a></li>
+                    <li class="list-group-item mb-4 bg-dark text-white"><a href="estadisticas.html" class="nav-link text-white">Estadísticas</a></li>
+                </ul>
+                <hr class="bg-light">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-3"><a href="#" class="nav-link text-white">Gestión de usuario</a></li>
+                    <li class="nav-item mb-3"><a href="menu.html" class="nav-link text-white">Menú principal</a></li>
+                    <li class="nav-item mb-3"><a href="index.html" class="nav-link text-white">Cerrar sesión</a></li>
+                </ul>
+            </nav>
 
-  <!-- Barra de navegación -->
-  <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
-    <button class="btn btn-link text-dark">&#9776;</button>
-    <h5 class="mb-0">Estadísticas mensuales</h5>
-    <a href="menu.html" class="btn btn-dark">Menú principal</a>
-  </nav>
+            <!-- Contenido Principal con col-md-10 -->
+            <main class="col-md-10 ms-auto">
+                <div class="container-fluid mb-5 p-3">
+                  <!-- Barra de navegación -->
+                    <nav class="d-flex justify-content-between align-items-center  my-5 bg-whitesmoke p-2">
+                        <h5 class="mb-3">Estadísticas mensuales</h5>
+                        <a href="menu.html" class="btn btn-dark">Menú principal</a>
+                    </nav>
 
-  <!-- Fecha actual -->
-  <div class="d-flex justify-content-start mb-3">
-    <span class="mr-2">Fecha: </span><span id="dateAct"></span>
-  </div>
+                    <!-- Fecha actual -->
+                    <div class="d-flex justify-content-start mb-3">
+                        <span class="mr-2">Fecha: </span><span id="dateAct"></span>
+                    </div>
 
-  <!-- Estadísticas de ventas -->
-  <main class="row">
-    <div class="col-md-3">
-      <!-- Ventas totales -->
-      <div class="border p-3 mb-3">
-        <h6>Ventas totales</h6>
-        <p class="font-weight-bold">$768,900</p>
-      </div>
+                    <!-- Estadísticas de ventas -->
+                    <div class="row">
+                        <div class="col-md-3">
+                        <!-- Ventas totales -->
+                        <div class="border p-3 mb-5">
+                            <h6>Ventas totales</h6>
+                            <p class="font-weight-bold">$768,900</p>
+                        </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                        <!-- Unidades vendidas -->
+                        <div class="border p-3 mb-3">
+                            <h6>Unidades vendidas</h6>
+                            <p class="font-weight-bold">8,745</p>
+                        </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                        <!-- Costo total -->
+                        <div class="border p-3 mb-3">
+                            <h6>Costo total</h6>
+                            <p class="font-weight-bold">$345,900</p>
+                        </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                        <!-- Ganancia -->
+                        <div class="border p-3 mb-3">
+                            <h6>Ganancia</h6>
+                            <p class="font-weight-bold">$423,000</p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Detalles de productos -->
+                    <section class="table-responsive">
+                        <h5>Detalles de productos</h5>
+                        <table class="table table-bordered table-striped">
+                        <thead class="thead-warning">
+                            <tr>
+                            <th>SKU</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Ubicación</th>
+                            <th>Cantidad</th>
+                            <th>Ingresos</th>
+                            <th>Costo</th>
+                            <th>Margen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí se llenarán las filas con productos -->
+                            <tr>
+                            <td>001</td>
+                            <td>Producto A</td>
+                            <td>Alfajores</td>
+                            <td>Sucursal A</td>
+                            <td>50</td>
+                            <td>$10,000</td>
+                            <td>$7,000</td>
+                            <td>30%</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </section>
+                </div>
+            </main>
+        </div>    
     </div>
-    
-    <div class="col-md-3">
-      <!-- Unidades vendidas -->
-      <div class="border p-3 mb-3">
-        <h6>Unidades vendidas</h6>
-        <p class="font-weight-bold">8,745</p>
-      </div>
-    </div>
-    
-    <div class="col-md-3">
-      <!-- Costo total -->
-      <div class="border p-3 mb-3">
-        <h6>Costo total</h6>
-        <p class="font-weight-bold">$345,900</p>
-      </div>
-    </div>
-    
-    <div class="col-md-3">
-      <!-- Ganancia -->
-      <div class="border p-3 mb-3">
-        <h6>Ganancia</h6>
-        <p class="font-weight-bold">$423,000</p>
-      </div>
-    </div>
-  </main>
 
-  <!-- Detalles de productos -->
-  <section class="table-responsive">
-    <h5>Detalles de productos</h5>
-    <table class="table table-bordered table-striped">
-      <thead class="thead-warning">
-        <tr>
-          <th>SKU</th>
-          <th>Nombre</th>
-          <th>Categoría</th>
-          <th>Ubicación</th>
-          <th>Cantidad</th>
-          <th>Ingresos</th>
-          <th>Costo</th>
-          <th>Margen</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Aquí se llenarán las filas con productos -->
-        <tr>
-          <td>001</td>
-          <td>Producto A</td>
-          <td>Alfajores</td>
-          <td>Sucursal A</td>
-          <td>50</td>
-          <td>$10,000</td>
-          <td>$7,000</td>
-          <td>30%</td>
-        </tr>
-        <!-- Más filas de productos -->
-      </tbody>
-    </table>
-  </section>
-</div>
-
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="statistics.js"></script>
-
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

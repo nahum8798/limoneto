@@ -1,136 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de usuarios - Limoneto al paso</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar con Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="sider-botstrap.css">
+    <style>
+        /* Estilos generales */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: whitesmoke;
+        }
+
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+            
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        /* Estilos para el sidebar y contenido */
+        .content {
+            margin-left: 250px; /* Ajuste al ancho del sidebar */
+            padding: 20px;
+            margin-top: 56px; /* Ajuste al alto de la barra de navegación */
+            height: calc(100vh - 56px);
+            flex: 1; /* Tomar el resto del espacio */
+            padding: 1px; /* Ajustar el padding para acercar al header */
+            overflow: hidden; /* Evitar el scroll en el contenido principal */
+            overflow-y: auto;
+            background-color: whitesmoke;
+        }
+
+        nav.col-md-2 {
+            position: fixed;
+            top: 56px; /* Ajuste para no superponer la barra de navegación */
+            left: 0;
+            height: calc(100vh - 56px); /* Calcula la altura total excluyendo el header */
+            background-color: #343a40; /* Color oscuro del sidebar */
+            padding: 60px;
+        }
+
+        .col-md-10 {
+            min-height: 100vh;
+            background-color: #f8f9fa; /* Fondo más claro para distinguir el contenido principal */
+            padding-top: 50px; /* Ajuste por la barra de navegación */
+        }
+
+        /* Estilos adicionales para barra de navegación */
+        header {
+            background-color: #ffc107; /* El mismo color del header */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra sutil para el encabezado */
+        }
+
+        /* Ajuste de colores para mejorar contraste */
+        .bg-warning {
+            background-color: #ffc107 !important; /* Color amarillo */
+            color: #333333; /* Color de texto más oscuro para mejor legibilidad */
+        }
+        
+        .navbar {
+            background-color: #ffc107;
+        }
+
+        /* Elimina el espacio entre columnas */
+        .container-fluid > .row {
+            --bs-gutter-x: 0;
+            --bs-gutter-y: 0;
+        }
+    </style>
 </head>
-<body class="bg-light">
-  <!-- Encabezado -->
-  <div class="container-fluid p-3">
-    <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
-      <div class="d-flex align-items-center">
-        <i class="fas fa-bars mr-2"></i>
-        <h5 class="mb-0">Gestión de usuarios - <strong>Limoneto al paso</strong></h5>
-      </div>
-      <div class="d-flex align-items-center">
-        <span class="mr-3">Hola, Florencia</span>
-        <button class="btn btn-outline-secondary">Cambiar usuario</button>
-      </div>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-dark bg-warning fixed-top">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-3 h1">Registro de Clientes</span>
+            <div>
+                <span class="text-white me-3">Hola, Usuario</span>
+                <button id="change-user-btn" class="btn btn-light btn-sm">Cambiar Usuario</button>
+            </div>
+        </div>
     </header>
 
-    <div class="row mt-3">
-      <!-- Barra lateral -->
-      <aside class="col-md-3 bg-warning p-3">
-        <h4>Gestión de usuarios</h4>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <button class="btn btn-link text-dark" onclick="editarUsuario('Lautaro Palma', 'admin')">Lautaro Palma - admin</button>
-          </li>
-          <li class="list-group-item">
-            <button class="btn btn-link text-dark" onclick="editarUsuario('María Becerra', 'cajero')">María Becerra - cajero</button>
-          </li>
-          <li class="list-group-item">
-            <button class="btn btn-link text-dark" onclick="editarUsuario('Emilia Mernes', 'cajero')">Emilia Mernes - cajero</button>
-          </li>
-          <li class="list-group-item">
-            <button class="btn btn-link text-dark" onclick="editarUsuario('Diego Torres', 'cajero')">Diego Torres - cajero</button>
-          </li>
-        </ul>
-      </aside>
+    <!-- Sidebar de navegación principal -->
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 bg-dark text-white vh-100 p-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mb-4 bg-dark  text-white"><a href="ventas.html" class="nav-link text-white">Realizar una venta</a></li>
+                    <li class="list-group-item  mb-4 bg-dark text-white"><a href="caja.html" class="nav-link text-white">Caja</a></li>
+                    <li class="list-group-item  mb-4  bg-dark text-white"><a href="productos.html" class="nav-link text-white">Ver inventario</a></li>
+                    <li class="list-group-item  mb-4  bg-dark text-white"><a href="registroDeUsuario.html" class="nav-link text-white">Clientes</a></li>
+                    <li class="list-group-item  mb-4  bg-dark text-white"><a href="reporte.html" class="nav-link text-white">Reporte diario</a></li>
+                    <li class="list-group-item  mb-4  bg-dark text-white"><a href="estadisticas.html" class="nav-link text-white">Estadísticas</a></li>
+                </ul>
+                <hr class="bg-light">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-4"><a href="#" class="nav-link text-white">Gestión de usuario</a></li>
+                    <li class="nav-item mb-3"><a href="menu.html" class="nav-link text-white">Menú principal</a></li>
+                    <li class="nav-item mb-3"><a href="index.html" class="nav-link text-white">Cerrar sesión</a></li>
+                </ul>
+            </nav>
 
-      <!-- Contenido principal -->
-      <main class="col-md-9">
-        <div class="config-message text-center" id="configMessage">
-          <i class="fa fa-cog fa-2x mb-3"></i>
-          <p class="lead">Seleccionar un usuario para editar su configuración</p>
+            <!-- Contenido Principal -->
+            <main class="col-md-10 my-4 content">
+                <div class="row">
+                    <!-- Barra lateral de gestión de usuarios -->
+                    <aside class="col-md-4  bg-whitesmoke p-3">
+                        <h4>Gestión de usuarios</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item mb-4">
+                                <button class="btn btn-link text-dark" onclick="editarUsuario('Lautaro Palma', 'admin')">Lautaro Palma - admin</button>
+                            </li>
+                            <li class="list-group-item mb-4">
+                                <button class="btn btn-link text-dark" onclick="editarUsuario('María Becerra', 'cajero')">María Becerra - cajero</button>
+                            </li>
+                            <li class="list-group-item mb-4">
+                                <button class="btn btn-link text-dark" onclick="editarUsuario('Emilia Mernes', 'cajero')">Emilia Mernes - cajero</button>
+                            </li>
+                            <li class="list-group-item mb-4">
+                                <button class="btn btn-link text-dark" onclick="editarUsuario('Diego Torres', 'cajero')">Diego Torres - cajero</button>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <!-- Formulario de edición de usuario -->
+                    <section class="col-md-5 bg-whitesmoke">
+                        <div class="config-message text-center" id="configMessage">
+                            <i class="fa fa-cog fa-2x mb-3"></i>
+                            <p class="lead">Seleccionar un usuario para editar su configuración</p>
+                        </div>
+
+                        <div class="user-form bg-white p-4 border rounded" id="userForm" style="display: none;">
+                            <h3>Editar usuario: <span id="usuarioNombre"></span></h3>
+                            <form>
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="apellido">Apellido</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dni">DNI</label>
+                                    <input type="text" class="form-control" id="dni" name="dni" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fecha">Fecha de nacimiento (AAAA/MM/DD)</label>
+                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="passwordConfirm">Confirmar contraseña</label>
+                                    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Tipo de usuario</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="admin" name="tipoUsuario" value="Administrador">
+                                        <label class="form-check-label" for="admin">Administrador</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="empleado" name="tipoUsuario" value="Empleado">
+                                        <label class="form-check-label" for="empleado">Empleado</label>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="cancelarEdicion()">Cancelar</button>
+                                    <button type="submit" class="btn btn-warning">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </main>
         </div>
-
-        <!-- Formulario de edición de usuario -->
-        <div class="user-form bg-white p-4 border rounded" id="userForm" style="display: none;">
-          <h3>Editar usuario: <span id="usuarioNombre"></span></h3>
-          <form>
-            <div class="form-group">
-              <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" required>
-            </div>
-
-            <div class="form-group">
-              <label for="apellido">Apellido</label>
-              <input type="text" class="form-control" id="apellido" name="apellido" required>
-            </div>
-
-            <div class="form-group">
-              <label for="dni">DNI</label>
-              <input type="text" class="form-control" id="dni" name="dni" required>
-            </div>
-
-            <div class="form-group">
-              <label for="direccion">Dirección</label>
-              <input type="text" class="form-control" id="direccion" name="direccion" required>
-            </div>
-
-            <div class="form-group">
-              <label for="telefono">Teléfono</label>
-              <input type="text" class="form-control" id="telefono" name="telefono" required>
-            </div>
-
-            <div class="form-group">
-              <label for="fecha">Fecha de nacimiento (AAAA/MM/DD)</label>
-              <input type="date" class="form-control" id="fecha" name="fecha" required>
-            </div>
-
-            <div class="form-group">
-              <label for="password">Contraseña</label>
-              <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-
-            <div class="form-group">
-              <label for="passwordConfirm">Confirmar contraseña</label>
-              <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required>
-            </div>
-
-            <div class="form-group">
-              <label>Tipo de usuario</label><br>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="admin" name="tipoUsuario" value="Administrador">
-                <label class="form-check-label" for="admin">Administrador</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="empleado" name="tipoUsuario" value="Empleado">
-                <label class="form-check-label" for="empleado">Empleado</label>
-              </div>
-            </div>
-
-            <!-- Botones de acción -->
-            <div class="d-flex justify-content-between">
-              <button type="button" class="btn btn-outline-secondary" onclick="cancelarEdicion()">Cancelar</button>
-              <button type="submit" class="btn btn-warning">Guardar</button>
-            </div>
-          </form>
-        </div>
-      </main>
     </div>
-  </div>
 
-  <script>
-    function editarUsuario(nombre, tipo) {
-      document.getElementById('userForm').style.display = 'block';
-      document.getElementById('configMessage').style.display = 'none';
-      document.getElementById('usuarioNombre').textContent = nombre;
-    }
-
-    function cancelarEdicion() {
-      document.getElementById('userForm').style.display = 'none';
-      document.getElementById('configMessage').style.display = 'block';
-    }
-  </script>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para cambiar la visualización del formulario de edición de usuarios
+        function editarUsuario(nombre, tipoUsuario) {
+            document.getElementById('usuarioNombre').textContent = nombre;
+            document.getElementById('userForm').style.display = 'block';
+            document.getElementById('configMessage').style.display = 'none';
+        }
+        function cancelarEdicion() {
+            document.getElementById('userForm').style.display = 'none';
+            document.getElementById('configMessage').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
