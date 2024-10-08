@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Diario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #faf4eb;
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 250px;
+            background-color: #343a40;
+            padding-top: 70px;
+        }
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .category {
+            border: 1px solid #dcdcdc;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .totales-item {
+            font-weight: bold;
+        }
+        .btn-container-categorias button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .btn-faltantes {
+            background-color: #f5dd35;
+            border-color: #f5dd35;
+            color: black;
+        }
+        .btn-agregar {
+            background-color: #6af56a;
+            border-color: #6af56a;
+            color: black;
+        }
+        .btn-eliminar {
+            background-color: #ff4c4c;
+            border-color: #ff4c4c;
+            color: white;
+        }
+        .navbar {
+            z-index: 1100; /* Para que la barra de navegación esté sobre el sidebar */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-warning fixed-top">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Reporte Diario</span>
+            <div>
+                <span class="text-dark me-4">Hola, Usuario</span>
+                <button id="change-user-btn" class="btn btn-light btn-sm">Cambiar Usuario</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="ventas.html" class="nav-link">Realizar una venta</a></li>
+            <li class="nav-item"><a href="caja.html" class="nav-link">Caja</a></li>
+            <li class="nav-item"><a href="productos.html" class="nav-link">Ver inventario</a></li>
+            <li class="nav-item"><a href="registroDeUsuario.html" class="nav-link">Clientes</a></li>
+            <li class="nav-item"><a href="reporte.html" class="nav-link">Reporte diario</a></li>
+            <li class="nav-item"><a href="estadisticas.html" class="nav-link">Estadísticas</a></li>
+            <li class="nav-item"><a href="menu.html" class="nav-link">Menú principal</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content">
+        <div class="container text-center my-5">
+            <h2>Inventario</h2>
+            <p>Limoneto al paso</p>
+
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <div class="category">Alfajores</div>
+                    <div class="category">Boxs</div>
+                    <div class="category">Donas</div>
+                    <div class="category">Muffins - Cupcakes</div>
+                    <div class="category">Yogures</div>
+                    <div class="category">Minitortas - cheesecake familiares</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category">Bebidas</div>
+                    <div class="category">Cafetería clásica</div>
+                    <div class="category">Desayunos</div>
+                    <div class="category">Panificado</div>
+                    <div class="category">Promociones del día</div>
+                    <div class="category">Minitortas - cheesecake eventos</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category">Brownies</div>
+                    <div class="category">Cafetería especial</div>
+                    <div class="category">Ensalada de frutas</div>
+                    <div class="category">Rolls</div>
+                    <div class="category">Promociones amigos</div>
+                    <div class="category">Minitortas - cheesecake individuales</div>
+                </div>
+            </div>
+
+            <div class="row my-4">
+                <div class="col-md-6">
+                    <div class="totales-item">Cantidad de productos totales en stock: <span class="total-stock"></span></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="totales-item">Cantidad de productos faltantes: <span class="total-faltantes"></span></div>
+                </div>
+            </div>
+
+            <div class="row btn-container-categorias mb-1">
+                <div class="col-md-4">
+                    <button class="btn btn-faltantes">Ver productos faltantes</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-agregar">Agregar categoría</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-eliminar">Eliminar categoría</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agregar JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
