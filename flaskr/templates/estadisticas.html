@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../static/sidebar.css">
+  <link rel="stylesheet" href="../static/styles-ventas.css">
+  <link rel="stylesheet" href="../static//styles-statistics.css">
 </head>
 <body>
 
@@ -25,70 +28,85 @@
     <button id="btn-seleccionar-cliente" class="btn btn-dark">Seleccionar cliente</button>
   </nav>
 
-  <!-- Selector de estadísticas -->
-  <div class="d-flex justify-content-between my-3">
-    <button class="btn btn-warning" onclick="window.location.href='estadisticas_dia.html'">Ver estadísticas por día</button>
-    <button class="btn btn-warning" onclick="window.location.href='estadisticas_mensuales.html'">Ver estadísticas por mes</button>
-  </div>
-
-  <!-- Fecha actual -->
-  <div class="d-flex justify-content-start mb-3">
-    <span class="mr-2">Fecha: </span><span id="dateAct"></span>
-  </div>
-
-  <!-- Contenido principal -->
-  <main class="row">
-    <div class="col-md-6">
-      <!-- Resumen de estadísticas de ventas -->
-      <div class="border p-3">
-        <h5>Estadísticas de ventas</h5>
-        <p>Total de productos vendidos: 105</p>
-        <p>Total de ventas: $0000</p>
-        <p>Total de costos: $0000</p>
-        <p>Total de ganancias: $0000</p>
-      </div>
+  <div class="flex-content">
+    <div class="sidebar">
+      <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="../static/images/carro.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="caja.html" class="nav-link text-white"><img src="../static/images/caja.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="productos.html" class="nav-link text-white"><img src="../static/images/inventario.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="registroDeUsuario.html" class="nav-link text-white"><img src="../static/images/clients.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="reporte.html" class="nav-link text-white"><img src="../static/images/estadistica.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="estadisticas.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
     </div>
+    <div class="main-cont">
+          <!-- Selector de estadísticas -->
+      <div class="d-flex justify-content-between my-3">
+        <button class="btn btn-warning" onclick="window.location.href='estadisticas_dia.html'">Ver estadísticas por día</button>
+        <button class="btn btn-warning" onclick="window.location.href='estadisticas_mensuales.html'">Ver estadísticas por mes</button>
+      </div>
 
-    <div class="col-md-6">
-      <!-- Detalle de ventas -->
-      <div class="border p-3">
-        <h5>Detalle de ventas</h5>
-        <div class="table-responsive">
-          <table class="table table-bordered table-striped">
-            <thead class="thead-warning">
-              <tr>
-                <th>#Venta</th>
-                <th>Hora</th>
-                <th>Precio</th>
-                <th>Acciones</th> <!-- Nueva columna para el botón de detalles -->
-              </tr>
-            </thead>
-            <tbody id="item-sales">
-              <tr>
-                <td>#Venta 1</td>
-                <td>08:30 am</td>
-                <td>$2450</td>
-                <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(1)">Ver detalles</button></td> <!-- Estilo ajustado -->
-              </tr>
-              <tr>
-                <td>#Venta 2</td>
-                <td>09:15 am</td>
-                <td>$3000</td>
-                <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(2)">Ver detalles</button></td>
-              </tr>
-              <tr>
-                <td>#Venta 3</td>
-                <td>10:00 am</td>
-                <td>$1500</td>
-                <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(3)">Ver detalles</button></td>
-              </tr>
-              <!-- Más ventas... -->
-            </tbody>
-          </table>
+      <!-- Fecha actual -->
+      <div class="d-flex justify-content-start mb-3">
+        <span class="mr-2">Fecha: </span><span id="dateAct"></span>
+      </div>
+
+      <!-- Contenido principal -->
+      <main class="row">
+        <div class="col-md-6">
+          <!-- Resumen de estadísticas de ventas -->
+          <div class="border p-3">
+            <h5>Estadísticas de ventas</h5>
+            <p>Total de productos vendidos: 105</p>
+            <p>Total de ventas: $0000</p>
+            <p>Total de costos: $0000</p>
+            <p>Total de ganancias: $0000</p>
+          </div>
         </div>
-      </div>
+
+        <div class="col-md-6">
+          <!-- Detalle de ventas -->
+          <div class="border p-3">
+            <h5>Detalle de ventas</h5>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <thead class="thead-warning">
+                  <tr>
+                    <th>#Venta</th>
+                    <th>Hora</th>
+                    <th>Precio</th>
+                    <th>Acciones</th> <!-- Nueva columna para el botón de detalles -->
+                  </tr>
+                </thead>
+                <tbody id="item-sales">
+                  <tr>
+                    <td>#Venta 1</td>
+                    <td>08:30 am</td>
+                    <td>$2450</td>
+                    <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(1)">Ver detalles</button></td> <!-- Estilo ajustado -->
+                  </tr>
+                  <tr>
+                    <td>#Venta 2</td>
+                    <td>09:15 am</td>
+                    <td>$3000</td>
+                    <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(2)">Ver detalles</button></td>
+                  </tr>
+                  <tr>
+                    <td>#Venta 3</td>
+                    <td>10:00 am</td>
+                    <td>$1500</td>
+                    <td><button class="btn btn-warning btn-sm" onclick="verDetallesVenta(3)">Ver detalles</button></td>
+                  </tr>
+                  <!-- Más ventas... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
-  </main>
+    
+  </div>
+
+  
 
   <!-- Pie de página -->
   <footer class="d-flex justify-content-end align-items-center mt-3 border-top pt-2">

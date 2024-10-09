@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles-ventas.css">
+    <link rel="stylesheet" href="../static/sidebar.css"> 
+</head>
+<body>
+    <div class="container-fluid p-3">
+        <!-- Cabecera -->
+        <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
+            <span>Hola, Florencia</span>
+            <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
+        </header>
+        <nav class="navbar navbar-expand-md bg-warning p-2">
+            <h5 class="mb-0">Realizar una venta</h5>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button id="btn-seleccionar-cliente" class="btn btn-dark">Seleccionar cliente</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="flex-content">
+            <div class="sidebar">
+                <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="../static/images/carro.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="caja.html" class="nav-link text-white"><img src="../static/images/caja.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="productos.html" class="nav-link text-white"><img src="../static/images/inventario.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="registroDeUsuario.html" class="nav-link text-white"><img src="../static/images/clients.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="reporte.html" class="nav-link text-white"><img src="../static/images/estadistica.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="estadisticas.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
+            </div>
+            <div class="content">
+                
+                <div class="row">
+                    <!-- Ventas de mañana -->
+                    <div class="col-md-6">
+                        <div class="ventas-contenedor">
+                            <h5>Ventas caja mañana</h5>
+                            <div class="ventas-lista">
+                                <ul>
+                                    <li>#Venta 1 - 08:30 am - $2450
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalVenta1">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 2 - 08:57 am - $2500
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 3 - 09:12 am - $3100
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 4 - 09:35 am - $2600 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 5 - 10:03 am - $10500 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 3 - 10:12 am - $5470 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 4 - 10:30 am - $4300 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 5 - 11:15 am - $1200 <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h6>Total de ventas caja mañana: <strong>$35690</strong></h6>
+                        </div>
+                    </div>
+        
+                    <!-- Ventas de tarde -->
+                    <div class="col-md-6">
+                        <div class="ventas-contenedor">
+                            <h5>Ventas caja tarde</h5>
+                            <div class="ventas-lista">
+                                <ul>
+                                    <li>#Venta 1 - 16:30 pm - $5500
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 2 - 17:05 pm - $2500
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 3 - 17:43 pm - $3100
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 4 - 18:06 pm - $8950
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 5 - 18:15 pm - $4200
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 3 - 18:43 pm - $7500
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 4 - 19:30 pm - $2550
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                    <li>#Venta 5 - 20:15 pm - $7980
+                                        <span class="icono-ojo" data-toggle="modal" data-target="#modalDescripcion">&#128065;</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h6>Total de ventas caja tarde: <strong>$45260</strong></h6>
+                        </div>
+                    </div>
+                </div>
+        
+               <!-- Totales generales -->
+                <div class="totales mt-4 d-flex justify-content-between align-items-center">
+                    <div class="totales-izquierda">
+                        <p>Descuentos aplicados: <strong>$5400</strong> <span class="icono-ojo" data-toggle="modal" data-target="#modalDescuentos">&#128065;</span></p>
+                        <p>Total de ventas efectivo: <strong>$34500</strong></p>
+                        <p>Total de ventas transferencia: <strong>$32700</strong></p>
+                        <p>Total de ventas tarjeta: <strong>$13750</strong></p>
+                    </div>
+                    <div class="totales-derecha text-right">
+                        <h4>Total de ventas del día: <strong>$80950</strong></h4>
+                        <button class="btn btn-outline-success mt-2">
+                            <span class="icono-impresora">&#128424;</span> Imprimir reporte diario
+                        </button>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        
+    </div> 
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/script.js"></script>
+    <script src="../static/sidebar.js"></script>
+    <script>
+        function editarUsuario(nombre, tipo) {
+          document.getElementById('userForm').style.display = 'block';
+          document.getElementById('configMessage').style.display = 'none';
+          document.getElementById('usuarioNombre').textContent = nombre;
+        }
+    
+        function cancelarEdicion() {
+          document.getElementById('userForm').style.display = 'none';
+          document.getElementById('configMessage').style.display = 'block';
+        }
+      </script>
+</body>
+</html>

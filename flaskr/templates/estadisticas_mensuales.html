@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../static/styles-statistics.css">
+  <link rel="stylesheet" href="../static/sidebar.css">
 </head>
 <body>
 
@@ -24,79 +26,87 @@
     <h5 class="mb-0">Estadísticas mensuales</h5>
     <a href="menu.html" class="btn btn-dark">Menú principal</a>
   </nav>
+  <div class="flex-content">
+    <div class="sidebar">
+      <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="../static/images/carro.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="caja.html" class="nav-link text-white"><img src="../static/images/caja.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="productos.html" class="nav-link text-white"><img src="../static/images/inventario.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="registroDeUsuario.html" class="nav-link text-white"><img src="../static/images/clients.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="reporte.html" class="nav-link text-white"><img src="../static/images/estadistica.png" alt=""></a></div>
+      <div class="sidebar-item"><a href="estadisticas.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
+    </div>
+    <div class="main-cont">
+       <!-- Estadísticas de ventas -->
+      <main class="row">
+        <div class="col-md-3">
+          <!-- Ventas totales -->
+          <div class="border p-3 mb-3">
+            <h6>Ventas totales</h6>
+            <p class="font-weight-bold">$768,900</p>
+          </div>
+        </div>
+      
+        <div class="col-md-3">
+          <!-- Unidades vendidas -->
+          <div class="border p-3 mb-3">
+            <h6>Unidades vendidas</h6>
+            <p class="font-weight-bold">8,745</p>
+          </div>
+        </div>
+      
+        <div class="col-md-3">
+          <!-- Costo total -->
+          <div class="border p-3 mb-3">
+            <h6>Costo total</h6>
+            <p class="font-weight-bold">$345,900</p>
+          </div>
+        </div>
+      
+        <div class="col-md-3">
+          <!-- Ganancia -->
+          <div class="border p-3 mb-3">
+            <h6>Ganancia</h6>
+            <p class="font-weight-bold">$423,000</p>
+          </div>
+        </div>
+      </main>
 
-  <!-- Fecha actual -->
-  <div class="d-flex justify-content-start mb-3">
-    <span class="mr-2">Fecha: </span><span id="dateAct"></span>
+      <!-- Detalles de productos -->
+      <section class="table-responsive">
+        <h5>Detalles de productos</h5>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-warning">
+            <tr>
+              <th>SKU</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Ubicación</th>
+              <th>Cantidad</th>
+              <th>Ingresos</th>
+              <th>Costo</th>
+              <th>Margen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se llenarán las filas con productos -->
+            <tr>
+              <td>001</td>
+              <td>Producto A</td>
+              <td>Alfajores</td>
+              <td>Sucursal A</td>
+              <td>50</td>
+              <td>$10,000</td>
+              <td>$7,000</td>
+              <td>30%</td>
+            </tr>
+            <!-- Más filas de productos -->
+          </tbody>
+        </table>
+      </section>
+    </div>
   </div>
 
-  <!-- Estadísticas de ventas -->
-  <main class="row">
-    <div class="col-md-3">
-      <!-- Ventas totales -->
-      <div class="border p-3 mb-3">
-        <h6>Ventas totales</h6>
-        <p class="font-weight-bold">$768,900</p>
-      </div>
-    </div>
-    
-    <div class="col-md-3">
-      <!-- Unidades vendidas -->
-      <div class="border p-3 mb-3">
-        <h6>Unidades vendidas</h6>
-        <p class="font-weight-bold">8,745</p>
-      </div>
-    </div>
-    
-    <div class="col-md-3">
-      <!-- Costo total -->
-      <div class="border p-3 mb-3">
-        <h6>Costo total</h6>
-        <p class="font-weight-bold">$345,900</p>
-      </div>
-    </div>
-    
-    <div class="col-md-3">
-      <!-- Ganancia -->
-      <div class="border p-3 mb-3">
-        <h6>Ganancia</h6>
-        <p class="font-weight-bold">$423,000</p>
-      </div>
-    </div>
-  </main>
-
-  <!-- Detalles de productos -->
-  <section class="table-responsive">
-    <h5>Detalles de productos</h5>
-    <table class="table table-bordered table-striped">
-      <thead class="thead-warning">
-        <tr>
-          <th>SKU</th>
-          <th>Nombre</th>
-          <th>Categoría</th>
-          <th>Ubicación</th>
-          <th>Cantidad</th>
-          <th>Ingresos</th>
-          <th>Costo</th>
-          <th>Margen</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Aquí se llenarán las filas con productos -->
-        <tr>
-          <td>001</td>
-          <td>Producto A</td>
-          <td>Alfajores</td>
-          <td>Sucursal A</td>
-          <td>50</td>
-          <td>$10,000</td>
-          <td>$7,000</td>
-          <td>30%</td>
-        </tr>
-        <!-- Más filas de productos -->
-      </tbody>
-    </table>
-  </section>
+ 
 </div>
 
 <!-- Scripts -->

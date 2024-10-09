@@ -1,0 +1,38 @@
+body {
+    background-color: #faf4eb;
+}
+
+.category {
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.totales-item {
+    font-weight: bold;
+}
+.btn-container-categorias button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.btn-faltantes {
+    background-color: #f5dd35;
+    border-color: #f5dd35;
+    color: black;
+}
+.btn-agregar {
+    background-color: #6af56a;
+    border-color: #6af56a;
+    color: black;
+}
+.btn-eliminar {
+    background-color: #ff4c4c;
+    border-color: #ff4c4c;
+    color: white;
+}
+.navbar {
+    z-index: 1100; /* Para que la barra de navegación esté sobre el sidebar */
+}

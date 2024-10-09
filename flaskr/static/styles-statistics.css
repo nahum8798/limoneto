@@ -1,0 +1,11 @@
+/* main content */
+.flex-content {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 0;
+}
+
+.content {
+    width: 90%;
+    margin-left: 0%;
+}

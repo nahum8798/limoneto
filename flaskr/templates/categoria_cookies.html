@@ -8,139 +8,153 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- FontAwesome para los íconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <link rel="stylesheet" href="../static/sidebar.css">
+  <link rel="stylesheet" href="../static/categories.css">
+  <!-- <link rel="stylesheet" href="../static/styles-ventas.css"> -->
 </head>
 <body>
 
-  <!-- Contenido principal -->
-  <section class="main-content container mt-4">
-    <div class="header d-flex justify-content-between align-items-center border-bottom pb-2">
-      <span>Hola, usuario</span>
-      <button type="button" class="btn btn-outline-secondary">Cambiar usuario</button>
-    </div>
-
+  <div class="container-fluid p-3">
+    <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
+      <span>Hola, Florencia</span>
+      <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
+    </header>
     <nav class="d-flex justify-content-between align-items-center my-3 bg-warning p-2">
       <button class="btn btn-link text-dark">&#9776;</button>
       <h5 class="mb-0 text-center w-100">Categoria</h5>
     </nav>
-
-    <!-- Sección de productos por categorías -->
-    <div class="category-heading mb-3">
-      <h5>Cookies</h5>
-    </div>
-
-    <!-- Tabs para Tamaño Chico y Tamaño Grande -->
-    <ul class="nav nav-tabs" id="cookieTabs" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="tab-chico" data-toggle="tab" href="#tamano-chico" role="tab" aria-controls="tamano-chico" aria-selected="true">Tamaño Chico</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="tab-grande" data-toggle="tab" href="#tamano-grande" role="tab" aria-controls="tamano-grande" aria-selected="false">Tamaño Grande</a>
-      </li>
-    </ul>
-
-    <div class="tab-content mt-4" id="cookieTabsContent">
-      <!-- Sección Tamaño Chico -->
-      <div class="tab-pane fade show active" id="tamano-chico" role="tabpanel" aria-labelledby="tab-chico">
-        <h6>Tamaño Chico</h6>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead class="thead-dark">
-              <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Disponible</th>
-                <th>Min</th>
-                <th>Max</th>
-                <th>Precio</th>
-                <th>Estado</th>
-                <th>Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>001</td>
-                <td>Cookie avena C</td>
-                <td>5</td>
-                <td>2</td>
-                <td>7</td>
-                <td>$1600</td>
-                <td>Suficiente</td>
-                <td>
-                  <button class="btn btn-warning btn-sm" onclick="openEditModal('001')">Editar</button>
-                  <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
-                </td>
-              </tr>
-              <tr>
-                <td>002</td>
-                <td>Cookie chocolate C</td>
-                <td>3</td>
-                <td>2</td>
-                <td>6</td>
-                <td>$1500</td>
-                <td>Por agotarse</td>
-                <td>
-                  <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
-                  <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+    <div class="flex-content">
+      <div class="sidebar">
+        <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="../static/images/carro.png" alt=""></a></div>
+        <div class="sidebar-item"><a href="caja.html" class="nav-link text-white"><img src="../static/images/caja.png" alt=""></a></div>
+        <div class="sidebar-item"><a href="productos.html" class="nav-link text-white"><img src="../static/images/inventario.png" alt=""></a></div>
+        <div class="sidebar-item"><a href="registroDeUsuario.html" class="nav-link text-white"><img src="../static/images/clients.png" alt=""></a></div>
+        <div class="sidebar-item"><a href="reporte.html" class="nav-link text-white"><img src="../static/images/estadistica.png" alt=""></a></div>
+        <div class="sidebar-item"><a href="estadisticas.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
+      </div>
+      <div class="main-flex-content">
+          <!-- Sección de productos por categorías -->
+          <div class="category-heading mb-3">
+            <h5>Cookies</h5>
+          </div>
+  
+          <!-- Tabs para Tamaño Chico y Tamaño Grande -->
+          <ul class="nav nav-tabs" id="cookieTabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="tab-chico" data-toggle="tab" href="#tamano-chico" role="tab" aria-controls="tamano-chico" aria-selected="true">Tamaño Chico</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="tab-grande" data-toggle="tab" href="#tamano-grande" role="tab" aria-controls="tamano-grande" aria-selected="false">Tamaño Grande</a>
+            </li>
+          </ul>
+  
+          <div class="tab-content mt-4" id="cookieTabsContent">
+            <!-- Sección Tamaño Chico -->
+            <div class="tab-pane fade show active" id="tamano-chico" role="tabpanel" aria-labelledby="tab-chico">
+              <h6>Tamaño Chico</h6>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Código</th>
+                      <th>Producto</th>
+                      <th>Disponible</th>
+                      <th>Min</th>
+                      <th>Max</th>
+                      <th>Precio</th>
+                      <th>Estado</th>
+                      <th>Acción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>001</td>
+                      <td>Cookie avena C</td>
+                      <td>5</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>$1600</td>
+                      <td>Suficiente</td>
+                      <td>
+                        <button class="btn btn-warning btn-sm" onclick="openEditModal('001')">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>002</td>
+                      <td>Cookie chocolate C</td>
+                      <td>3</td>
+                      <td>2</td>
+                      <td>6</td>
+                      <td>$1500</td>
+                      <td>Por agotarse</td>
+                      <td>
+                        <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+            </div>
+          </div>
+          <!-- Sección Tamaño Grande -->
+          <div class="tab-pane fade" id="tamano-grande" role="tabpanel" aria-labelledby="tab-grande">
+            <h6>Tamaño Grande</h6>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Código</th>
+                    <th>Producto</th>
+                    <th>Disponible</th>
+                    <th>Min</th>
+                    <th>Max</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>004</td>
+                    <td>Cookie avena G</td>
+                    <td>8</td>
+                    <td>3</td>
+                    <td>10</td>
+                    <td>$2500</td>
+                    <td>Suficiente</td>
+                    <td>
+                      <button class="btn btn-warning btn-sm" onclick="openEditModal('004')">Editar</button>
+                      <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('004')">Eliminar</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>005</td>
+                    <td>Cookie chocolate G</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>$2400</td>
+                    <td>Por agotarse</td>
+                    <td>
+                      <button class="btn btn-warning btn-sm"  onclick="openEditModal('005')">Editar</button>
+                      <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('005')">Eliminar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+          </div>
       </div>
 
-      <!-- Sección Tamaño Grande -->
-      <div class="tab-pane fade" id="tamano-grande" role="tabpanel" aria-labelledby="tab-grande">
-        <h6>Tamaño Grande</h6>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead class="thead-dark">
-              <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Disponible</th>
-                <th>Min</th>
-                <th>Max</th>
-                <th>Precio</th>
-                <th>Estado</th>
-                <th>Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>004</td>
-                <td>Cookie avena G</td>
-                <td>8</td>
-                <td>3</td>
-                <td>10</td>
-                <td>$2500</td>
-                <td>Suficiente</td>
-                <td>
-                  <button class="btn btn-warning btn-sm" onclick="openEditModal('004')">Editar</button>
-                  <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('004')">Eliminar</button>
-                </td>
-              </tr>
-              <tr>
-                <td>005</td>
-                <td>Cookie chocolate G</td>
-                <td>2</td>
-                <td>2</td>
-                <td>5</td>
-                <td>$2400</td>
-                <td>Por agotarse</td>
-                <td>
-                  <button class="btn btn-warning btn-sm"  onclick="openEditModal('005')">Editar</button>
-                  <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('005')">Eliminar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
-      </div>
     </div>
-  </section>
+  </div>
+
+
 
   <!-- Modal para modificar conjunto, editar y eliminar producto -->
   <!-- Modal para modificar conjunto -->

@@ -1,0 +1,11 @@
+.flex-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    width: 90%;
+    margin-left: 0%;
+
+    background-color: red;
+}

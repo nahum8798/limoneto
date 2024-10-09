@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Ventas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles-ventas.css">
+    <link rel="stylesheet" href="../static/inventory.css">
+    <link rel="stylesheet" href="../static/sidebar.css"> 
+</head>
+<body>
+    <div class="container-fluid p-3">
+        <!-- Cabecera -->
+        <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
+            <span>Hola, Florencia</span>
+            <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
+        </header>
+        <nav class="navbar navbar-expand-md bg-warning p-2">
+            <h5 class="mb-0">Inventario</h5>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button id="btn-seleccionar-cliente" class="btn btn-dark">Seleccionar cliente</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="flex-content">
+            <div class="sidebar">
+                <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="../static/images/carro.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="caja.html" class="nav-link text-white"><img src="../static/images/caja.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="productos.html" class="nav-link text-white"><img src="../static/images/inventario.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="registroDeUsuario.html" class="nav-link text-white"><img src="../static/images/clients.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="reporte.html" class="nav-link text-white"><img src="../static/images/estadistica.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="estadisticas.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
+            </div>
+            <div class="content">
+                <!--
+                 -->
+                 <div class="container text-center my-5">
+                    
+        
+                    <div class="row justify-content-center">
+                        <div class="col-md-3">
+                            <div class="category">Alfajores</div>
+                            <div class="category">Boxs</div>
+                            <div class="category">Donas</div>
+                            <div class="category">Muffins - Cupcakes</div>
+                            <div class="category">Yogures</div>
+                            <div class="category">Minitortas - cheesecake familiares</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category">Bebidas</div>
+                            <div class="category">Cafetería clásica</div>
+                            <div class="category">Desayunos</div>
+                            <div class="category">Panificado</div>
+                            <div class="category">Promociones del día</div>
+                            <div class="category">Minitortas - cheesecake eventos</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="category">Brownies</div>
+                            <div class="category">Cafetería especial</div>
+                            <div class="category">Ensalada de frutas</div>
+                            <div class="category">Rolls</div>
+                            <div class="category">Promociones amigos</div>
+                            <div class="category">Minitortas - cheesecake individuales</div>
+                        </div>
+                    </div>
+        
+                    <div class="row my-4">
+                        <div class="col-md-6">
+                            <div class="totales-item">Cantidad de productos totales en stock: <span class="total-stock"></span></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="totales-item">Cantidad de productos faltantes: <span class="total-faltantes"></span></div>
+                        </div>
+                    </div>
+        
+                    <div class="row btn-container-categorias mb-1">
+                        <div class="col-md-4">
+                            <button class="btn btn-faltantes">Ver productos faltantes</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-agregar">Agregar categoría</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-eliminar">Eliminar categoría</button>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        
+    </div> 
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/script.js"></script>
+    <script src="../static/sidebar.js"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            sidebar.classList.toggle('active');
+            document.body.classList.toggle('sidebar-active'); // Agregar clase al body para manejar el desplazamiento
+        }
+
+        function closeModal() {
+            document.getElementById('modal-cobro').style.display = 'none';
+        }
+
+        function showLogoutConfirmation() {
+            console.log("Cerrar sesión");
+        }
+    </script>
+</body>
+</html>
