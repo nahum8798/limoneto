@@ -14,7 +14,15 @@ body {
     border-radius: 5px;
 }
 
+header span {
+    margin-right: 0;
+}
 
+.home-img {
+    width: 10%;
+    height: 10%;
+    margin-left: 0;
+}
 
 
 /* main content */
@@ -171,6 +179,11 @@ footer input, footer button {
 
     nav h5 {
         font-size: 1.2rem;
+    }
+
+    .home-img {
+        width: 25%;
+        height: 25%;
     }
 
     footer {

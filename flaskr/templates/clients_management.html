@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles-ventas.css">
+    <link rel="stylesheet" href="../static/inventory.css">
+    <link rel="stylesheet" href="../static/sidebar.css">
+    <!-- <link rel="stylesheet" href="../static/stylesRegistroUsuario.css">  -->
+</head>
+<body>
+    <div class="container-fluid p-3">
+        <!-- Cabecera -->
+        <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
+            <span>Hola, Florencia</span>
+            <a href="pantallaprincipal.html" ><img src="../static/images/homee.png" alt="" class="home-img"></a>
+            <button id="btn-cambiar-usuario" class="btn btn-outline-secondary"><a href="login.html">Cerrar sesion</a></button>
+        </header>
+        <nav class="navbar navbar-expand-md bg-warning p-2">
+            <h5 class="mb-0">Clientes</h5>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button id="btn-seleccionar-cliente" class="btn btn-dark">Seleccionar cliente</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="flex-content">
+            <div class="sidebar">
+                <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="../static/images/carro.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="cash.html" class="nav-link text-white"><img src="../static/images/caja.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="inventory.html" class="nav-link text-white"><img src="../static/images/inventario.png" alt=""></a></div>
+                <!-- <div class="sidebar-item"><a href="user_management.html" class="nav-link text-white"><img src="../static/images/gest_user.png" alt=""></a></div> -->
+                <!-- <div class="sidebar-item"><a href="register.html" class="nav-link text-white"><img src="../static/images/register_user.png" alt=""></a></div> -->
+                <div class="sidebar-item"><a href="clients_management.html" class="nav-link text-white"><img src="../static/images/clients.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="daily_report.html" class="nav-link text-white"><img src="../static/images/estadistica.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="statistics.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
+            </div>
+            <div class="content">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="mostrarTab('tab-register-client')">Registro de Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" onclick="mostrarTab('tab-client-list')">Lista de Clientes</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="mostrarTab('tab-client-details')">Detalle de Cliente</a>
+                    </li>
+                </ul>
+                
+                <script>
+                function mostrarTab(tabId) {
+                    // Ocultar todos los tabs
+                    document.querySelectorAll('.tab-content').forEach(function(tab) {
+                        tab.style.display = 'none';
+                    });
+                
+                    // Mostrar el tab seleccionado
+                    document.getElementById(tabId).style.display = 'block';
+                }
+                </script>
+                
+                <!--
+                 -->
+                            <!-- Contenido Principal -->
+                <main class="content-main">
+                    <div class="container-fluid mt-4">
+                        
+                        <!-- Formulario de Registro de Clientes -->
+                        <div id="tab-register-client" class="tab-content" >
+                            <div class="register-form card p-4 mb-4" id="register-form">
+                                <span class="close-button">&times;</span>
+                                <h2>Registro de Clientes</h2>
+                                <form id="formulario-registro">
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Nombre/Empresa:</label>
+                                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cuit" class="form-label">CUIL/CUIT:</label>
+                                        <input type="number" id="cuit" name="cuit" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="razonSocial" class="form-label">Razón Social:</label>
+                                        <input type="text" id="razonSocial" name="razonSocial" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="direccion" class="form-label">Dirección:</label>
+                                        <input type="text" id="direccion" name="direccion" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="telefono" class="form-label">Teléfono:</label>
+                                        <input type="number" id="telefono" name="telefono" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="correo" class="form-label">Correo Electrónico:</label>
+                                        <input type="email" id="correo" name="correo" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Agregar Cliente</button>
+                                </form>
+                                <!-- Confirmación de Eliminación de Cliente -->
+                                <div id="confirm-delete-client" class="confirm-delete-client">
+                                    <p>¿Está seguro que desea eliminar el cliente? Se perderán todos los datos del cliente</p>
+                                    <button class="btn btn-danger" onclick="confirmarEliminacionCliente(true)">Confirmar</button>
+                                    <button class="btn btn-secondary" onclick="confirmarEliminacionCliente(false)">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Lista de Clientes -->
+                        <div id="tab-client-list" class="tab-content">
+                            <div class="client-list mb-4">
+                                <h2>Lista de clientes</h2>
+                                <ul id="client-list" class="list-group">
+                                    <!-- clientes existentes -->
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Detalles del Cliente -->
+                        <div id="tab-client-details" class="tab-content" style="display:none;">
+                            <div class="client-details card p-4 mb-4" id="client-details">
+                                <span class="date badge bg-secondary">Fecha: 2024-MM-AA</span>
+                                <span class="status badge bg-success">Estado: Activo</span>
+                                <span class="close-button">&times;</span>
+                                <h2>Detalles del Cliente</h2>
+                                <div id="cliente-info" class="mb-3"></div>
+                                <div id="ventas-info">
+                                    <h3>Historial de ventas</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Fecha</th>
+                                                    <th>Hora</th>
+                                                    <th>Total</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="historial-ventas">
+                                                <!-- datos de ventas -->
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>AAAA/MM/DD</td>
+                                                    <td>00:00pm</td>
+                                                    <td>$8950</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-primary me-1" onclick="imprimirTicket(1)">
+                                                            <i class="fas fa-print"></i> Imprimir
+                                                        </button>
+                                                        <button class="btn btn-sm btn-danger me-1" onclick="confirmarEliminacionVenta(1)">
+                                                            <i class="fas fa-trash-alt"></i> Eliminar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-info" onclick="mostrarDetalleVenta(1)">
+                                                            <i class="fas fa-eye"></i> Ver Detalles
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <!-- más registros de ventas -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <button class="btn btn-danger" onclick="eliminarCliente(4)">Eliminar cliente</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </main>
+
+    <!-- Botón de Registrar Cliente Flotante -->
+    <button type="button" class="btn btn-success btn-lg rounded-circle register-client-button" id="registerClientBtn" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar Cliente">
+        <i class="fas fa-user-plus"></i>
+    </button>
+        
+    </div> 
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/script.js"></script>
+    <script src="../static/sidebar.js"></script>
+    <script src="../static/scriptRegistroUsuario.js"></script>
+    
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            sidebar.classList.toggle('active');
+            document.body.classList.toggle('sidebar-active'); // Agregar clase al body para manejar el desplazamiento
+        }
+
+        function closeModal() {
+            document.getElementById('modal-cobro').style.display = 'none';
+        }
+
+        function showLogoutConfirmation() {
+            console.log("Cerrar sesión");
+        }
+    </script>
+</body>
+</html>

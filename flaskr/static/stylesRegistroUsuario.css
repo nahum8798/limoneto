@@ -1,0 +1,97 @@
+.content-main {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  .container-fluid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  /* Botón flotante */
+  .register-client-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  /* Modal personalizado */
+  .modal-custom {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+  }
+  .modal-custom.show {
+    display: block;
+  }
+  .modal-content-custom {
+    position: relative;
+    margin: auto;
+    top: 10%;
+    width: 80%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .register-form, .client-details, .client-list{
+    flex: 1;
+    min-width: 300px;
+  }
+  .client-list li {
+    padding: 10px;
+    background-color: #d9e8f5;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .client-list li span {
+    flex: 1;
+    display: inline-block;
+  }
+  /* Estilos para mensajes de confirmación */
+  .confirm-delete, .confirm-delete-client {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1100;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 5px;
+  }
+  .confirm-delete.show, .confirm-delete-client.show {
+    display: block;
+  }
+  /* Estilos para los formularios */
+  .register-form, .client-details {
+    display: none;
+  }
+  .close-button {
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+
+  
+  /* Contenido principal */
+  .content-main {
+    margin-left: 270px; /* Aumenta el margen para dar más espacio */
+    padding: 20px;
+    z-index: 10; /* Para que esté encima del sidebar si es necesario */
+    position: relative;
+  }
