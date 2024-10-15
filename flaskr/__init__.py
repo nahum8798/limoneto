@@ -8,6 +8,7 @@ from .auth.models import Users
 from .config import Config
 from .extensions import db, migrate, login_manager
 from .main import main_blueprint
+from .routes import register_blueprint
 
 """
 Importación de modelos
@@ -34,8 +35,11 @@ def create_app():
 
     """
     Registro de blueprints
+    usando la funcion de routes.py
     """
-    app.register_blueprint(main_blueprint)
-    app.register_blueprint(auth_bp, url_prefix='/auth')
+    register_blueprint(app)
+
+    #app.register_blueprint(main_blueprint)
+    #app.register_blueprint(auth_bp, url_prefix='/auth')
 
     return app

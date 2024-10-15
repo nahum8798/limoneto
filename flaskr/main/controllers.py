@@ -4,6 +4,13 @@ from flask_login import login_required, current_user
 from flask_login import current_user
 from flaskr.extensions import db
 
-def index():
 
+@main_blueprint.route('/')
+def index():
+    """
+    esta funcion renderiza la pantalla principal (inicio del menu de la app)
+    :return:
+    """
     return render_template('pantallaprincipal.html')
+
+

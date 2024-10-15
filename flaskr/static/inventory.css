@@ -36,3 +36,78 @@ body {
 .navbar {
     z-index: 1100; /* Para que la barra de navegación esté sobre el sidebar */
 }
+
+.category-container {
+    max-height: 100%; /* Altura máxima del contenedor de categorías */
+    overflow-y: auto; /* Activa el scroll vertical */
+    border: 1px solid #ccc; /* Borde opcional para delimitar la zona */
+    padding: 10px; /* Espaciado interno */
+}
+.category {
+    margin-bottom: 10px; /* Espaciado entre categorías */
+}/* Estilos básicos para los modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 50%;
+    /* max-width: 500px; */
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-btn:hover {
+    background-color: #218838;
+}
+
+/* Ajustes específicos para pantallas pequeñas */
+@media (max-width: 768px) {
+  
+    .modal {
+        height: 100%;
+        width: 100%;
+    }
+
+    .modal-content {
+        height: 70%;
+        width: 70%;
+    }
+
+
+}
+

@@ -1,8 +1,9 @@
 """
-init inicializa el modulo de autenticacion
+Propósito: inicializa el módulo de autenticación
 """
 from flask import Blueprint
 
-auth_bp = Blueprint('auth',__name__,template_folder='templates')
+auth_bp = Blueprint('auth',__name__, template_folder='templates')
 
-from . import controllers
+
+from . import controllers # Importa controladores para registrar las rutas
