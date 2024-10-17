@@ -111,6 +111,32 @@
     <!-- Modal para agregar categoría -->
     <div id="modal-agregar" class="modal">
         <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Agregar categoría</h2>
+
+        <!-- Categoría principal -->
+        <label for="categoria">Nombre de la nueva categoría:</label>
+        <input type="text" id="categoria" name="categoria" required>
+
+        <!-- Sección para agregar subcategorías -->
+        <div id="subcategorias">
+            <label for="subcategoria">Subcategorías:</label>
+            <div class="subcategoria-field">
+                <input type="text" id="subcategoria" name="subcategoria[]" placeholder="Subcategoría 1">
+            </div>
+        </div>
+
+        <!-- Botón para agregar más subcategorías -->
+        <button type="button" id="add-subcategoria" class="btn-add">Agregar otra subcategoría</button>
+
+        <!-- Botón para confirmar el formulario -->
+        <button class="modal-btn" id="confirmar-btn">Confirmar</button>
+    </div>
+    </div>
+
+    <!--
+    <div id="modal-agregar" class="modal">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Agregar categoría</h2>
             <label for="categoria">Nombre de la nueva categoría:</label>
@@ -118,6 +144,7 @@
             <button class="modal-btn">Confirmar</button>
         </div>
     </div>
+    -->
 
     <!-- Modal para ver productos faltantes -->
     <div id="modal-faltantes" class="modal">
@@ -169,6 +196,35 @@
         function showLogoutConfirmation() {
             console.log("Cerrar sesión");
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+        let subcategoriaCounter = 2;  // Contador para las subcategorías
+        const subcategoriaContainer = document.getElementById('subcategorias');
+        const addSubcategoriaBtn = document.getElementById('add-subcategoria');
+
+        // Función para agregar más campos de subcategorías
+        addSubcategoriaBtn.addEventListener('click', function () {
+            const newSubcategoriaField = document.createElement('div');
+            newSubcategoriaField.classList.add('subcategoria-field');
+            newSubcategoriaField.innerHTML = `<input type="text" name="subcategoria[]" placeholder="Subcategoría ${subcategoriaCounter}">`;
+            subcategoriaContainer.appendChild(newSubcategoriaField);
+            subcategoriaCounter++;
+        });
+
+        // Manejar el envío del formulario
+        document.getElementById('confirmar-btn').addEventListener('click', function () {
+            // Recoge los valores de la categoría y subcategorías
+            const categoria = document.getElementById('categoria').value;
+            const subcategorias = Array.from(document.querySelectorAll('input[name="subcategoria[]"]')).map(input => input.value);
+
+            // Aquí puedes enviar los datos a tu backend o hacer otras validaciones
+            console.log('Categoría:', categoria);
+            console.log('Subcategorías:', subcategorias);
+
+            // Aquí es donde harías la solicitud AJAX o enviarlo como formulario (ver siguiente sección)
+        });
+    });
+
     </script>
 </body>
 </html>
