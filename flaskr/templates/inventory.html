@@ -111,27 +111,24 @@
     <!-- Modal para agregar categoría -->
     <div id="modal-agregar" class="modal">
         <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Agregar categoría</h2>
+            <span class="close">&times;</span>
+            <h2>Agregar Categoría</h2>
 
-        <!-- Categoría principal -->
-        <label for="categoria">Nombre de la nueva categoría:</label>
-        <input type="text" id="categoria" name="categoria" required>
+            <form method="POST" action="{{ url_for('inventory.add_category') }}">
+                {{ form.hidden_tag() }}
 
-        <!-- Sección para agregar subcategorías -->
-        <div id="subcategorias">
-            <label for="subcategoria">Subcategorías:</label>
-            <div class="subcategoria-field">
-                <input type="text" id="subcategoria" name="subcategoria[]" placeholder="Subcategoría 1">
-            </div>
+                <label >Nombre de la Categoría</label>
+                {{ form.category_name(class_='form-control') }}
+                {% for error in form.category_name.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+
+                <label >Descripción de la Categoría</label>
+                {{ form.category_description(class_='form-control') }}
+
+                <button type="submit">Agregar Categoría</button>
+            </form>
         </div>
-
-        <!-- Botón para agregar más subcategorías -->
-        <button type="button" id="add-subcategoria" class="btn-add">Agregar otra subcategoría</button>
-
-        <!-- Botón para confirmar el formulario -->
-        <button class="modal-btn" id="confirmar-btn">Confirmar</button>
-    </div>
     </div>
 
     <!--
@@ -166,7 +163,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Eliminar categoría</h2>
-            <label for="categoria">Nombre de la categoría a eliminar:</label>
+            <label>Nombre de la categoría a eliminar:</label>
             <input type="text" id="categoria-eliminar" name="categoria-eliminar">
             <button class="modal-btn">Confirmar</button>
         </div>
@@ -197,33 +194,41 @@
             console.log("Cerrar sesión");
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-        let subcategoriaCounter = 2;  // Contador para las subcategorías
-        const subcategoriaContainer = document.getElementById('subcategorias');
-        const addSubcategoriaBtn = document.getElementById('add-subcategoria');
+         <script>
+        $(document).ready(function() {
+            // Obtener el botón que abre el modal
+            var modal = $('#modal-agregar');
+            var btn = $('#openModalBtn');
+            var span = $('.close');
 
-        // Función para agregar más campos de subcategorías
-        addSubcategoriaBtn.addEventListener('click', function () {
-            const newSubcategoriaField = document.createElement('div');
-            newSubcategoriaField.classList.add('subcategoria-field');
-            newSubcategoriaField.innerHTML = `<input type="text" name="subcategoria[]" placeholder="Subcategoría ${subcategoriaCounter}">`;
-            subcategoriaContainer.appendChild(newSubcategoriaField);
-            subcategoriaCounter++;
+            // Abrir el modal cuando se hace clic en el botón
+            btn.click(function() {
+                modal.show();
+            });
+
+            // Cerrar el modal cuando se hace clic en el botón de cerrar
+            span.click(function() {
+                modal.hide();
+            });
+
+            // Mostrar el modal si hay un flash que indique "show_modal"
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if message == 'show_modal' %}
+                            modal.show();
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            // Cerrar el modal si el usuario hace clic fuera de él
+            $(window).click(function(event) {
+                if (event.target.id === 'modal-agregar') {
+                    modal.hide();
+                }
+            });
         });
-
-        // Manejar el envío del formulario
-        document.getElementById('confirmar-btn').addEventListener('click', function () {
-            // Recoge los valores de la categoría y subcategorías
-            const categoria = document.getElementById('categoria').value;
-            const subcategorias = Array.from(document.querySelectorAll('input[name="subcategoria[]"]')).map(input => input.value);
-
-            // Aquí puedes enviar los datos a tu backend o hacer otras validaciones
-            console.log('Categoría:', categoria);
-            console.log('Subcategorías:', subcategorias);
-
-            // Aquí es donde harías la solicitud AJAX o enviarlo como formulario (ver siguiente sección)
-        });
-    });
 
     </script>
 </body>
