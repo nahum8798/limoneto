@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo de Ventas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/styles-ventas.css">
-    <link rel="stylesheet" href="../static/inventory.css">
-    <link rel="stylesheet" href="../static/sidebar.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-ventas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inventory.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
 </head>
 <body>
     <div class="container-fluid p-3">
         <!-- Cabecera -->
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
             <span>Hola, Florencia</span>
-            <a href="pantallaprincipal.html" ><img src="../static/images/homee.png" alt="" class="home-img"></a>
+            <a href="{{ url_for('static', filename='images/homee.png') }}" class="home-img"></a>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary"><a href="login.html">Cerrar sesion</a></button>
         </header>
         <nav class="navbar navbar-expand-md bg-warning p-2">
@@ -65,7 +65,12 @@
                     </div>
 
                     <!-- Lista de categorias -->
-
+                    <!-- Renderizado de categorias cargadas en la base de datos -->
+                    <div class="category-container">
+                        {% for category in categories %}
+                            <div class="category"><a href="categories.html">{{ category.category_name }}</a></div>
+                        {% endfor %}
+                    </div>
 
                     <!--
                     <div class="category-container">

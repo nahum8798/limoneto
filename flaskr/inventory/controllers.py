@@ -16,16 +16,20 @@ def inventory():
     :return:
     """
     form = CategoryForm()
-    return render_template('inventory.html', form=form)
 
-@inventory_blueprint.route('/add_categorie')
+    # Obtener las categorias cargadas
+    categories = Categories.get_all_categories()
+
+    return render_template('inventory.html', form=form, categories=categories)
+
+@inventory_blueprint.route('/add_category', methods=['GET', 'POST'])
 def add_category():
 
     form = CategoryForm() # Instancia del formulario de categoria
     if form.validate_on_submit():
         newCategory = Categories(
-            category_name = form.category_name,
-            category_description = form.category_description
+            category_name = form.category_name.data,
+            category_description = form.category_description.data
         )
         db.session.add(newCategory)
         db.session.commit()
