@@ -13,3 +13,7 @@ class SubCategoryForm(FlaskForm):
 
     subcategory_name = StringField('Nombre')
     category_description = TextAreaField('Descripción')
+
+class DeleteCategoryForm(FlaskForm):
+    category_name = StringField('Nombre de la categoria')
+    #submit = SubmitField('Eiminar')

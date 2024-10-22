@@ -168,9 +168,17 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Eliminar categoría</h2>
-            <label>Nombre de la categoría a eliminar:</label>
-            <input type="text" id="categoria-eliminar" name="categoria-eliminar">
-            <button class="modal-btn">Confirmar</button>
+            <form method="POST" action="{{ url_for('inventory.delete_category') }}">
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.category_name.label }}<br>
+                    {{ form.category_name(size=32) }}<br>
+                    {% for error in form.category_name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <button type="submit">Eliminar Categoría</button>
+            </form>
         </div>
     </div>
 

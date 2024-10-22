@@ -38,10 +38,14 @@ body {
 }
 
 .category-container {
+    display:grid;
+    grid-template-columns:auto auto auto;
+    column-gap:1rem;
     max-height: 100%; /* Altura máxima del contenedor de categorías */
     overflow-y: auto; /* Activa el scroll vertical */
     border: 1px solid #ccc; /* Borde opcional para delimitar la zona */
     padding: 10px; /* Espaciado interno */
+
 }
 .category {
     margin-bottom: 10px; /* Espaciado entre categorías */
@@ -90,6 +94,7 @@ body {
     border: none;
     cursor: pointer;
 }
+
 
 .modal-btn:hover {
     background-color: #218838;
