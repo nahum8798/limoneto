@@ -68,7 +68,7 @@
                     <!-- Renderizado de categorias cargadas en la base de datos -->
                     <div class="category-container">
                         {% for category in categories %}
-                            <div class="category"><a href="categories.html">{{ category.category_name }}</a></div>
+                            <div class="category"><a href="{{ url_for('inventory.show_products', id_category=category.id_category) }}">{{ category.category_name }}</a></div>
                         {% endfor %}
                     </div>
 
@@ -127,9 +127,6 @@
                 {% for error in form.category_name.errors %}
                     <span style="color: red;">{{ error }}</span>
                 {% endfor %}
-
-                <label >Descripción de la Categoría</label>
-                {{ form.category_description(class_='form-control') }}
 
                 <button type="submit">Agregar Categoría</button>
             </form>
@@ -191,40 +188,23 @@
     <script src="../static/script.js"></script>
     <script src="../static/sidebar.js"></script>
     <script src="../static/inventary-modal.js"></script>
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.getElementById('main-content');
-            sidebar.classList.toggle('active');
-            document.body.classList.toggle('sidebar-active'); // Agregar clase al body para manejar el desplazamiento
-        }
-
-        function closeModal() {
-            document.getElementById('modal-cobro').style.display = 'none';
-        }
-
-        function showLogoutConfirmation() {
-            console.log("Cerrar sesión");
-        }
-
-         <script>
+        <script>
         $(document).ready(function() {
-            // Obtener el botón que abre el modal
             var modal = $('#modal-agregar');
             var btn = $('#openModalBtn');
             var span = $('.close');
 
-            // Abrir el modal cuando se hace clic en el botón
+            // Abrir modal al hacer clic en el botón
             btn.click(function() {
                 modal.show();
             });
 
-            // Cerrar el modal cuando se hace clic en el botón de cerrar
+            // Cerrar el modal al hacer clic en el botón de cerrar
             span.click(function() {
                 modal.hide();
             });
 
-            // Mostrar el modal si hay un flash que indique "show_modal"
+            // Mostrar el modal si se recibe un mensaje flash específico
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
@@ -242,6 +222,7 @@
                 }
             });
         });
+
 
     </script>
 </body>
