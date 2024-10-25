@@ -40,3 +40,11 @@ class SubCategories(db.Model):
     date_create = db.Column(db.DateTime, default=datetime.utcnow)
     date_update = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    @classmethod
+    def get_all_subcategories(cls):
+        """
+        metodo para buscar todas las categorias cargadas
+        :return:
+        """
+        return db.session.query(cls).all()
+

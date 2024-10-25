@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField, FieldList, FormField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField, FieldList, FormField, HiddenField
 
 """
 Formulario para gestionar la carga de categorias
@@ -7,6 +7,7 @@ Formulario para gestionar la carga de categorias
 class SubCategoryForm(FlaskForm):
 
     subcategory_name = StringField('Nombre')
+    id_category = HiddenField('ID Categoria')
     category_description = TextAreaField('Descripción')
 
 class CategoryForm(FlaskForm):

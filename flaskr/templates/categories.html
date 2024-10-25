@@ -42,123 +42,96 @@
                 <div class="category-heading mb-3">
                   <h5>{{ category.category_name }}</h5>
                 </div>
+                <div class="btn-container">
+                    <button class="btn btn-agregar" id="openModalBtn">Agregar subcategoría</button>
+                </div>
 
-                <!-- Tabs para Tamaño Chico y Tamaño Grande -->
-                <!--<ul class="nav nav-tabs" id="cookieTabs" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="tab-chico" data-toggle="tab" href="#tamano-chico" role="tab" aria-controls="tamano-chico" aria-selected="true">Tamaño Chico</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="tab-grande" data-toggle="tab" href="#tamano-grande" role="tab" aria-controls="tamano-grande" aria-selected="false">Tamaño Grande</a>
-                  </li>
-                </ul> -->
+                <!-- Tabs para categorias -->
+                <ul class="nav nav-tabs" id="cookieTabs" role="tablist">
+                  {% for sub_categorie in sub_categories %}
+                      <li class="nav-item">
+                        <a class="nav-link active" id="tab-chico" data-toggle="tab" href="#tamano-chico" role="tab"
+                           aria-controls="tamano-chico" aria-selected="true">{{ sub_categorie.subcategory_name }}</a>
+                      </li>
+                  {% endfor %}
+                </ul>
         
-                <!--<div class="tab-content mt-4" id="cookieTabsContent">
-
-                  <div class="tab-pane fade show active" id="tamano-chico" role="tabpanel" aria-labelledby="tab-chico">
-                    <h6>Tamaño Chico</h6>
-                    <div class="table-responsive">
-                      <table class="table table-bordered">
-                        <thead class="thead-dark">
-                          <tr>
-                            <th>Código</th>
-                            <th>Producto</th>
-                            <th>Disponible</th>
-                            <th>Min</th>
-                            <th>Max</th>
-                            <th>Precio</th>
-                            <th>Estado</th>
-                            <th>Acción</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>001</td>
-                            <td>Cookie avena C</td>
-                            <td>5</td>
-                            <td>2</td>
-                            <td>7</td>
-                            <td>$1600</td>
-                            <td>Suficiente</td>
-                            <td>
-                              <button class="btn btn-warning btn-sm" onclick="openEditModal('001')">Editar</button>
-                              <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>002</td>
-                            <td>Cookie chocolate C</td>
-                            <td>3</td>
-                            <td>2</td>
-                            <td>6</td>
-                            <td>$1500</td>
-                            <td>Por agotarse</td>
-                            <td>
-                              <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
-                              <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                <div class="tab-content mt-4" id="cookieTabsContent">
+                  {% for sub_categorie in sub_categories %}
+                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}" id="tamano-{{ sub_categorie.id }}" role="tabpanel" aria-labelledby="tab-{{ sub_categorie.id }}">
+                        <h6>{{ sub_categorie.subcategory_name }}</h6>
+                        <div class="table-responsive">
+                          <table class="table table-bordered">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th>Código</th>
+                                <th>Producto</th>
+                                <th>Disponible</th>
+                                <th>Min</th>
+                                <th>Max</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                  <button class="btn btn-warning btn-sm" onclick="openEditModal('001')">Editar</button>
+                                  <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                  <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
+                                  <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
                     </div>
-                    <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
-                  </div>
-
-                <div class="tab-pane fade" id="tamano-grande" role="tabpanel" aria-labelledby="tab-grande">
-                  <h6>Tamaño Grande</h6>
-                  <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th>Código</th>
-                          <th>Producto</th>
-                          <th>Disponible</th>
-                          <th>Min</th>
-                          <th>Max</th>
-                          <th>Precio</th>
-                          <th>Estado</th>
-                          <th>Acción</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>004</td>
-                          <td>Cookie avena G</td>
-                          <td>8</td>
-                          <td>3</td>
-                          <td>10</td>
-                          <td>$2500</td>
-                          <td>Suficiente</td>
-                          <td>
-                            <button class="btn btn-warning btn-sm" onclick="openEditModal('004')">Editar</button>
-                            <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('004')">Eliminar</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>005</td>
-                          <td>Cookie chocolate G</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>5</td>
-                          <td>$2400</td>
-                          <td>Por agotarse</td>
-                          <td>
-                            <button class="btn btn-warning btn-sm"  onclick="openEditModal('005')">Editar</button>
-                            <button class="btn btn-danger btn-sm"  onclick="openDeleteModal('005')">Eliminar</button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modificarConjuntoModal"></button>Modificar conjunto</button>
+                  {% endfor %}
                 </div>
-                </div>
-                -->
             </div>
-      
-          </div>
-        
-    </div> 
+        </div>
+    </div>
+
+
+    <!-- Modal para agregar categoría -->
+    <div id="modal-agregar" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agregar Categoría</h2>
+
+            <form method="POST" action="{{ url_for('inventory.add_subcategory', id_category=category.id_category) }}">
+                {{ form.hidden_tag() }}
+
+                <label>Nombre de la Subcategoría</label>
+                {{ form.subcategory_name(class_='form-control') }}
+                {% for error in form.subcategory_name.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+                <button type="submit">Agregar Subcategoría</button>
+            </form>
+
+        </div>
+    </div>
         <!-- Modal para modificar conjunto, editar y eliminar producto -->
   <!-- Modal para modificar conjunto -->
   <!--<div id="modificarConjuntoModal" class="modal fade" tabindex="-1" role="dialog">
@@ -193,10 +166,26 @@
     <script src="../static/modals.js"></script>
     <script>
         $(document).ready(function() {
-          $('#cookieTabs a').click(function (e) {
-          e.preventDefault();
-          $(this).tab('show');
-          });
+            var modal = $('#modal-agregar');
+            var btn = $('#openModalBtn');
+            var span = $('.close');  // Selecciona el elemento que debe cerrar el modal
+
+            // Abrir modal al hacer clic en el botón
+            btn.click(function() {
+                modal.show();
+            });
+
+            // Cerrar el modal al hacer clic en el botón de cerrar
+            span.click(function() {
+                modal.hide();
+            });
+
+            // Cerrar el modal si el usuario hace clic fuera de él
+            $(window).click(function(event) {
+                if (event.target.id === 'modal-agregar') {
+                    modal.hide();
+                }
+            });
         });
     </script>
   </body>
