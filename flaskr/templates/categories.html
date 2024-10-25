@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock - Categorias</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/styles-ventas.css">
-    <link rel="stylesheet" href="../static/sidebar.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-ventas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
 </head>
 <body>
     <div class="container-fluid p-3">
         <!-- Cabecera -->
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
             <span>Hola, Florencia</span>
-            <a href="pantallaprincipal.html" ><img src="../static/images/homee.png" alt="" class="home-img"></a>
+            <a href="pantallaprincipal.html" ><img src="{{ url_for('static', filename='images/homee.png') }}" alt="" class="home-img"></a>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
         </header>
         <nav class="navbar navbar-expand-md bg-warning p-2">
@@ -28,14 +28,14 @@
         </nav>
         <div class="flex-content">
             <div class="sidebar">
-              <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="../static/images/carro.png" alt=""></a></div>
-              <div class="sidebar-item"><a href="cash.html" class="nav-link text-white"><img src="../static/images/caja.png" alt=""></a></div>
-              <div class="sidebar-item"><a href="inventory.html" class="nav-link text-white"><img src="../static/images/inventario.png" alt=""></a></div>
-              <!-- <div class="sidebar-item"><a href="user_management.html" class="nav-link text-white"><img src="../static/images/gest_user.png" alt=""></a></div> -->
-              <!-- <div class="sidebar-item"><a href="register.html" class="nav-link text-white"><img src="../static/images/register_user.png" alt=""></a></div> -->
-              <div class="sidebar-item"><a href="clients_management.html" class="nav-link text-white"><img src="../static/images/clients.png" alt=""></a></div>
-              <div class="sidebar-item"><a href="daily_report.html" class="nav-link text-white"><img src="../static/images/estadistica.png" alt=""></a></div>
-              <div class="sidebar-item"><a href="statistics.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
+                <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/carro.png') }}" alt=""></a></div>
+                <div class="sidebar-item"><a href="cash.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/caja.png') }}" alt=""></a></div>
+                <div class="sidebar-item"><a href="{{ url_for('inventory.inventory') }}" class="nav-link text-white"><img src="{{ url_for('static', filename='images/inventario.png') }}" alt=""></a></div>
+                <!-- <div class="sidebar-item"><a href="user_management.html" class="nav-link text-white"><img src="../static/images/gest_user.png" alt=""></a></div> -->
+                <!-- <div class="sidebar-item"><a href="register.html" class="nav-link text-white"><img src="../static/images/register_user.png" alt=""></a></div> -->
+                <div class="sidebar-item"><a href="clients_management.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/clients.png') }}" alt=""></a></div>
+                <div class="sidebar-item"><a href="daily_report.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/estadistica.png') }}" alt=""></a></div>
+                <div class="sidebar-item"><a href="statistics.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/statistics.png') }}" alt=""></a></div>
             </div>
             <div class="main-flex-content">
                 <!-- Sección de productos por categorías -->
@@ -50,8 +50,8 @@
                 <ul class="nav nav-tabs" id="cookieTabs" role="tablist">
                   {% for sub_categorie in sub_categories %}
                       <li class="nav-item">
-                        <a class="nav-link active" id="tab-chico" data-toggle="tab" href="#tamano-chico" role="tab"
-                           aria-controls="tamano-chico" aria-selected="true">{{ sub_categorie.subcategory_name }}</a>
+                        <a class="nav-link {% if loop.first %}active{% endif %}" id="tab-{{ sub_categorie.id_subcategory }}" data-toggle="tab" href="#tamano-{{ sub_categorie.id_subcategory }}" role="tab"
+                           aria-controls="tamano-{{ sub_categorie.id_subcategory }}" aria-selected="{% if loop.first %}true{% else %}false{% endif %}">{{ sub_categorie.subcategory_name }}</a>
                       </li>
                   {% endfor %}
                 </ul>
@@ -88,23 +88,11 @@
                                   <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
                                 </td>
                               </tr>
-                              <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                  <button class="btn btn-warning btn-sm" onclick="openEditModal('002')">Editar</button>
-                                  <button class="btn btn-danger btn-sm" onclick="openDeleteModal('002')">Eliminar</button>
-                                </td>
-                              </tr>
+
                             </tbody>
                           </table>
                         </div>
-                        <button class="btn btn-warning mt-3" onclick="openModifyModal()">Modificar conjunto</button>
+                        <button class="btn btn-warning mt-3" id="btn-Mod">Agregar producto</button>
                     </div>
                   {% endfor %}
                 </div>
@@ -134,30 +122,30 @@
     </div>
         <!-- Modal para modificar conjunto, editar y eliminar producto -->
   <!-- Modal para modificar conjunto -->
-  <!--<div id="modificarConjuntoModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content border-warning">
-        <div class="modal-header">
-          <h5 class="modal-title">Modificar conjunto</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <label for="precio">Precio</label>
-          <input type="number" id="precio" class="form-control">
-          <label for="cant-max">Cantidad máxima permitida</label>
-          <input type="number" id="cant-max" class="form-control">
-          <label for="cant-min">Cantidad mínima permitida</label>
-          <input type="number" id="cant-min" class="form-control">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-warning" onclick="guardarCambios()">Guardar cambios</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      <div id="modificarConjuntoModal" class="modal"  role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content border-warning">
+            <div class="modal-header">
+              <h5 class="modal-title">Modificar conjunto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="precio">Precio</label>
+              <input type="number" id="precio" class="form-control">
+              <label for="cant-max">Cantidad máxima permitida</label>
+              <input type="number" id="cant-max" class="form-control">
+              <label for="cant-min">Cantidad mínima permitida</label>
+              <input type="number" id="cant-min" class="form-control">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" onclick="guardarCambios()">Guardar cambios</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>-->
   
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -166,27 +154,33 @@
     <script src="../static/modals.js"></script>
     <script>
         $(document).ready(function() {
-            var modal = $('#modal-agregar');
-            var btn = $('#openModalBtn');
-            var span = $('.close');  // Selecciona el elemento que debe cerrar el modal
+              var modal = $('#modal-agregar');
+        var modalMod = $('#modificarConjuntoModal');
+        var btnMod = $('#btn-Mod');
+        var btn = $('#openModalBtn');
+        var span = $('.close');  // Selecciona el elemento que debe cerrar el modal
 
-            // Abrir modal al hacer clic en el botón
-            btn.click(function() {
-                modal.show();
-            });
-
-            // Cerrar el modal al hacer clic en el botón de cerrar
-            span.click(function() {
-                modal.hide();
-            });
-
-            // Cerrar el modal si el usuario hace clic fuera de él
-            $(window).click(function(event) {
-                if (event.target.id === 'modal-agregar') {
-                    modal.hide();
-                }
-            });
+        // Abrir modal al hacer clic en el botón
+        btn.click(function() {
+            modal.show();
         });
+
+        btnMod.click(function() {
+            modalMod.modal('show');  // Utiliza el método 'modal' de Bootstrap para mostrar el modal
+        });
+
+        // Cerrar el modal al hacer clic en el botón de cerrar
+        span.click(function() {
+            modal.hide();
+        });
+
+        // Cerrar el modal si el usuario hace clic fuera de él
+        $(window).click(function(event) {
+            if (event.target.id === 'modal-agregar') {
+                modal.hide();
+            }
+        });
+    });
     </script>
   </body>
 </html>

@@ -39,126 +39,12 @@
                 <div class="sidebar-item"><a href="statistics.html" class="nav-link text-white"><img src="../static/images/statistics.png" alt=""></a></div>
             </div>
             <div class="content">
-                <!--
-                 -->
-                 <div class="container text-center my-5">
-                    
-                    <div class="row btn-container-categorias mb-1">
-                        <div class="col-md-4">
-                            <button class="btn btn-faltantes">Ver productos faltantes</button>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-agregar">Agregar categoría</button>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-eliminar">Eliminar categoría</button>
-                        </div>
-                    </div>
 
-                    <div class="row my-4">
-                        <div class="col-md-6">
-                            <div class="totales-item">Cantidad de productos totales en stock: <span class="total-stock"></span></div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="totales-item">Cantidad de productos faltantes: <span class="total-faltantes"></span></div>
-                        </div>
-                    </div>
-
-                    <!-- Lista de categorias -->
-                    <!-- Renderizado de categorias cargadas en la base de datos -->
-                    <div class="category-container">
-                        {% for category in categories %}
-                            <div class="category"><a href="{{ url_for('inventory.show_products', id_category=category.id_category) }}">{{ category.category_name }}</a></div>
-                        {% endfor %}
-                    </div>
-
-                    <!--
-                    <div class="category-container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-3">
-                                <div class="category">Alfajores</div>
-                                <div class="category">Boxs</div>
-                                <div class="category">Donas</div>
-                                <div class="category">Muffins - Cupcakes</div>
-                                <div class="category">Yogures</div>
-                                <div class="category">Minitortas - cheesecake familiares</div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="category">Bebidas</div>
-                                <div class="category">Cafetería clásica</div>
-                                <div class="category">Desayunos</div>
-                                <div class="category">Panificado</div>
-                                <div class="category">Promociones del día</div>
-                                <div class="category">Minitortas - cheesecake eventos</div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="category">Brownies</div>
-                                <div class="category"><a href="categories.html">Cookies</a></div>
-                                <div class="category">Ensalada de frutas</div>
-                                <div class="category">Rolls</div>
-                                <div class="category">Promociones amigos</div>
-                                <div class="category">Minitortas - cheesecake individuales</div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                    
-        
-                    
-        
-                    
-                </div>                
             </div>
         </div>
-        
-    </div> 
 
-    <!-- Modal para agregar categoría -->
-    <div id="modal-agregar" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Agregar Categoría</h2>
-
-            <form method="POST" action="{{ url_for('inventory.add_category') }}">
-                {{ form.hidden_tag() }}
-
-                <label >Nombre de la Categoría</label>
-                {{ form.category_name(class_='form-control') }}
-                {% for error in form.category_name.errors %}
-                    <span style="color: red;">{{ error }}</span>
-                {% endfor %}
-
-                <button type="submit">Agregar Categoría</button>
-            </form>
-        </div>
     </div>
 
-    <!--
-    <div id="modal-agregar" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Agregar categoría</h2>
-            <label for="categoria">Nombre de la nueva categoría:</label>
-            <input type="text" id="categoria" name="categoria">
-            <button class="modal-btn">Confirmar</button>
-        </div>
-    </div>
-    -->
-
-    <!-- Modal para ver productos faltantes -->
-    <div id="modal-faltantes" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Productos faltantes</h2>
-            <ul>
-                <!-- Lista de productos faltantes -->
-                <li>Producto 1</li>
-                <li>Producto 2</li>
-                <li>Producto 3</li>
-            </ul>
-            <button class="modal-btn">Cerrar</button>
-        </div>
-    </div>
 
     <!-- Modal para eliminar categoría -->
     <div id="modal-eliminar" class="modal">
