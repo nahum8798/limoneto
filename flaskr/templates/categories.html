@@ -118,10 +118,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ url_for('inventory.add_subcategory', id_category=category.id_category) }}">
+                        {{ form.hidden_tag() }}
+
                         <label>Nombre de la Subcategoría</label>
-                        <input type="text" class="form-control" name="subcategory_name">
-                        <button type="submit" class="btn btn-primary mt-3">Agregar Subcategoría</button>
+                        {{ form.subcategory_name(class_='form-control') }}
+                        {% for error in form.subcategory_name.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                        <button type="submit">Agregar Subcategoría</button>
                     </form>
                 </div>
             </div>
@@ -139,7 +144,37 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Aquí va el formulario o contenido para agregar el producto -->
+                    <form method="POST" action="{{ url_for('inventory.add_product', id_category=category.id_category, id_
+                    subcategory=sub_categorie.id_subcategory) }}">
+                        <!-- Campos del formulario AddProductForm -->
+                        {{ product_form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ product_form.product_name.label(class_="form-label") }}
+                            {{ product_form.product_name(class_="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            {{ product_form.product_price.label(class_="form-label") }}
+                            {{ product_form.product_price(class_="form-control") }}
+                        </div>
+
+                        <!-- Campos del formulario AddProductStock -->
+                        {{ stock_form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ stock_form.cantidad.label(class_="form-label") }}
+                            {{ stock_form.cantidad(class_="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            {{ stock_form.stock_min.label(class_="form-label") }}
+                            {{ stock_form.stock_min(class_="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            {{ stock_form.stock_max.label(class_="form-label") }}
+                            {{ stock_form.stock_max(class_="form-control") }}
+                        </div>
+
+                    <button type="submit" class="btn btn-primary mt-3">Agregar Producto</button>
+
+                    </form>
                 </div>
             </div>
         </div>

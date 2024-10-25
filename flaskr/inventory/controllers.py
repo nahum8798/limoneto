@@ -5,7 +5,7 @@ from flask import url_for
 from flaskr.extensions import db
 from flaskr.inventory import inventory_blueprint
 from flask import render_template, flash
-from flaskr.inventory.forms import CategoryForm, SubCategoryForm, DeleteCategoryForm
+from flaskr.inventory.forms import CategoryForm, SubCategoryForm, DeleteCategoryForm, AddProductForm, AddProductStock
 from .models import Categories, SubCategories
 
 
@@ -75,9 +75,21 @@ def delete_category():
 @inventory_blueprint.route('/show_products/<int:id_category>', methods=['GET', 'POST'])
 def show_products(id_category):
     form = SubCategoryForm()
+    product_form = AddProductForm()
+    stock_form = AddProductStock()
     selected_category = Categories.query.get_or_404(id_category)
     sub_categories = SubCategories.query.filter_by(id_category=selected_category.id_category).all()
 
     if selected_category:
-        return render_template('categories.html', category=selected_category,
-                               id_category=selected_category.id_category ,form=form,sub_categories=sub_categories)
+        return render_template('categories.html',
+                               category=selected_category,
+                               id_category=selected_category.id_category ,
+                               form=form,sub_categories=sub_categories,
+                               product_form=product_form,
+                               stock_form=stock_form)
+
+
+@inventory_blueprint.route('/add_product/<int:id_category>/<int:id_subcategory>', method=['GET', 'POST'])
+def add_product(id_category, id_subcategory):
+    product_form = AddProductForm()
+    stock_form = AddProductStock()
