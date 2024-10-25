@@ -94,7 +94,7 @@ footer input, footer button {
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed;
-    z-index: 1;
+
     left: 0;
     top: 0;
     width: 100%;
@@ -169,6 +169,11 @@ footer input, footer button {
 
 .container:hover .bar3 {
     transform: rotate(45deg) translate(-5px, -6px); /* Animación al pasar el mouse */
+}
+
+/* estilos inventario */
+.main-flex-content {
+    width:100%;
 }
 
 /* Ajustes específicos para pantallas pequeñas */

@@ -48,3 +48,24 @@ class SubCategories(db.Model):
         """
         return db.session.query(cls).all()
 
+class Products(db.Model):
+
+    __tablename__ = 'products'
+
+    id_product = db.Column(db.Integer, primary_key=True, nullable=False)
+    product_name = db.Column(db.String(100), nullable=False)
+    product_price = db.Column(db.Float, nullable=False)
+    id_category = db.Column(db.Integer, db.ForeignKey('categories.id_category'), nullable=False)
+    id_subcategory = db.Column(db.Integer, db.ForeignKey('sub_categories.id_subcategory'), nullable=False)
+
+
+class Stock(db.Model):
+
+    __tablename__ = 'stock'
+
+    id_stock = db.Column(db.Integer, primary_key=True, nullable=False)
+    id_product = db.Column(db.Integer, db.ForeignKey('products.id_product'), nullable=False)
+    cantidad = db.Column(db.Integer, nullable=False)
+    stock_min = db.Column(db.Integer, nullable=True)
+    stock_max = db.Column(db.Integer, nullable=True)
+

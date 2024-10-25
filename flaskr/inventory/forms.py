@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField, FieldList, FormField, HiddenField
+from wtforms import (StringField, PasswordField, SubmitField, TextAreaField, FieldList, FormField, HiddenField,
+                     FloatField, IntegerField)
 
 """
 Formulario para gestionar la carga de categorias
@@ -16,8 +17,17 @@ class CategoryForm(FlaskForm):
     category_description = TextAreaField('Descripción')
 
 
-
-
 class DeleteCategoryForm(FlaskForm):
     category_name = StringField('Nombre de la categoria')
     #submit = SubmitField('Eiminar')
+
+
+class AddProductForm(FlaskForm):
+    product_name = StringField('Nombre del producto')
+    product_price = FloatField('Precio del producto')
+
+
+class AddProductStock(FlaskForm):
+    cantidad = IntegerField('Cantidad')
+    stock_min = IntegerField('Cantidad minima')
+    stock_max = IntegerField('Cantidad maxima')
