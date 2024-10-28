@@ -79,14 +79,17 @@ def show_products(id_category):
     stock_form = AddProductStock()
     selected_category = Categories.query.get_or_404(id_category)
     sub_categories = SubCategories.query.filter_by(id_category=selected_category.id_category).all()
+    products = Products.query.filter(Products.id_category == id_category).all()
 
     if selected_category:
         return render_template('categories.html',
                                category=selected_category,
                                id_category=selected_category.id_category ,
-                               form=form,sub_categories=sub_categories,
+                               form=form,
+                               sub_categories=sub_categories,
                                product_form=product_form,
-                               stock_form=stock_form)
+                               stock_form=stock_form,
+                               products=products)
 
 
 @inventory_blueprint.route('/add_product/<int:id_category>', methods=['GET', 'POST'])
@@ -136,4 +139,44 @@ def add_product(id_category):
                 stock_form=stock_form,
                 id_category=id_category,
                 id_subcategory=id_subcategory
+            )
+
+@inventory_blueprint.route('/edit_product/<int:id_product>', methods=['GET', 'POST'])
+def edit_product(id_product):
+    # Obtener el producto y stock actual de la base de datos
+    product = Products.query.get_or_404(id_product)
+    stock = Stock.query.filter_by(id_product=id_product).first()
+
+    # Inicializar los formularios con los datos actualles
+    product_form = AddProductForm(obj=product)
+    stock_form = AddProductStock(obj=stock)
+
+    if request.method=='POST':
+        # Validar y actualizar los formularios si son validos
+        if product_form.validate_on_submit() and stock_form.validate_on_submit():
+            # Actualizar campos del producto
+            product.product_name = product_form.product_name.data
+            product.product_price = product_form.product_price.data
+
+            # Actualizar campos del stock
+            stock.cantidad = stock_form.cantidad.data
+            stock.stock_min = stock_form.stock_min.data
+            stock.stock_max = stock_form.stock_max.data
+
+            try:
+                # Guardar cambios en la base de datos
+                db.session.commit()
+                flash("Producto actualizado exitosamente", "success")
+                return redirect(url_for('inventory.show_products', id_category=product.id_category))
+            except Exception as e:
+                db.session.rollback()
+                flash(f"Error al actualizar el producto: {e}", "danger")
+
+            # Renderizar la página con el formulario precargado en caso de GET o errores
+            return render_template(
+                'add_product.html',
+                product_form=product_form,
+                stock_form=stock_form,
+                id_category=product.id_category,
+                id_product=id_product
             )

@@ -69,3 +69,5 @@ class Stock(db.Model):
     stock_min = db.Column(db.Integer, nullable=True)
     stock_max = db.Column(db.Integer, nullable=True)
 
+    # Relación hacia Products
+    product = db.relationship('Products', backref=db.backref('stock', uselist=False))
