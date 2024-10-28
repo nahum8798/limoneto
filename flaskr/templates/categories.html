@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock - Categorias</title>
+    <title>Stock - Categorías</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles-ventas.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
@@ -13,7 +13,7 @@
         <!-- Cabecera -->
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
             <span>Hola, Florencia</span>
-            <a href="pantallaprincipal.html" ><img src="{{ url_for('static', filename='images/homee.png') }}" alt="" class="home-img"></a>
+            <a href="pantallaprincipal.html"><img src="{{ url_for('static', filename='images/homee.png') }}" alt="" class="home-img"></a>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
         </header>
         <nav class="navbar navbar-expand-md bg-warning p-2">
@@ -21,51 +21,52 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <button id="btn-seleccionar-cliente" class="btn btn-dark"><a href="login.html">Cerrar sesion</a></button>
+                        <a href="login.html" class="btn btn-dark">Cerrar sesión</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div class="flex-content">
+
+        <!-- Contenido principal -->
+        <div class="d-flex">
             <div class="sidebar">
                 <div class="sidebar-item"><a href="ventas.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/carro.png') }}" alt=""></a></div>
                 <div class="sidebar-item"><a href="cash.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/caja.png') }}" alt=""></a></div>
                 <div class="sidebar-item"><a href="{{ url_for('inventory.inventory') }}" class="nav-link text-white"><img src="{{ url_for('static', filename='images/inventario.png') }}" alt=""></a></div>
-                <!-- <div class="sidebar-item"><a href="user_management.html" class="nav-link text-white"><img src="../static/images/gest_user.png" alt=""></a></div> -->
-                <!-- <div class="sidebar-item"><a href="register.html" class="nav-link text-white"><img src="../static/images/register_user.png" alt=""></a></div> -->
                 <div class="sidebar-item"><a href="clients_management.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/clients.png') }}" alt=""></a></div>
                 <div class="sidebar-item"><a href="daily_report.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/estadistica.png') }}" alt=""></a></div>
                 <div class="sidebar-item"><a href="statistics.html" class="nav-link text-white"><img src="{{ url_for('static', filename='images/statistics.png') }}" alt=""></a></div>
             </div>
+
             <div class="main-flex-content">
                 <!-- Sección de productos por categorías -->
                 <div class="category-heading mb-3">
-                  <h5>{{ category.category_name }}</h5>
+                    <h5>{{ category.category_name }}</h5>
                 </div>
+
+                <!-- Botones de acción -->
                 <div class="btn-container">
                     <button class="btn btn-primary" id="openModalBtn">Agregar subcategoría</button>
-                </div>
-
-                <!-- Tabs para categorias -->
-                <ul class="nav nav-tabs" id="cookieTabs" role="tablist">
-                  {% for sub_categorie in sub_categories %}
-                      <li class="nav-item">
-                        <a class="nav-link {% if loop.first %}active{% endif %}" id="tab-{{ sub_categorie.id_subcategory }}" data-toggle="tab" href="#tamano-{{ sub_categorie.id_subcategory }}" role="tab"
-                           aria-controls="tamano-{{ sub_categorie.id_subcategory }}" aria-selected="{% if loop.first %}true{% else %}false{% endif %}">{{ sub_categorie.subcategory_name }}</a>
-                      </li>
-                  {% endfor %}
-                </ul>
-
-                <div class="btn-container">
-                    <!-- Botón para abrir el modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">
                         Agregar Producto
                     </button>
                 </div>
 
+                <!-- Tabs para subcategorías -->
+                <ul class="nav nav-tabs" id="cookieTabs" role="tablist">
+                  {% for sub_categorie in sub_categories %}
+                      <li class="nav-item">
+                          <a class="nav-link {% if loop.first %}active{% endif %}" id="tab-{{ sub_categorie.id_subcategory }}"
+                             data-toggle="tab" href="#tamano-{{ sub_categorie.id_subcategory }}" role="tab"
+                             aria-controls="tamano-{{ sub_categorie.id_subcategory }}"
+                             aria-selected="{% if loop.first %}true{% else %}false{% endif %}">{{ sub_categorie.subcategory_name }}</a>
+                      </li>
+                  {% endfor %}
+                </ul>
+
                 <div class="tab-content mt-4" id="cookieTabsContent">
                   {% for sub_categorie in sub_categories %}
-                    <div class="tab-pane fade{% if loop.first %} show active{% endif %}" id="tamano-{{ sub_categorie.id }}" role="tabpanel" aria-labelledby="tab-{{ sub_categorie.id }}">
+                    <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="tamano-{{ sub_categorie.id_subcategory }}" role="tabpanel" aria-labelledby="tab-{{ sub_categorie.id_subcategory }}">
                         <h6>{{ sub_categorie.subcategory_name }}</h6>
                         <div class="table-responsive">
                           <table class="table table-bordered">
@@ -95,7 +96,6 @@
                                   <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
                                 </td>
                               </tr>
-
                             </tbody>
                           </table>
                         </div>
@@ -106,13 +106,12 @@
         </div>
     </div>
 
-
-    <!-- Modal para agregar categoría -->
+    <!-- Modal para agregar subcategoría -->
     <div id="modal-agregar" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Agregar Categoría</h5>
+                    <h5 class="modal-title">Agregar Subcategoría</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -120,13 +119,12 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ url_for('inventory.add_subcategory', id_category=category.id_category) }}">
                         {{ form.hidden_tag() }}
-
                         <label>Nombre de la Subcategoría</label>
                         {{ form.subcategory_name(class_='form-control') }}
                         {% for error in form.subcategory_name.errors %}
                             <span style="color: red;">{{ error }}</span>
                         {% endfor %}
-                        <button type="submit">Agregar Subcategoría</button>
+                        <button type="submit" class="btn btn-primary mt-3">Agregar Subcategoría</button>
                     </form>
                 </div>
             </div>
@@ -144,10 +142,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ url_for('inventory.add_product', id_category=category.id_category, id_
-                    subcategory=sub_categorie.id_subcategory) }}">
-                        <!-- Campos del formulario AddProductForm -->
+                    <form method="POST" action="{{ url_for('inventory.add_product', id_category=category.id_category) }}">
+                        <!-- Formulario de producto -->
                         {{ product_form.hidden_tag() }}
+                        <!-- Campo oculto para almacenar el ID de la subcategoria -->
+                        <input type="hidden" name="id_subcategory" id="id_subcategory">
                         <div class="form-group">
                             {{ product_form.product_name.label(class_="form-label") }}
                             {{ product_form.product_name(class_="form-control") }}
@@ -157,7 +156,7 @@
                             {{ product_form.product_price(class_="form-control") }}
                         </div>
 
-                        <!-- Campos del formulario AddProductStock -->
+                        <!-- Formulario de stock -->
                         {{ stock_form.hidden_tag() }}
                         <div class="form-group">
                             {{ stock_form.cantidad.label(class_="form-label") }}
@@ -171,44 +170,32 @@
                             {{ stock_form.stock_max.label(class_="form-label") }}
                             {{ stock_form.stock_max(class_="form-control") }}
                         </div>
-
-                    <button type="submit" class="btn btn-primary mt-3">Agregar Producto</button>
-
+                        <button type="submit" class="btn btn-primary">Agregar Producto</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!--<script src="../static/modals.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='cookie-tabs.js') }}"></script>
     <script>
-        $(document).ready(function() {
-                // Seleccionar botones y modales
-                $('#openModalBtn').on('click', function() {
-                $('#modal-agregar').modal('show');
-            });
-
-            $('[data-target="#modalAgregarProducto"]').on('click', function() {
-                $('#modalAgregarProducto').modal('show');
-            });
-
-            // Cerrar el modal de agregar categoría
-            $('.close').on('click', function() {
-                $(this).closest('.modal').modal('hide');
-            });
-
-            // Detectar clic fuera del modal para cerrarlo
-            $(window).on('click', function(event) {
-                if ($(event.target).hasClass('modal')) {
-                    $('.modal').modal('hide');
-                }
-            });
+        // JavaScript para abrir modales
+        document.getElementById("openModalBtn").addEventListener("click", function() {
+            $('#modal-agregar').modal('show');
         });
+
+        // Almacenar id_subcategoria
+        $('#modalAgregarProducto').on('show.bs.modal', function () {
+            // Obtén el ID de la subcategoría activa
+            var activeTab = $('#cookieTabs .nav-link.active').attr('href');
+            var subcategoryId = activeTab ? activeTab.split('-')[1] : null;  // Obtiene el número de la subcategoría desde el ID
+
+            // Establece el ID de la subcategoría en el campo oculto
+            $('#id_subcategory').val(subcategoryId);
+        });
+
     </script>
-  </body>
+</body>
 </html>

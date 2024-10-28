@@ -1,12 +1,12 @@
 from unicodedata import category
 
 from werkzeug.utils import redirect
-from flask import url_for
+from flask import url_for, request
 from flaskr.extensions import db
 from flaskr.inventory import inventory_blueprint
 from flask import render_template, flash
 from flaskr.inventory.forms import CategoryForm, SubCategoryForm, DeleteCategoryForm, AddProductForm, AddProductStock
-from .models import Categories, SubCategories
+from .models import Categories, SubCategories, Products, Stock
 
 
 @inventory_blueprint.route('/inventory')
@@ -89,7 +89,51 @@ def show_products(id_category):
                                stock_form=stock_form)
 
 
-@inventory_blueprint.route('/add_product/<int:id_category>/<int:id_subcategory>', method=['GET', 'POST'])
-def add_product(id_category, id_subcategory):
+@inventory_blueprint.route('/add_product/<int:id_category>', methods=['GET', 'POST'])
+def add_product(id_category):
     product_form = AddProductForm()
     stock_form = AddProductStock()
+
+    if request.method == 'POST':
+        id_subcategory = request.form.get('id_subcategory')
+        # Validar ambos formularios
+        if product_form.validate_on_submit() and stock_form.validate_on_submit():
+            # Crear instancias de las tablas para guardar el producto y el stock
+            new_product = Products(
+                product_name=product_form.product_name.data,
+                product_price =product_form.product_price.data,
+                id_category=id_category,
+                id_subcategory=id_subcategory
+            )
+
+            db.session.add(new_product)
+            db.session.flush()  # Asegura que new_product.id este disponible antes de usarlo en stock
+
+            # Crear y asociar el stock al nuevo producto
+            new_stock = Stock(
+                id_product=new_product.id_product,
+                cantidad=stock_form.cantidad.data,
+                stock_min=stock_form.stock_min.data,
+                stock_max=stock_form.stock_max.data
+            )
+            db.session.add(new_stock)
+
+            try:
+                # Confirmar cambios en la base de datos
+                db.session.commit()
+                flash("Producto agregado exitosamente", "success")
+                return redirect(url_for('inventory.show_products', id_category=id_category))
+            except Exception as e:
+                db.session.rollback() # Deshacer en caso de error
+                flash(f"Error al agregar producto y stock: {e}", "danger")
+            else:
+                flash("Error en la validación de los formularios.", "warning")
+
+            # Si es GET o hay errores, renderiza el formulario nuevamente
+            return render_template(
+                'add_product.html',
+                product_form=product_form,
+                stock_form=stock_form,
+                id_category=id_category,
+                id_subcategory=id_subcategory
+            )
