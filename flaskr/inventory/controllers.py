@@ -80,6 +80,8 @@ def show_products(id_category):
     selected_category = Categories.query.get_or_404(id_category)
     sub_categories = SubCategories.query.filter_by(id_category=selected_category.id_category).all()
     products = Products.query.filter(Products.id_category == id_category).all()
+    stock_data = {product.id_product: Stock.query.filter_by(id_product=product.id_product).first() for product in
+                  products}
 
     if selected_category:
         return render_template('categories.html',
@@ -89,7 +91,8 @@ def show_products(id_category):
                                sub_categories=sub_categories,
                                product_form=product_form,
                                stock_form=stock_form,
-                               products=products)
+                               products=products,
+                               stock_data=stock_data)
 
 
 @inventory_blueprint.route('/add_product/<int:id_category>', methods=['GET', 'POST'])
@@ -99,20 +102,18 @@ def add_product(id_category):
 
     if request.method == 'POST':
         id_subcategory = request.form.get('id_subcategory')
+
         # Validar ambos formularios
         if product_form.validate_on_submit() and stock_form.validate_on_submit():
-            # Crear instancias de las tablas para guardar el producto y el stock
             new_product = Products(
                 product_name=product_form.product_name.data,
-                product_price =product_form.product_price.data,
+                product_price=product_form.product_price.data,
                 id_category=id_category,
                 id_subcategory=id_subcategory
             )
-
             db.session.add(new_product)
-            db.session.flush()  # Asegura que new_product.id este disponible antes de usarlo en stock
+            db.session.flush()
 
-            # Crear y asociar el stock al nuevo producto
             new_stock = Stock(
                 id_product=new_product.id_product,
                 cantidad=stock_form.cantidad.data,
@@ -122,37 +123,37 @@ def add_product(id_category):
             db.session.add(new_stock)
 
             try:
-                # Confirmar cambios en la base de datos
                 db.session.commit()
                 flash("Producto agregado exitosamente", "success")
                 return redirect(url_for('inventory.show_products', id_category=id_category))
             except Exception as e:
-                db.session.rollback() # Deshacer en caso de error
+                db.session.rollback()
                 flash(f"Error al agregar producto y stock: {e}", "danger")
-            else:
-                flash("Error en la validación de los formularios.", "warning")
+        else:
+            flash("Error en la validación de los formularios.", "warning")
 
-            # Si es GET o hay errores, renderiza el formulario nuevamente
-            return render_template(
-                'add_product.html',
-                product_form=product_form,
-                stock_form=stock_form,
-                id_category=id_category,
-                id_subcategory=id_subcategory
-            )
+    # Renderizar el formulario si es GET o si hubo errores
+    return render_template(
+        'categories.html',
+        product_form=product_form,
+        stock_form=stock_form,
+        id_category=id_category
+    )
 
-@inventory_blueprint.route('/edit_product/<int:id_product>', methods=['GET', 'POST'])
-def edit_product(id_product):
-    # Obtener el producto y stock actual de la base de datos
-    product = Products.query.get_or_404(id_product)
-    stock = Stock.query.filter_by(id_product=id_product).first()
 
-    # Inicializar los formularios con los datos actualles
-    product_form = AddProductForm(obj=product)
-    stock_form = AddProductStock(obj=stock)
+@inventory_blueprint.route('/edit_product', methods=['GET', 'POST'])
+def edit_product():
+    if request.method == 'POST':
+        id_product = request.form.get('id_product')
+        # Obtener el producto y stock actual de la base de datos
+        product = Products.query.get_or_404(id_product)
+        stock = Stock.query.filter_by(id_product=id_product).first()
 
-    if request.method=='POST':
-        # Validar y actualizar los formularios si son validos
+        # Inicializar los formularios con los datos actuales
+        product_form = AddProductForm(obj=product)
+        stock_form = AddProductStock(obj=stock)
+
+        # Validar y actualizar los formularios si son válidos
         if product_form.validate_on_submit() and stock_form.validate_on_submit():
             # Actualizar campos del producto
             product.product_name = product_form.product_name.data
@@ -172,11 +173,11 @@ def edit_product(id_product):
                 db.session.rollback()
                 flash(f"Error al actualizar el producto: {e}", "danger")
 
-            # Renderizar la página con el formulario precargado en caso de GET o errores
-            return render_template(
-                'add_product.html',
-                product_form=product_form,
-                stock_form=stock_form,
-                id_category=product.id_category,
-                id_product=id_product
-            )
+    # Si es un GET, inicializar los formularios sin datos
+    product_form = AddProductForm()
+    stock_form = AddProductStock()
+    return render_template(
+        'categories.html',
+        product_form=product_form,
+        stock_form=stock_form
+    )
