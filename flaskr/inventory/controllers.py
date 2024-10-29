@@ -55,6 +55,7 @@ def add_subcategory(id_category):
 
     return render_template('categories.html', form=form)
 
+
 @inventory_blueprint.route('/delete_category', methods=['GET', 'POST'])
 def delete_category():
     form = DeleteCategoryForm()
@@ -70,6 +71,8 @@ def delete_category():
             flash(f'Categoria {category_name} no encontrada')
 
     return redirect(url_for('inventory.inventory', form=form))
+
+
 
 @inventory_blueprint.route('/show_products/<int:id_category>', methods=['GET', 'POST'])
 def show_products(id_category):
