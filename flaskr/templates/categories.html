@@ -47,7 +47,7 @@
                 <!-- Botones de acción -->
                 <div class="btn-container">
                     <button class="btn btn-primary" id="openModalBtn">Agregar subcategoría</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProducto" data-action="add">
                         Agregar Producto
                     </button>
                 </div>
@@ -83,12 +83,12 @@
                               </tr>
                             </thead>
                             <tbody>
-                              {% for product in products %}
-                                {% if not products %}
+                              {% if not products %}
                                     <tr>
                                         <td colspan="8" class="text-center">No hay productos disponibles</td>
                                     </tr>
-                                {% endif %}
+                              {% endif %}
+                              {% for product in products %}
                                 {% if product.id_subcategory == sub_categorie.id_subcategory %}
                                   <tr>
                                       <td>{{ product.id_product }}</td>
@@ -106,7 +106,8 @@
                                       </td>
                                       <td>
                                           <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                                    data-target="#modalEditarProducto"
+                                                    data-target="#modalProducto"
+                                                    data-action="edit"
                                                     data-id_product="{{ product.id_product }}"
                                                     data-name="{{ product.product_name }}"
                                                     data-price="{{ product.product_price }}"
@@ -116,14 +117,9 @@
                                             Editar Producto
                                           </button>
                                           <!--<button class="btn btn-warning btn-sm" onclick="openEditModal('{{ product.id_product }}')">Editar</button>-->
-                                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminarProducto" onclick="setProductId({{ product.id_product }})">
+                                          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalEliminarProducto" onclick="setProductId({{ product.id_product }})">
                                             Eliminar
                                           </button>
-                                          <!--<button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                                  data-target="#modalEliminarProducto"
-                                                  data-id_product="{{ product.id_product }}">
-                                              Eliminar
-                                          </button>-->
                                       </td>
                                   </tr>
                                 {% endif %}
@@ -184,168 +180,111 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalEditarProducto" tabindex="-1">
-        <div class="modal-dialog">
-           <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditarProductoLabel">Editar Producto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ url_for('inventory.edit_product') }}">
-                        <!-- Formulario de producto -->
-                        {{ product_form.hidden_tag() }}
-                        <!-- Campo oculto para almacenar el ID del producto -->
-                        <input type="hidden" name="id_product" id="id_product">
-                        <!-- Campo oculto para almacenar el ID de la subcategoria -->
-                        <input type="hidden" name="id_subcategory" id="id_subcategory">
-                        <div class="form-group">
-                            {{ product_form.product_name.label(class_="form-label") }}
-                            {{ product_form.product_name(class_="form-control") }}
-                        </div>
-                        <div class="form-group">
-                            {{ product_form.product_price.label(class_="form-label") }}
-                            {{ product_form.product_price(class_="form-control") }}
-                        </div>
 
-                        <!-- Formulario de stock -->
-                        {{ stock_form.hidden_tag() }}
-                        <div class="form-group">
-                            {{ stock_form.cantidad.label(class_="form-label") }}
-                            {{ stock_form.cantidad(class_="form-control") }}
-                        </div>
-                        <div class="form-group">
-                            {{ stock_form.stock_min.label(class_="form-label") }}
-                            {{ stock_form.stock_min(class_="form-control") }}
-                        </div>
-                        <div class="form-group">
-                            {{ stock_form.stock_max.label(class_="form-label") }}
-                            {{ stock_form.stock_max(class_="form-control") }}
-                        </div>
-                        <button type="submit" class="btn btn-primary">Editar Producto</button>
-                    </form>
-                </div>
-           </div>
-        </div>
-    </div>
-
-    <!-- Modal para agregar producto -->
-    <div class="modal fade" id="modalAgregarProducto" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalAgregarProductoLabel">Agregar Producto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ url_for('inventory.add_product', id_category=category.id_category) }}">
-                        <!-- Formulario de producto -->
-                        {{ product_form.hidden_tag() }}
-                        <!-- Campo oculto para almacenar el ID de la subcategoria -->
-                        <input type="hidden" name="id_subcategory" id="id_subcategorie">
-                        <div class="form-group">
-                            {{ product_form.product_name.label(class_="form-label") }}
-                            {{ product_form.product_name(class_="form-control") }}
-                        </div>
-                        <div class="form-group">
-                            {{ product_form.product_price.label(class_="form-label") }}
-                            {{ product_form.product_price(class_="form-control") }}
-                        </div>
-
-                        <!-- Formulario de stock -->
-                        {{ stock_form.hidden_tag() }}
-                        <div class="form-group">
-                            {{ stock_form.cantidad.label(class_="form-label") }}
-                            {{ stock_form.cantidad(class_="form-control") }}
-                        </div>
-                        <div class="form-group">
-                            {{ stock_form.stock_min.label(class_="form-label") }}
-                            {{ stock_form.stock_min(class_="form-control") }}
-                        </div>
-                        <div class="form-group">
-                            {{ stock_form.stock_max.label(class_="form-label") }}
-                            {{ stock_form.stock_max(class_="form-control") }}
-                        </div>
-                        <button type="submit" class="btn btn-primary">Agregar Producto</button>
-                    </form>
-                </div>
+    <!-- Modal para agregar o editar producto -->
+    <div class="modal fade" id="modalProducto" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalProductoLabel">Agregar/Editar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="formProducto">
+                    {{ product_form.hidden_tag() }}
+                    <input type="hidden" name="id_product" id="id_product"> <!-- Campo oculto para ID del producto -->
+                    <!--<input type="hidden" name="id_subcategory" id="id_subcategory">--> <!-- Campo oculto para subcategoría -->
+                    <div class="form-group">
+                        {{ product_form.product_name.label(class_="form-label") }}
+                        {{ product_form.product_name(class_="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ product_form.product_price.label(class_="form-label") }}
+                        {{ product_form.product_price(class_="form-control") }}
+                    </div>
+                    <label for="id_subcategory">Subcategoría:</label>
+                    <select name="id_subcategory" id="id_subcategory" required>
+                        {% for subcategory in sub_categories %}
+                            <option value="{{ subcategory.id_subcategory }}">{{ subcategory.subcategory_name }}</option>
+                        {% endfor %}
+                    </select><br>
+                    {{ stock_form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ stock_form.cantidad.label(class_="form-label") }}
+                        {{ stock_form.cantidad(class_="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ stock_form.stock_min.label(class_="form-label") }}
+                        {{ stock_form.stock_min(class_="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ stock_form.stock_max.label(class_="form-label") }}
+                        {{ stock_form.stock_max(class_="form-control") }}
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar Producto</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='cookie-tabs.js') }}"></script>
     <script>
-        // JavaScript para abrir modales
-        document.getElementById("openModalBtn").addEventListener("click", function() {
-            $('#modal-agregar').modal('show');
-        });
 
-        // Almacenar id_subcategoria
-        $('#modalAgregarProducto').on('show.bs.modal', function () {
-            // Obtén el ID de la subcategoría activa
-            var activeTab = $('#cookieTabs .nav-link.active').attr('href');
-            var subcategoryId = activeTab ? activeTab.split('-')[1] : null;  // Obtiene el número de la subcategoría desde el ID
+        // Manejar el modal de agregar/editar producto
+            $('#modalProducto').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Botón que activó el modal
+    var actionType = button.data('action'); // "add" o "edit"
+    var form = $('#formProducto');
 
-            // Establece el ID de la subcategoría en el campo oculto
+    // Configurar el modal según el tipo de acción
+    if (actionType === 'edit') {
+        form.attr('action', "{{ url_for('inventory.edit_product') }}");
+
+        // Ajustar el título y el botón
+        $('#modalProductoLabel').text('Editar Producto');
+        $('#btnGuardar').text('Actualizar Producto');
+
+        // Cargar datos en el formulario para editar
+        $('#id_product').val(button.data('id_product'));
+        $('#id_subcategory').val(button.data('subcategory-id'));
+        $('#product_name').val(button.data('name'));
+        $('#product_price').val(button.data('price'));
+        $('#cantidad').val(button.data('cantidad'));
+        $('#stock_min').val(button.data('stock_min'));
+        $('#stock_max').val(button.data('stock_max'));
+
+    } else {
+        form.attr('action', "{{ url_for('inventory.add_product', id_category=category.id_category) }}");
+
+        // Configurar el título y el botón para agregar
+        $('#modalProductoLabel').text('Agregar Producto');
+        $('#btnGuardar').text('Guardar Producto');
+
+        // Limpiar los campos del formulario
+        $('#formProducto').trigger('reset');
+
+        // Obtener y establecer el id_subcategory al abrir el modal para agregar
+        var activeTab = $('#cookieTabs .nav-link.active').attr('href');
+        var subcategoryId = activeTab ? activeTab.split('-')[1] : null;
+
+        if (subcategoryId) {
             $('#id_subcategory').val(subcategoryId);
-        });
-        // Almacenar id_subcategoria
-        $('#modalEditarProducto').on('show.bs.modal', function () {
-            // Obtén el ID de la subcategoría activa
-            var activeTab = $('#cookieTabs .nav-link.active').attr('href');
-            var subcategoryId = activeTab ? activeTab.split('-')[1] : null;  // Obtiene el número de la subcategoría desde el ID
-
-            // Establece el ID de la subcategoría en el campo oculto
-            $('#id_subcategorie').val(subcategoryId);
-        });
-
-        $('#modalAgregarProducto').on('show.bs.modal', function () {
-            // Obtén el ID de la subcategoría activa
-            var activeTab = $('#cookieTabs .nav-link.active').attr('href');
-            var subcategoryId = activeTab ? activeTab.split('-')[1] : null;
-
-            // Establece el ID de la subcategoría en el campo oculto
-            $('#id_subcategory').val(subcategoryId);
-        });
+        } else {
+            console.warn("No se pudo obtener un ID de subcategoría válido.");
+        }
+    }
+});
 
 
-            document.addEventListener('DOMContentLoaded', function () {
-        $('#modalEditarProducto').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Botón que abre el modal
-            var id = button.data('id');
-            var name = button.data('name');
-            var price = button.data('price');
-            var cantidad = button.data('cantidad');
-            var stock_min = button.data('stock_min');
-            var stock_max = button.data('stock_max');
 
-            // Asignar los valores a los campos del formulario
-            $('#product_name').val(name);
-            $('#product_price').val(price);
-            $('#cantidad').val(cantidad);
-            $('#stock_min').val(stock_min);
-            $('#stock_max').val(stock_max);
 
-            // Actualizar la acción del formulario con el ID del producto
-            var formAction = "{{ url_for('inventory.edit_product', id_product='') }}" + id;
-            $(this).find('form').attr('action', formAction);
-            });
-        });
-
-        $('#modalEditarProducto').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);  // Botón que abre el modal
-            var id_product = button.data('id_product');  // Extrae id_product del atributo data-id_product
-
-            var modal = $(this);
-            modal.find('#id_product').val(id_product);  // Establece id_product en el campo oculto
-        });
 
         $('#modalEliminarProducto').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);  // Botón que abre el modal
