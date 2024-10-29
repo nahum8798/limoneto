@@ -98,7 +98,7 @@
                                       <td>{{ stock_data[product.id_product].stock_max }}</td>
                                       <td>{{ product.product_price }}</td>
                                       <td>
-                                          {% if product.stock.cantidad < product.stock.stock_min %}
+                                          {% if stock_data[product.id_product].cantidad < stock_data[product.id_product].stock_min %}
                                             Insuficiente
                                           {% else %}
                                             Suficiente
@@ -116,7 +116,14 @@
                                             Editar Producto
                                           </button>
                                           <!--<button class="btn btn-warning btn-sm" onclick="openEditModal('{{ product.id_product }}')">Editar</button>-->
-                                          <button class="btn btn-danger btn-sm" onclick="openDeleteModal('001')">Eliminar</button>
+                                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminarProducto" onclick="setProductId({{ product.id_product }})">
+                                            Eliminar
+                                          </button>
+                                          <!--<button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                  data-target="#modalEliminarProducto"
+                                                  data-id_product="{{ product.id_product }}">
+                                              Eliminar
+                                          </button>-->
                                       </td>
                                   </tr>
                                 {% endif %}
@@ -150,6 +157,27 @@
                             <span style="color: red;">{{ error }}</span>
                         {% endfor %}
                         <button type="submit" class="btn btn-primary mt-3">Agregar Subcategoría</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEliminarProducto" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEliminarProductoLabel">Editar Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for('inventory.delete_product') }}" method="POST">
+                        <!-- Campo oculto para almacenar el ID del producto -->
+                        <input type="hidden" name="id_product" id="id_product_d">
+                        <label>¿Eliminar producto?</label>
+                        <button type="submit" class="btn btn-primary">Si</button>
                     </form>
                 </div>
             </div>
@@ -313,11 +341,22 @@
 
         $('#modalEditarProducto').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);  // Botón que abre el modal
-            var id_product = button.data('id_product');  // Extrae `id_product` del atributo `data-id_product`
+            var id_product = button.data('id_product');  // Extrae id_product del atributo data-id_product
 
             var modal = $(this);
-            modal.find('#id_product').val(id_product);  // Establece `id_product` en el campo oculto
+            modal.find('#id_product').val(id_product);  // Establece id_product en el campo oculto
         });
+
+        $('#modalEliminarProducto').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);  // Botón que abre el modal
+            var id_product_d = button.data('id_product');  // Extrae id_product del atributo data-id_product
+
+            var modal = $(this);
+            modal.find('#id_product').val(id_product);  // Establece id_product en el campo oculto
+        });
+        function setProductId(productId) {
+            document.getElementById('id_product_d').value = productId;
+        }
     </script>
 </body>
 </html>

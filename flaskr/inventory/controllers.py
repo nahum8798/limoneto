@@ -1,5 +1,4 @@
 from unicodedata import category
-
 from werkzeug.utils import redirect
 from flask import url_for, request
 from flaskr.extensions import db
@@ -181,3 +180,33 @@ def edit_product():
         product_form=product_form,
         stock_form=stock_form
     )
+
+@inventory_blueprint.route('/delete_product', methods=['GET', 'POST'])
+def delete_product():
+    if request.method == 'POST':
+        id_product = request.form.get('id_product')
+
+        # Obtener el producto de la base de datos
+        product = Products.query.get_or_404(id_product)
+
+        # Obtener el stock relacionado
+        stock = Stock.query.filter_by(id_product=id_product).first()
+
+        try:
+            # Si hay stock, eliminarlo primero
+            if stock:
+                db.session.delete(stock)
+
+            # Eliminar producto
+            db.session.delete(product)
+
+            # Guardar cambios en la db
+            db.session.commit()
+            flash("Producto eliminado exitosamente", "success")
+            return redirect(url_for('inventory.show_products', id_category=product.id_category))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error al eliminar el producto: {e}", "danger")
+
+    # Si es un GET, puedes redirigir a otra página o mostrar un mensaje
+    return redirect(url_for('inventory.show_products'))
