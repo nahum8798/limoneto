@@ -61,3 +61,12 @@ class Stock(db.Model):
     # Cambiar el nombre del backref para evitar conflicto
     product_stock = db.relationship('Products', backref=db.backref('stocks', uselist=True), foreign_keys=[id_product])
 
+    @staticmethod
+    def count_products_in_stock():
+        return db.session.query(db.func.sum(Stock.cantidad)).scalar() or 0
+
+    @staticmethod
+    def count_missing_products():
+        return db.session.query(
+            db.func.count(Stock.id_product)
+        ).filter(Stock.cantidad < Stock.stock_min).scalar()

@@ -19,8 +19,14 @@ def inventory():
 
     # Obtener las categorias cargadas
     categories = Categories.get_all_categories()
+    total_stock_count = Stock.count_products_in_stock()
+    total_missing_products = Stock.count_missing_products()
 
-    return render_template('inventory.html', form=form, categories=categories)
+    return render_template('inventory.html',
+                           form=form,
+                           categories=categories,
+                           total_stock_count=total_stock_count,
+                           total_missing_products=total_missing_products)
 
 
 @inventory_blueprint.route('/add_category', methods=['GET', 'POST'])
@@ -103,6 +109,7 @@ def show_products(id_category):
     products = Products.query.filter(Products.id_category == id_category).all()
     stock_data = {product.id_product: Stock.query.filter_by(id_product=product.id_product).first() for product in
                   products}
+
 
     if selected_category:
         return render_template('categories.html',
