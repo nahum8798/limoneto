@@ -31,3 +31,7 @@ class AddProductStock(FlaskForm):
     cantidad = IntegerField('Cantidad')
     stock_min = IntegerField('Cantidad minima')
     stock_max = IntegerField('Cantidad maxima')
+
+class SearchCategoryForm(FlaskForm):
+    search_term = StringField('Buscar Categoría')
+    submit = SubmitField('Buscar')

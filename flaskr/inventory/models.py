@@ -70,3 +70,13 @@ class Stock(db.Model):
         return db.session.query(
             db.func.count(Stock.id_product)
         ).filter(Stock.cantidad < Stock.stock_min).scalar()
+
+    @staticmethod
+    def get_missing_products():
+        # realiza la consulta para obtener los nombres de los productos faltantes
+        missing_products = db.session.query(Products.product_name). \
+            join(Stock, Products.id_product == Stock.id_product). \
+            filter(Stock.cantidad < Stock.stock_min). \
+            all()
+        # Extrae los nombres de los productos de la lista de resultados
+        return [product.product_name for product in missing_products]

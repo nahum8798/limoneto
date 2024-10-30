@@ -4,7 +4,7 @@ from flask import url_for, request
 from flaskr.extensions import db
 from flaskr.inventory import inventory_blueprint
 from flask import render_template, flash
-from flaskr.inventory.forms import CategoryForm, SubCategoryForm, DeleteCategoryForm, AddProductForm, AddProductStock
+from flaskr.inventory.forms import CategoryForm, SubCategoryForm, DeleteCategoryForm, AddProductForm, AddProductStock, SearchCategoryForm
 from .models import Categories, SubCategories, Products, Stock
 from flask import session
 
@@ -16,17 +16,21 @@ def inventory():
     :return:
     """
     form = CategoryForm()
+    search_form = SearchCategoryForm()
 
     # Obtener las categorias cargadas
     categories = Categories.get_all_categories()
     total_stock_count = Stock.count_products_in_stock()
     total_missing_products = Stock.count_missing_products()
+    missing_product_names = Stock.get_missing_products()
 
     return render_template('inventory.html',
                            form=form,
+                           search_form=search_form,
                            categories=categories,
                            total_stock_count=total_stock_count,
-                           total_missing_products=total_missing_products)
+                           total_missing_products=total_missing_products,
+                           missing_product_names=missing_product_names)
 
 
 @inventory_blueprint.route('/add_category', methods=['GET', 'POST'])

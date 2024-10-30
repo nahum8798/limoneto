@@ -67,6 +67,13 @@
                     <!-- Lista de categorias -->
                     <!-- Renderizado de categorias cargadas en la base de datos -->
                     <div class="category-container">
+                        <form method="POST" action="{{ url_for('inventory.inventory') }}">
+                            {{ search_form.hidden_tag() }}
+                            <div>
+                                {{ search_form.search_term.label }} {{ search_form.search_term(size=20) }}
+                                {{ search_form.submit() }}
+                            </div>
+                        </form>
                         {% for category in categories %}
                             <div class="category"><a href="{{ url_for('inventory.show_products', id_category=category.id_category) }}">{{ category.category_name }}</a></div>
                         {% endfor %}
@@ -116,9 +123,9 @@
             <h2>Productos faltantes</h2>
             <ul>
                 <!-- Lista de productos faltantes -->
-                <li>Producto 1</li>
-                <li>Producto 2</li>
-                <li>Producto 3</li>
+                {% for missing_product_name in missing_product_names%}
+                    <li>{{ missing_product_name }}</li>
+                {% endfor %}
             </ul>
             <button class="modal-btn">Cerrar</button>
         </div>
