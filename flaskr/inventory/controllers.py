@@ -6,6 +6,7 @@ from flaskr.inventory import inventory_blueprint
 from flask import render_template, flash
 from flaskr.inventory.forms import CategoryForm, SubCategoryForm, DeleteCategoryForm, AddProductForm, AddProductStock
 from .models import Categories, SubCategories, Products, Stock
+from flask import session
 
 
 @inventory_blueprint.route('/inventory')
@@ -62,16 +63,34 @@ def delete_category():
     if form.validate_on_submit():
         category_name = form.category_name.data
         category_to_delete = Categories.query.filter_by(category_name=category_name).first()
+
         if category_to_delete:
+            # Eliminar stocks asociados a productos de la categoría
+            products = Products.query.filter_by(id_category=category_to_delete.id_category).all()
+            for product in products:
+                # Suponiendo que hay una relación con Stock
+                stock_items = Stock.query.filter_by(id_product=product.id_product).all()
+                for stock_item in stock_items:
+                    db.session.delete(stock_item)
+
+                # Luego eliminar el producto
+                db.session.delete(product)
+
+            # Eliminar subcategorías de la categoría
+            sub_categories = SubCategories.query.filter_by(id_category=category_to_delete.id_category).all()
+            for sub_category in sub_categories:
+                db.session.delete(sub_category)
+
+            # Finalmente eliminar la categoría
             db.session.delete(category_to_delete)
             db.session.commit()
-            flash(f'Categoria {category_name} eliminada correctamente')
+            flash(
+                f'Categoría "{category_name}" eliminada correctamente, junto con sus productos, stocks y subcategorías.')
             return redirect(url_for('inventory.inventory'))
         else:
-            flash(f'Categoria {category_name} no encontrada')
+            flash(f'Categoría "{category_name}" no encontrada.')
 
     return redirect(url_for('inventory.inventory', form=form))
-
 
 
 @inventory_blueprint.route('/show_products/<int:id_category>', methods=['GET', 'POST'])

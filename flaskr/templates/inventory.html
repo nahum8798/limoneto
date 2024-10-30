@@ -42,7 +42,7 @@
                 <!--
                  -->
                  <div class="container text-center my-5">
-                    
+
                     <div class="row btn-container-categorias mb-1">
                         <div class="col-md-4">
                             <button class="btn btn-faltantes">Ver productos faltantes</button>
@@ -71,11 +71,11 @@
                             <div class="category"><a href="{{ url_for('inventory.show_products', id_category=category.id_category) }}">{{ category.category_name }}</a></div>
                         {% endfor %}
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
-        
-    </div> 
+
+    </div>
 
     <!-- Modal para agregar categoría -->
     <div id="modal-agregar" class="modal">
@@ -128,6 +128,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Eliminar categoría</h2>
+            <p>Si eliminas una categoría eliminaras todos los productos asociados</p>
             <form method="POST" action="{{ url_for('inventory.delete_category') }}">
                 {{ form.hidden_tag() }}
                 <div>
