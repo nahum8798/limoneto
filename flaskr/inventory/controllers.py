@@ -4,25 +4,28 @@ from flask import url_for, request
 from flaskr.extensions import db
 from flaskr.inventory import inventory_blueprint
 from flask import render_template, flash
-from flaskr.inventory.forms import CategoryForm, SubCategoryForm, DeleteCategoryForm, AddProductForm, AddProductStock, SearchCategoryForm
+from flaskr.inventory.forms import (CategoryForm, SubCategoryForm, DeleteCategoryForm, AddProductForm, AddProductStock,
+                                    SearchCategoryForm, SearchProductForm)
 from .models import Categories, SubCategories, Products, Stock
-from flask import session
+from flask_login import current_user
 
 
-@inventory_blueprint.route('/inventory')
+@inventory_blueprint.route('/inventory', methods=['GET', 'POST'])
 def inventory():
-    """
-    esta funcion rendiriza la pantalla de inventario y carga las categorias cargadas
-    :return:
-    """
     form = CategoryForm()
     search_form = SearchCategoryForm()
-
-    # Obtener las categorias cargadas
-    categories = Categories.get_all_categories()
     total_stock_count = Stock.count_products_in_stock()
     total_missing_products = Stock.count_missing_products()
     missing_product_names = Stock.get_missing_products()
+
+
+    if search_form.validate_on_submit():
+        search_term = search_form.search_term.data
+        categories = Categories.query.filter(Categories.category_name.ilike(f'%{search_term}%')).all()
+        if not categories:
+            flash('No se encontraron categorías que coincidan con su búsqueda.', 'info')
+    else:
+        categories = Categories.get_all_categories()  # Carga todas las categorías si no hay búsqueda
 
     return render_template('inventory.html',
                            form=form,
@@ -31,6 +34,7 @@ def inventory():
                            total_stock_count=total_stock_count,
                            total_missing_products=total_missing_products,
                            missing_product_names=missing_product_names)
+
 
 
 @inventory_blueprint.route('/add_category', methods=['GET', 'POST'])
@@ -108,9 +112,17 @@ def show_products(id_category):
     form = SubCategoryForm()
     product_form = AddProductForm()
     stock_form = AddProductStock()
+    search_form = SearchProductForm()
     selected_category = Categories.query.get_or_404(id_category)
     sub_categories = SubCategories.query.filter_by(id_category=selected_category.id_category).all()
-    products = Products.query.filter(Products.id_category == id_category).all()
+    if search_form.validate_on_submit():
+        search_term = search_form.search_term.data
+        products = Products.query.filter(Products.product_name.ilike(f'%{search_term}%')).all()
+        if not products:
+            flash('No se encontraron productos que coincidan con su búsqueda.', 'info')
+    else:
+        products = Products.query.filter(Products.id_category == id_category).all()  # Carga todas los productos si no hay búsqueda
+
     stock_data = {product.id_product: Stock.query.filter_by(id_product=product.id_product).first() for product in
                   products}
 
@@ -124,7 +136,8 @@ def show_products(id_category):
                                product_form=product_form,
                                stock_form=stock_form,
                                products=products,
-                               stock_data=stock_data)
+                               stock_data=stock_data,
+                               search_form=search_form)
 
 
 @inventory_blueprint.route('/add_product/<int:id_category>', methods=['GET', 'POST'])

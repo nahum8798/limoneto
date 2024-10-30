@@ -103,6 +103,122 @@ body {
     background-color: #218838;
 }
 
+/* Estilo general del fondo del modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija para que siempre esté centrado */
+    z-index: 1050; /* Para que esté encima del contenido */
+    padding-top: 50px; /* Espacio superior */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Para activar scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+}
+
+/* Caja de contenido del modal */
+.modal-dialog {
+    max-width: 500px; /* Ajusta el ancho máximo */
+    margin: 30px auto; /* Centra horizontalmente */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Relleno interno */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra */
+    animation: fadeIn 0.3s ease-in-out; /* Animación de entrada */
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Encabezado del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Botón cerrar */
+.modal-header .close {
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+}
+
+.modal-header .close:hover {
+    color: #007bff;
+}
+
+/* Cuerpo del modal */
+.modal-body {
+    padding: 10px 0;
+}
+
+.modal-body form label {
+    font-weight: bold;
+    color: #555;
+}
+
+.modal-body form input {
+    margin-top: 5px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+#categoryAlert {
+    background-color:red;
+    color:white;
+    font-weight:bold;
+}
+
+/* Estilos para el botón de envío */
+.modal-body form button[type="submit"] {
+    margin-top: 15px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-body form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Estilos específicos del botón de cerrar en el modal */
+.modal-btn {
+    margin-top: 15px;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-btn:hover {
+    background-color: #c82333;
+}
+
+
 /* Ajustes específicos para pantallas pequeñas */
 @media (max-width: 768px) {
   

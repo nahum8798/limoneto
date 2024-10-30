@@ -23,7 +23,7 @@
                     <h3>Bienvenido a Limoneto al paso</h3>
                 </div> 
     
-                <form>
+                <form method='POST' action="{{url_for('auth.login')}}">
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
                         <input type="text" class="form-control" id="usuario" placeholder="Ingrese su usuario">
@@ -32,7 +32,7 @@
                         <label for="contrasena">Contraseña</label>
                         <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contraseña">
                     </div>
-                    <button type="submit" class="btn btn-warning btn-block"><a href="{{ url_for('main.index') }}">Iniciar sesión</a></button>
+                    <button type="submit" class="btn btn-warning btn-block">Iniciar sesión</button>
                 </form>
     
                 <div class="text-center mt-3">

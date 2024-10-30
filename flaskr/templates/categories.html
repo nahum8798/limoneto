@@ -12,7 +12,7 @@
     <div class="container-fluid p-3">
         <!-- Cabecera -->
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
-            <span>Hola, Florencia</span>
+            <span>Hola, {{ current_user.name }}</span>
             <a href="pantallaprincipal.html"><img src="{{ url_for('static', filename='images/homee.png') }}" alt="" class="home-img"></a>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
         </header>
@@ -63,6 +63,14 @@
                       </li>
                   {% endfor %}
                 </ul>
+
+                <form method="POST" action="{{ url_for('inventory.show_products', id_category=category.id_category) }}">
+                    {{ search_form.hidden_tag() }}
+                    <div>
+                        {{ search_form.search_term.label }} {{ search_form.search_term(size=20) }}
+                        {{ search_form.submit() }}
+                    </div>
+                </form>
 
                 <div class="tab-content mt-4" id="cookieTabsContent">
                     {% for sub_categorie in sub_categories %}

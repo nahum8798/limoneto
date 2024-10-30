@@ -2,7 +2,7 @@
 En __init__ definimos el app factory:
 """
 from flask import Flask
-
+from flask_login import current_user
 from .auth import auth_bp
 from .auth.models import Users
 from .config import Config
@@ -31,6 +31,10 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         return Users.query.get(int(user_id))
+
+    @app.context_processor
+    def inject_user():
+        return dict(current_user=current_user)
 
 
     """

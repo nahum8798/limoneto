@@ -35,3 +35,7 @@ class AddProductStock(FlaskForm):
 class SearchCategoryForm(FlaskForm):
     search_term = StringField('Buscar Categoría')
     submit = SubmitField('Buscar')
+
+class SearchProductForm(FlaskForm):
+    search_term = StringField('Buscar Producto')
+    submit = SubmitField('Buscar')

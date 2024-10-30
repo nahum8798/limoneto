@@ -13,7 +13,7 @@
     <div class="container-fluid p-3">
         <!-- Cabecera -->
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
-            <span>Hola, Florencia</span>
+            <span>Hola, {{ current_user.first_name }}</span>
             <a href="{{ url_for('static', filename='images/homee.png') }}" class="home-img"></a>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary"><a href="login.html">Cerrar sesion</a></button>
         </header>
@@ -86,68 +86,77 @@
 
     <!-- Modal para agregar categoría -->
     <div id="modal-agregar" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Agregar Categoría</h2>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-header">
 
-            <form method="POST" action="{{ url_for('inventory.add_category') }}">
-                {{ form.hidden_tag() }}
+                    <h2>Agregar Categoría</h2>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url_for('inventory.add_category') }}">
+                        {{ form.hidden_tag() }}
 
-                <label >Nombre de la Categoría</label>
-                {{ form.category_name(class_='form-control') }}
-                {% for error in form.category_name.errors %}
-                    <span style="color: red;">{{ error }}</span>
-                {% endfor %}
+                        <label >Nombre de la Categoría</label>
+                        {{ form.category_name(class_='form-control') }}
+                        {% for error in form.category_name.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
 
-                <button type="submit">Agregar Categoría</button>
-            </form>
+                        <button type="submit">Agregar Categoría</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!--
-    <div id="modal-agregar" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Agregar categoría</h2>
-            <label for="categoria">Nombre de la nueva categoría:</label>
-            <input type="text" id="categoria" name="categoria">
-            <button class="modal-btn">Confirmar</button>
-        </div>
-    </div>
-    -->
-
     <!-- Modal para ver productos faltantes -->
     <div id="modal-faltantes" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Productos faltantes</h2>
-            <ul>
-                <!-- Lista de productos faltantes -->
-                {% for missing_product_name in missing_product_names%}
-                    <li>{{ missing_product_name }}</li>
-                {% endfor %}
-            </ul>
-            <button class="modal-btn">Cerrar</button>
+        <div class="modal-dialog">
+           <div class="modal-content">
+             <span class="close">&times;</span>
+            <div class="modal-header">
+
+                <h2>Productos faltantes</h2>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <!-- Lista de productos faltantes -->
+                    {% for missing_product_name in missing_product_names%}
+                        <li>{{ missing_product_name }}</li>
+                    {% endfor %}
+                </ul>
+                <button class="modal-btn">Cerrar</button>
+            </div>
+
+        </div>
         </div>
     </div>
 
     <div id="modal-eliminar" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Eliminar categoría</h2>
-            <p>Si eliminas una categoría eliminaras todos los productos asociados</p>
-            <form method="POST" action="{{ url_for('inventory.delete_category') }}">
-                {{ form.hidden_tag() }}
-                <div>
-                    {{ form.category_name.label }}<br>
-                    {{ form.category_name(size=32) }}<br>
-                    {% for error in form.category_name.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-header">
+
+                    <h2>Eliminar categoría</h2>
                 </div>
-                <button type="submit">Eliminar Categoría</button>
-            </form>
+                <div class="modal-body">
+                <p id="categoryAlert">Si eliminas una categoría eliminaras todos los productos asociados</p>
+                <form method="POST" action="{{ url_for('inventory.delete_category') }}">
+                    {{ form.hidden_tag() }}
+                    <div>
+                        {{ form.category_name.label }}<br>
+                        {{ form.category_name(size=32) }}<br>
+                        {% for error in form.category_name.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <button type="submit">Eliminar Categoría</button>
+                </form>
+            </div>
+
         </div>
+
     </div>
 
 

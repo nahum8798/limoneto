@@ -10,7 +10,7 @@
 <body>
     <div class="container-fluid p-3">
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
-            <span>Hola, Florencia</span>
+            <span>Hola, {{ current_user.name }}</span>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary"><a href="login.html">Cerrar sesion</a></button>
         </header>
     
