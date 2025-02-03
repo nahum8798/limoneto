@@ -12,6 +12,12 @@ from flask_login import current_user
 
 @inventory_blueprint.route('/inventory', methods=['GET', 'POST'])
 def inventory():
+    """
+    Inventory management view. Handles category search and displays inventory statistics.
+
+    Returns:
+        Renders the inventory template with categories, stock count, and missing product information.
+    """
     form = CategoryForm()
     search_form = SearchCategoryForm()
     total_stock_count = Stock.count_products_in_stock()
@@ -39,6 +45,12 @@ def inventory():
 
 @inventory_blueprint.route('/add_category', methods=['GET', 'POST'])
 def add_category():
+    """
+    Adds a new product category.
+
+    Returns:
+        Redirects to the inventory page after adding the category.
+    """
     form = CategoryForm()  # Instancia del formulario de categoria
 
     if form.validate_on_submit():
@@ -55,6 +67,15 @@ def add_category():
 
 @inventory_blueprint.route('/add_subcategory/<int:id_category>', methods=['GET', 'POST'])
 def add_subcategory(id_category):
+    """
+    Adds a new subcategory under a specific category.
+
+    Args:
+        id_category (int): The ID of the category to associate with the subcategory.
+
+    Returns:
+        Redirects to the category's product view after adding the subcategory.
+    """
     form = SubCategoryForm()
 
     if form.validate_on_submit():
@@ -73,6 +94,12 @@ def add_subcategory(id_category):
 
 @inventory_blueprint.route('/delete_category', methods=['GET', 'POST'])
 def delete_category():
+    """
+    Deletes a category along with its related products, stock, and subcategories.
+
+    Returns:
+        Redirects to the inventory page after deletion.
+    """
     form = DeleteCategoryForm()
     if form.validate_on_submit():
         category_name = form.category_name.data
@@ -109,6 +136,15 @@ def delete_category():
 
 @inventory_blueprint.route('/show_products/<int:id_category>', methods=['GET', 'POST'])
 def show_products(id_category):
+    """
+    Displays products and subcategories under a specific category.
+
+    Args:
+        id_category (int): The category ID whose products are to be shown.
+
+    Returns:
+        Renders the category template displaying products and stock data.
+    """
     form = SubCategoryForm()
     product_form = AddProductForm()
     stock_form = AddProductStock()
@@ -142,6 +178,15 @@ def show_products(id_category):
 
 @inventory_blueprint.route('/add_product/<int:id_category>', methods=['GET', 'POST'])
 def add_product(id_category):
+    """
+    Adds a new product under a specific category and subcategory.
+
+    Args:
+        id_category (int): The ID of the category to associate with the category.
+
+    Returns:
+        Redirects to the product's view after adding the new product.
+    """
     product_form = AddProductForm()
     stock_form = AddProductStock()
 
@@ -188,6 +233,12 @@ def add_product(id_category):
 
 @inventory_blueprint.route('/edit_product', methods=['GET', 'POST'])
 def edit_product():
+    """
+    Edits an existing product.
+
+    Returns:
+        Redirects to the product's view after editing the product.
+    """
     if request.method == 'POST':
         id_product = request.form.get('id_product')
         # Obtener el producto y stock actual de la base de datos
@@ -229,6 +280,12 @@ def edit_product():
 
 @inventory_blueprint.route('/delete_product', methods=['GET', 'POST'])
 def delete_product():
+    """
+    Deletes a product along with its related stock.
+
+    Returns:
+        Redirects to the product's view after editing the product.
+    """
     if request.method == 'POST':
         id_product = request.form.get('id_product')
 

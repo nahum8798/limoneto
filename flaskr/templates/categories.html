@@ -13,7 +13,7 @@
         <!-- Cabecera -->
         <header class="d-flex justify-content-between align-items-center border-bottom pb-2">
             <span>Hola, {{ current_user.name }}</span>
-            <a href="pantallaprincipal.html"><img src="{{ url_for('static', filename='images/homee.png') }}" alt="" class="home-img"></a>
+            <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='images/homee.png') }}" alt="" class="home-img"></a>
             <button id="btn-cambiar-usuario" class="btn btn-outline-secondary">Cambiar usuario</button>
         </header>
         <nav class="navbar navbar-expand-md bg-warning p-2">
